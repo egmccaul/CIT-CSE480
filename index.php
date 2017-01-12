@@ -13,6 +13,7 @@ include('header.php');
     <div class="center">
         <h2>Movement on your trail?</h2>
         <h1>Instant notification.</h1>
+        
 
         <!-- <a href="#" class="btn btn-trailmix cta">Start Now</a> -->
         
