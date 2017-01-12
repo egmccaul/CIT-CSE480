@@ -126,6 +126,9 @@ error_reporting(0);
    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="trailmix icon" src="img/trailmixacorn.png">
+                </a>                
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>

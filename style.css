@@ -28,7 +28,10 @@
         background-color: #eccf14;
         color: #222 !important;
     }
-
+    .navbar-brand img{
+        width:20px;
+        height:auto;
+    }
     #myNavbar li a {
         color: #e3d8ac;
     }
