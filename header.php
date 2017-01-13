@@ -26,7 +26,7 @@ error_reporting(0);
 ?>
 
 <head>
-        <title>CIT 345 Project</title>
+        <title>CIT 480 Project</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -94,21 +94,9 @@ error_reporting(0);
 
 
                     // Sets session variables
-                    $_SESSION["stu_id"] = $row['STU_NUM'];
                     $_SESSION["name"] = $row['STU_FNAME'];
                     $_SESSION["lname"] = $row['STU_LNAME'];
-                    $_SESSION["address"] = $row['STU_SADDRESS'];
-                    $_SESSION["city"] = $row['STU_CITY'];
-                    $_SESSION["state"] = $row['STU_STATE'];
-                    $_SESSION["zip"] = $row['STU_ZIP'];
-                    $_SESSION["birth"] = $row['STU_BIRTH'];
-                    $_SESSION["phone"] = $row['STU_PHONE_NUM'];
                     $_SESSION["email"] = $row['STU_EMAIL'];
-                    $_SESSION["pass"] = $row['STU_PASS'];
-                    $_SESSION["belt"] = $row['STU_BELT'];
-
-                    $age = date_diff(date_create($_SESSION['birth']), date_create('today'))->y;
-                    $_SESSION['age'] = $age;
 
                     header('Location: account.php');
                    
@@ -126,16 +114,16 @@ error_reporting(0);
    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img alt="trailmix icon" src="img/trailmixacorn.png">
-                </a>                
+                           
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
+		 
+		<!-- Moved navbar brand icon down based on bootstrap templates. -->
+		<a class="navbar-brand" href="index.php"><img src="img/trailmixacorn.png" alt="TrailMix Icon" style="width:30px;height:30px;"></a>
                 
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
@@ -145,7 +133,7 @@ error_reporting(0);
                     <li <?php if (stripos($_SERVER['REQUEST_URI'],'Contact_Us.php') !== false) {echo 'class="active"'; session_write_close();} ?> ><a href="Contact_Us.php">Contact Us</a></li>
                     <?php 
                         /* Checks if a user is already signed in. If signed in, it 
-                        will display user's name and log out button.*/
+                        will display additional pages.*/
                         if(isset($_SESSION["email"])){
                     ?>
                     <li <?php if (stripos($_SERVER['REQUEST_URI'],'classes.php') !== false) {echo 'class="active"'; session_write_close();} ?> ><a href="classes.php">Classes</a></li>
