@@ -1,7 +1,21 @@
- body {
-        font-family: 'Open Sans', sans-serif;
+/* Creates formatting for the general header, 
+which is used by every page*/
+
+    /* Creates some whitespace around the drop-down login form fields, which is
+    contained in the navigation bar at the top.*/
+    #login{
+        padding: 10px 15px 0px 15px;
     }
-    .pagewrapper{
+	#foot{
+        position:fixed;
+		bottom:0px;
+		width:100%;
+		color: #eccf14;
+		background-color:rgba(22,25,26, 0.8);
+    }
+	
+	/* Note: end of page wrapper is contained in the footer, right before the body end tag*/
+	.pagewrapper{
         position: absolute;
         width: 100%;
         height: 100%;
@@ -9,34 +23,38 @@
         background-size: cover;
         background-color: #fff;
     }
-
-    .main-logo img {
+	
+	.main-logo img {
         height: 200px;
         width:auto;
-        margin-top: 100px;
+        margin-top: 300px;
 
     }
-
-    .center{
+	
+	.center{
         text-align: center;
         margin: 0 auto;
         display: block;
     }
-
-
-    .btn-trailmix{
+	
+	/* Change the button color to yellow */
+	.btn-trailmix{
         background-color: #eccf14;
         color: #222 !important;
     }
-    .navbar-brand img{
+	
+	/* Adds formatting for the brand icon.*/
+	.navbar-brand img{
         width:20px;
         height:auto;
     }
-    #myNavbar li a {
+	
+	/* Change the color of the text for links in navbar. */
+	#myNavbar li a {
         color: #e3d8ac;
     }
 
-  .start-screen {
+	.start-screen {
     color: #ddd;
   }
 
@@ -58,169 +76,5 @@
     font-size: 26px;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #page_title{
-        padding-left:5px;
-        font-size:60px;
-    }
-    #form1{
-        margin:0px;
-        font-family:Verdana, Arial, Helvetica, sans-serif;
-        font-size:11px;
-        /*width:300px;*/
-    }
-    #name{
-        padding:2px;
-        border:1px solid #CCCCCC;
-        /*width:180px;
-        height:20px;*/
-        font-family:Verdana, Arial, Helvetica, sans-serif;
-        font-size:15px;
-    }
-    #from{
-        padding:2px;
-        border:1px solid #CCCCCC;
-        /*width:180px;
-        height:20px;*/
-        font-family:Verdana, Arial, Helvetica, sans-serif;
-        font-size:15px;
-    }
-    #subject{
-        padding:2px;
-        border:1px solid #CCCCCC;
-        /*width:180px;
-        height:20px;*/
-        font-family:Verdana, Arial, Helvetica, sans-serif;
-        font-size:15px;
-    }
-    #verif_box{
-        padding:2px;
-        border:1px solid #CCCCCC;
-        /*width:180px;
-        height:20px;*/
-        font-family:Verdana, Arial, Helvetica, sans-serif;
-        font-size:15px;
-    }
-    #message{
-        padding:2px;
-        border:1px solid #CCCCCC;
-        width:300px;
-        height:100px;
-        font-family:Verdana, Arial, Helvetica, sans-serif;
-        font-size:15px;
-    }
-    #submit{
-        margin-top:10px;
-        margin-left: 20px;
-        display:block;
-        border:1px solid #000000;
-        /*width:100px;
-        height:20px;*/
-        font-family:Verdana, Arial, Helvetica, sans-serif;
-        /*font-size:15px;
-        padding-left:2px;
-        padding-right:2px;
-        padding-top:0px;
-        padding-bottom:2px;
-        line-height:14px;
-        background-color:#EFEFEF;*/
-    }
-    #wrong_verify{
-        border:1px solid #990000;
-        background-color:#D70000;
-        color:#FFFFFF;
-        padding:4px;
-        padding-left:6px;
-        width:295px;
-    }
-/* Creates formatting for the general header, 
-which is used by every page*/
-    /* Creates some whitespace around the drop-down login form fields, which is
-    contained in the navigation bar at the top.*/
-    #login{
-        padding: 10px 15px 0px 15px;
-    }
-    #foot{
-        
-    }
-/* General Website styling */
-    #form_layout{
-            background-color: lightgrey;
-            border-radius: 10px;
-            box-shadow: 10px 10px 5px grey;
-        }
-    #general_page{
-        background-color: #eee;
-    }
-    table{
-        border: none;
-        border-collapse: collapse;
-    }
-    table td{ 
-        border-left: 1px solid #000;
-    }
-    table td:first-child{ 
-        border-left: none;
-    }
-    tr:nth-child(even){
-        background-color: white;
-    }
-    #table_head{
-        background-color: #428bca;
-        color: white;
-        font-size: 15px;
-    }
-/* Formatting for the Account Page*/
-    #info{
-        background-color: lightgrey;
-        border-radius: 10px;
-        box-shadow: 10px 10px 5px grey;
-        padding-top: 10px;
-    }
-    #user_account{
-        background-color: lightgrey;
-        border-radius: 10px;
-        box-shadow: 10px 10px 5px grey;
-    }
-    #user_info{
-        padding: 5px 10px 5px 10px;
-    }
-    #table_title{
-        background-color: darkblue;
-        font-style: bold;
-        color: white;
-        padding-left: 20px;
-    }
-
-/* Formatting for the Classes page */
-    #legend{
-
-    }
-    #legend_content{
-        padding-left: 50px;
-    }
+/* Creates formatting for the index.php page */
+	

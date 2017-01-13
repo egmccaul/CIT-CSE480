@@ -1,22 +1,32 @@
 <?php
-    // Links to database connection file
-	// include('connect.php');
+
+    // Turn off error reporting
+error_reporting(0);
+
+
+
+
+
+
+
+
+    include('connect.php');
 
     session_start();
 
-	// Verifies that the sessions are working correct across pages
     if(isset($_SESSION['views']))
         $_SESSION['views'] = $_SESSION['views']+ 1;
     else
       $_SESSION['views'] = 1;
-	
-	// Shows visual confirmation that sessions are working correctly.
-//    echo "views = ". $_SESSION['views'];
+
+    echo "views = ". $_SESSION['views'];
+
+    echo "Current age is: " . $_SESSION['age'];
 
 ?>
 
 <head>
-        <title>CIT/CSE 480 Project</title>
+        <title>CIT 480 Project</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -34,7 +44,8 @@
         <!-- Our file css -->
         <link rel="stylesheet" href="style.css" />
         
-            
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
         <!-- Adds some css to the elements in the page -->
         <style type="text/css">
 
@@ -44,16 +55,12 @@
         
     </head>
 
-<body id="general_page">
 
+<body id="general_page">
+<div class="pagewrapper">
     <?php
-		// Check whether login was submitted
         if (isset($_POST['logEmail'])) {
-			
-			// Gives visual confirmation that the submission was successful.
             echo "Submit successful.";
-			
-			// Give error message if login is not successful.
             if (empty($_POST['logEmail']) || empty($_POST['logPassword'])) {
                 $error = "Username or Password is invalid";
             }
@@ -64,66 +71,73 @@
                 $password=$_POST['logPassword'];
 
                 // PDO query to check registered users
-                // $statement = $dbh->prepare("SELECT * FROM Student WHERE STU_PASS = :pass AND STU_EMAIL = :email");
+                $statement = $dbh->prepare("SELECT * FROM Student WHERE STU_PASS = :pass AND STU_EMAIL = :email");
 
                 // PDO binds entry to protect against SQL Injection
-                // $statement->bindParam(':pass', $password, PDO::PARAM_STR);
-                // $statement->bindParam(':email', $email, PDO::PARAM_STR);
+                $statement->bindParam(':pass', $password, PDO::PARAM_STR);
+                $statement->bindParam(':email', $email, PDO::PARAM_STR);
 
                 // Executes query
-                // $executed = $statement->execute();
+                $executed = $statement->execute();
 
                 // Count number of rows
-                // $number_rows = $statement->fetchColumn();
+                $number_rows = $statement->fetchColumn();
 
                 // If a user is found to match the criteria
-                // if ($number_rows > 0) {
+                if ($number_rows > 0) {
                     // Display a user found message.
-                    ?> <!-- <script>window.alert('Username Found!');</script> --> <?php
+                    ?> <script>window.alert('Username Found!');</script> <?php
 
                     // Execute query and gather database information
-                    // $executed = $statement->execute();
-                    // $row = $statement->fetch(PDO::FETCH_ASSOC);
+                    $executed = $statement->execute();
+                    $row = $statement->fetch(PDO::FETCH_ASSOC);
 
 
                     // Sets session variables
-                    // $_SESSION["name"] = $row['STU_FNAME'];
-                    // $_SESSION["lname"] = $row['STU_LNAME'];
+                    $_SESSION["name"] = $row['STU_FNAME'];
+                    $_SESSION["lname"] = $row['STU_LNAME'];
+                    $_SESSION["email"] = $row['STU_EMAIL'];
 
-
-                    
-					// Redirects to another page once 
-                    // header('Location: account.php');
+                    header('Location: account.php');
                    
-                //  else {
+                } else {
                 	
                     // Displays an error message if the username or password is invalid.
-                ?> <!-- <script>window.alert('Login Credential invalid!');</script> --> <?php
+                ?> <script>window.alert('Login Credential invalid!');</script> <?php
 
                 // Reloads current page, which resolves issue were login it not recognizible in header.
-                // header('Location: ' . $_SERVER['REQUEST_URI']);
-                
-				// There is a closing bracket for the if-else statement here.
+                header('Location: ' . $_SERVER['REQUEST_URI']);
+                }
             }
         }
     ?>
-   <nav class="navbar navbar-inverse navbar-fixed-top">
+   <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
+                           
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
-                <a class="navbar-brand" href="index.php"><img src="img/trailmixacorn.png" alt="TrailMix" style="width:30px;height:30px;"></a>
+		 
+		<!-- Moved navbar brand icon down based on bootstrap templates. -->
+		<a class="navbar-brand" href="index.php"><img src="img/trailmixacorn.png" alt="TrailMix Icon" style="width:30px;height:30px;"></a>
+                
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php') !== false) {echo 'class="active"'; session_write_close();} ?> ><a href="index.php">Home</a></li>
                     <li <?php if (stripos($_SERVER['REQUEST_URI'],'About_Us.php') !== false) {echo 'class="active"'; session_write_close();} ?> ><a href="About_Us.php">About Us</a></li>
                     <li <?php if (stripos($_SERVER['REQUEST_URI'],'Contact_Us.php') !== false) {echo 'class="active"'; session_write_close();} ?> ><a href="Contact_Us.php">Contact Us</a></li>
+                    <?php 
+                        /* Checks if a user is already signed in. If signed in, it 
+                        will display additional pages.*/
+                        if(isset($_SESSION["email"])){
+                    ?>
+                    <li <?php if (stripos($_SERVER['REQUEST_URI'],'classes.php') !== false) {echo 'class="active"'; session_write_close();} ?> ><a href="classes.php">Classes</a></li>
+                    <?php } ?>
                 </ul>
                 
                 <!--Places the signup button on the right-hand side of the navbar,
@@ -134,47 +148,47 @@
                         will display user's name and log out button.*/
                         if(isset($_SESSION["email"])){
                     ?>
-						<li><h4 style="color:white; font-size: 15px">Welcome, <?php echo $_SESSION["name"];?> </h4></li>
-						<li>
-							<form class="navbar-form">
-								<a href="account.php" class="btn btn-primary active" <?php session_write_close();?>>Account</a>
-							</form>
-						</li>
-						<li>
-							<form class="navbar-form">
-								<a href="logout.php" class="btn btn-primary active">Logout</a>
-							</form>
-						</li>
+                    <li><h4 style="color:white; font-size: 15px">Welcome, <?php echo $_SESSION["name"];?> </h4></li>
+                    <li>
+                        <form class="navbar-form">
+                            <a href="account.php" class="btn btn-trailmix active" <?php session_write_close();?>>Account</a>
+                        </form>
+                    </li>
+                    <li>
+                        <form class="navbar-form">
+                            <a href="logout.php" class="btn btn-trailmix">Logout</a>
+                        </form>
+                    </li>
                     <?php
                         } else {
                             /* If user is not signed in, it will display login and signup
                             buttons.*/
                     ?>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
-							<div class="dropdown-menu">
-								
-								<form id="login" method="POST">
-									<div class="form-group">
-										<input type="text" name="logEmail" class="form-control" placeholder="Email">
-									</div>
-									<div class="form-group">
-										<input type="password" name="logPassword" class="form-control" placeholder="Password">
-									</div>
-									<div class="form-group">
-										<button class="btn btn-trailmix">Login</button>
-									</div>
-								</form>
-							</div>
-						</li>
-						<li>
-							<form class="navbar-form">
-								<a href="register.php" class="btn btn-trailmix active" <?php session_write_close();?>>Sign Up</a>
-							</form>
-						</li>
+			
+                    <li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
+                        <div class="dropdown-menu">
+                            
+                            <form id="login" method="POST">
+                                <div class="form-group">
+                                    <input type="text" name="logEmail" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="logPassword" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <form class="navbar-form">
+                            <a href="register.php" class="btn btn-trailmix" <?php session_write_close();?>>Sign Up</a>
+                        </form>
+                    </li>
                     <?php } ?>
                 </ul>
             </div>
         </div>
     </nav>
-<div class="pagewrapper">
