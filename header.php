@@ -164,8 +164,9 @@ error_reporting(0);
                             /* If user is not signed in, it will display login and signup
                             buttons.*/
                     ?>
+			
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
+			<button class="btn btn-trailmix dropdown-toggle" type="button" data-toggle="dropdown">Login</button>
                         <div class="dropdown-menu">
                             
                             <form id="login" method="POST">
