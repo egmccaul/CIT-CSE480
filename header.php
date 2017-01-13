@@ -166,7 +166,7 @@ error_reporting(0);
                     ?>
 			
                     <li class="dropdown">
-			<button class="btn btn-trailmix dropdown-toggle" type="button" data-toggle="dropdown">Login</button>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
                         <div class="dropdown-menu">
                             
                             <form id="login" method="POST">
