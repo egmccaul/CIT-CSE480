@@ -12,14 +12,14 @@ which is used by every page*/
 		width:100%;
 		color: #eccf14;
 		background-color:rgba(22,25,26, 0.4);
-		font-family: Arial;
-		font-weight: bold;
+		font-family: Lucida Sans Unicode;
 		font-size: 10px
     }
 	.navbar {
 	   background-color: transparent;
 	   background: transparent;
 	   border-color: transparent;
+	   font-family:Lucida Sans Unicode;
 	}
 	
 	/* Note: end of page wrapper is contained in the footer, right before the body end tag*/
