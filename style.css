@@ -6,6 +6,12 @@ which is used by every page*/
     #login{
         padding: 10px 15px 0px 15px;
     }
+	
+	/* Makes the background of the dropdown login menu disappear. */
+	.dropdown-menu{
+		background-color:rgba(22,25,26, 0.4);
+	}
+	
 	#foot{
         position:fixed;
 		bottom:0px;
