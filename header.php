@@ -64,46 +64,43 @@
                 $password=$_POST['logPassword'];
 
                 // PDO query to check registered users
-                // $statement = $dbh->prepare("SELECT * FROM Student WHERE STU_PASS = :pass AND STU_EMAIL = :email");
+                 $statement = $dbh->prepare("SELECT * FROM USER WHERE USER_PASS = :pass AND USER_EMAIL = :email");
 
                 // PDO binds entry to protect against SQL Injection
-                // $statement->bindParam(':pass', $password, PDO::PARAM_STR);
-                // $statement->bindParam(':email', $email, PDO::PARAM_STR);
+                 $statement->bindParam(':pass', $password, PDO::PARAM_STR);
+                 $statement->bindParam(':email', $email, PDO::PARAM_STR);
 
                 // Executes query
-                // $executed = $statement->execute();
+                 $executed = $statement->execute();
 
                 // Count number of rows
-                // $number_rows = $statement->fetchColumn();
+                 $number_rows = $statement->fetchColumn();
 
                 // If a user is found to match the criteria
-                // if ($number_rows > 0) {
+                 if ($number_rows > 0) {
                     // Display a user found message.
-                    ?> <!-- <script>window.alert('Username Found!');</script> --> <?php
+                    ?> <script>window.alert('Username Found!');</script> <?php
 
                     // Execute query and gather database information
-                    // $executed = $statement->execute();
-                    // $row = $statement->fetch(PDO::FETCH_ASSOC);
-
-
+                     $executed = $statement->execute();
+                     $row = $statement->fetch(PDO::FETCH_ASSOC);
+		    
                     // Sets session variables
-                    // $_SESSION["name"] = $row['STU_FNAME'];
-                    // $_SESSION["lname"] = $row['STU_LNAME'];
+                     $_SESSION["name"] = $row['USER_FNAME'];
+                     $_SESSION["lname"] = $row['USER_LNAME'];
 
-
-                    
-					// Redirects to another page once 
-                    // header('Location: account.php');
+		    // Redirects to another page once 
+                     header('Location: account.php');
                    
-                //  else {
+                  else {
                 	
                     // Displays an error message if the username or password is invalid.
-                ?> <!-- <script>window.alert('Login Credential invalid!');</script> --> <?php
+                ?> <script>window.alert('Login Credentials invalid!');</script> <?php
 
                 // Reloads current page, which resolves issue were login it not recognizible in header.
-                // header('Location: ' . $_SERVER['REQUEST_URI']);
+                 header('Location: ' . $_SERVER['REQUEST_URI']);
                 
-				// There is a closing bracket for the if-else statement here.
+		  }
             }
         }
     ?>
