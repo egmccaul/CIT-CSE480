@@ -1,6 +1,6 @@
 <?php
     // Links to database connection file
-	// include('connect.php');
+    include('connect.php');
 
     session_start();
 
