@@ -28,7 +28,7 @@ include('header.php');
 			} else {
 
 				// PDO database entry query - (Removed state due to issues inserting into database, works after removal, defaulted to "Michigan")
-				$insertState = $dbh->prepare("INSERT INTO Student(USER_FNAME, USER_LNAME, USER_EMAIL, USER_PASS) VALUES (:fname, :lname, :email, :password)");
+				$insertState = $dbh->prepare("INSERT INTO USER(USER_FNAME, USER_LNAME, USER_EMAIL, USER_PASS) VALUES (:fname, :lname, :email, :password)");
 				
 				// PDO binds entry to protect against SQL Injection
 				$insertState->bindParam(':fname', $fname, PDO::PARAM_STR);
