@@ -92,7 +92,7 @@
 		    // Redirects to another page once 
                      header('Location: account.php');
                    
-                  else {
+				 } else {
                 	
                     // Displays an error message if the username or password is invalid.
                 ?> <script>window.alert('Login Credentials invalid!');</script> <?php
