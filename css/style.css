@@ -122,4 +122,23 @@ WELCOME PAGE
 
   }
 
+  /* This is the style code for the registration page. This needs to be appended on the style.css page. */
+  #form_layout{
+    margin-top: 300px;
+    background-color:rgba(22,25,26, 0.7);
+    color: #eccf14;
+    border-radius: 10px;
+    padding: 15px 15px 15px 15px;
+    font-family:Lucida Sans Unicode;
+    border-style: outset;
+    border-top-color: rgba(236,207,20, 0.2);
+    border-left-color: rgba(236,207,20, 0.2);
+    border-bottom-color: rgba(22,25,26, 0.4);
+    border-right-color:rgba(22,25,26, 0.4);
+  }
+  #form_layout p{
+    padding-left: 20px;
+  }
+
+
 /* Creates formatting for the index.php page */
