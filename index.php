@@ -4,20 +4,73 @@ include('header.php');
 ?>
 
 <!-- Enter HTML here -->
-<div class="start-screen">
-    <div class="container main-logo">
-        <div class="col-md-12 center">
-            <img src="img/trailmix-logo.png">
-        </div>
-    </div>
-    <div class="center">
-        <h2>Movement on your trail?</h2>
-        <h1>Instant notification.</h1>
-        
+<div id="splash-screen" class="splash-screen">
+    <div class="col-md-12 text-center splash-logo">
+      <img src="img/trailmix-logo.png">
+      <div class="text-center">
+          <h2>Movement on your trail?</h2>
+          <h1>Instant notification.</h1>
 
-        <!-- <a href="#" class="btn btn-trailmix cta">Start Now</a> -->
-        
+
+          <!-- <a href="#" class="btn btn-trailmix cta">Start Now</a> -->
+
+      </div>
     </div>
+</div>
+
+<div id="features">
+	<div class="row">
+		<div class="container">
+			<div class="col-md-6 content-section feature1">
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+			</div> <!-- end of about class -->
+			<div class="col-md-6">
+				<img src="img/app-screenshot.png" alt="" />
+			</div>
+		</div>
+	</div>
+
+	<div class="row content-section photo-section feature1">
+		<div class="container">
+
+		</div>
+	</div>
+
+	<div class="row content-section">
+		<div class="container">
+			<div id="about-us" class="col-md-6">
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+				</p>
+			</div> <!-- end of about class -->
+			<div class="col-md-6">
+				<img src="img/app-screenshot.png" alt="" />
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="container">
+			<div id="about-us" class="col-md-6 content-section">
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+				</p>
+			</div> <!-- end of about class -->
+			<div class="col-md-6">
+				<img src="img/app-screenshot.png" alt="" />
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container">
+		<div id="contact-us" class="content-section">
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+			</p>
+		</div> <!-- end of contact class -->
+		<div class="col-md-6">
+			<img src="img/app-screenshot.png" alt="" />
+		</div>		
+	</div>
 </div>
 
 <?php
