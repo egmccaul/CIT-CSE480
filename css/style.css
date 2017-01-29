@@ -1,0 +1,125 @@
+body, html {
+   height:100%;
+}
+
+/* Creates formatting for the general header,
+which is used by every page*/
+
+    /* Creates some whitespace around the drop-down login form fields, which is
+    contained in the navigation bar at the top.*/
+    #login{
+        padding: 10px 15px 0px 15px;
+    }
+
+	/* Makes the background of the dropdown login menu disappear. */
+	.dropdown-menu{
+		background-color:rgba(22,25,26, 0.4);
+	}
+
+	#foot{
+    position:fixed;
+		bottom:0px;
+		width:100%;
+		color: #eccf14;
+		background-color:rgba(22,25,26, 0.4);
+		font-family: Lucida Sans Unicode;
+		font-size: 10px
+    }
+	.navbar {
+	   background-color: transparent;
+	   background: transparent;
+	   border-color: transparent;
+	   font-family:Lucida Sans Unicode;
+	}
+
+
+/********************************************************
+
+WELCOME PAGE
+
+*********************************************************/
+
+	/* Note: end of page wrapper is contained in the footer, right before the body end tag*/
+/*	.pagewrapper{}*/
+
+
+
+	.text-center{
+        text-align: center;
+    }
+  .text-left{
+    text-align: left;
+  }
+  .text-right{
+    text-align: right;
+  }
+
+	/* Change the button color to yellow */
+	.btn-trailmix{
+        background-color: #eccf14;
+        color: #222 !important;
+    }
+
+	/* Adds formatting for the brand icon.*/
+	.navbar-brand img{
+        width:20px;
+        height:auto;
+    }
+
+	/* Change the color of the text for links in navbar. */
+	#myNavbar li a {
+        color: #e3d8ac;
+    }
+
+	.splash-screen {
+    color: #ddd;
+    min-height: 100%;
+    width: 100%;
+    background-image: url('img/trailmixbackround.jpg');
+    background-size: cover;
+    background-color: #222;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .splash-screen h2{
+    margin:50px 0 10px 0;
+    font-size:29px;
+  }
+  .splash-screen h1{
+    margin: 10px 0 50px 0;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+    font-size:44px;
+  }
+
+  .splash-screen .cta{
+    padding:25px 40px 25px 40px;
+    font-size: 26px;
+  }
+
+  .splash-logo{
+    text-align: center;
+    max-width: 50%;
+  }
+	.splash-logo img {
+    height: 200px;
+    width:auto;
+  }
+
+  .about {
+    background-image: url('img/AboutPic.jpg'); /**** Why isn't this working****/
+    background-size: cover;
+    height: 1000;
+    font-size: 36px;
+    color: #fff;
+
+
+  }
+
+/* Creates formatting for the index.php page */
