@@ -88,6 +88,7 @@
                     // Sets session variables
                      $_SESSION["name"] = $row['USER_FNAME'];
                      $_SESSION["lname"] = $row['USER_LNAME'];
+		     $_SESSION["email"] = $row['USER_EMAIL'];
 
 		    // Redirects to another page once 
                      header('Location: account.php');
