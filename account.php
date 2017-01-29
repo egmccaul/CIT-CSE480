@@ -3,7 +3,7 @@
 	include('header.php');
 ?>
 
-<div class="container">
+<div id="account_page">
     <div class="row" >
 	
 		<br>

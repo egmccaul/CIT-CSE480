@@ -218,6 +218,42 @@ which is used by every page*/
     padding-left: 20px;
   }
 
+/* This needs to be added to the style.css file. This holds the formatting for the account.php page. */
+
+    #account_page{
+        /*margin-top: 200px;*/
+        vertical-align:center;
+        color: #eccf14;
+        /*background-color:rgba(22,25,26, 0.6);*/
+        font-family: Lucida Sans Unicode;
+        font-size: 15px;
+        width:80%;
+    }
+    #populated_info{
+        background-color: rgba(22,25,26, 0.8);
+        border-radius: 10px;
+        padding: 15px 25px 15px 25px;
+    }
+    #user_form{
+        background-color: rgba(22,25,26, 0.8);
+        border-radius: 10px;
+        padding: 15px 25px 15px 25px;
+    }
+    #camera_section{
+        background-color: rgba(22,25,26, 0.8);
+        border-radius: 10px;
+        padding: 15px 25px 15px 25px;
+    }
+    button{
+        float: right;
+    }
+    .img-responsive{
+        width: 300px;
+        padding: 15px 25px 15px 25px;
+        margin: 0 auto;
+    }
+
+
 
 /* Creates formatting for the index.php page */
 	
