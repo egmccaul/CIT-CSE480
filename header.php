@@ -9,7 +9,7 @@
         $_SESSION['views'] = $_SESSION['views']+ 1;
     else
       $_SESSION['views'] = 1;
-
+	
 	// Shows visual confirmation that sessions are working correctly.
 //    echo "views = ". $_SESSION['views'];
 
@@ -20,21 +20,28 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Utilization of Bootstrap -->
+<!-- Utilization of Bootstrap -->	
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-	BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
         <!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+     
         <!-- Our file css -->
         <link rel="stylesheet" href="style.css" />
-
-
+        
+            
         <!-- Adds some css to the elements in the page -->
+        <style type="text/css">
 
+            
+            
+        </style>  
+        
     </head>
 
 <body id="general_page">
@@ -42,10 +49,10 @@
     <?php
 		// Check whether login was submitted
         if (isset($_POST['logEmail'])) {
-
+			
 			// Gives visual confirmation that the submission was successful.
             echo "Submit successful.";
-
+			
 			// Give error message if login is not successful.
             if (empty($_POST['logEmail']) || empty($_POST['logPassword'])) {
                 $error = "Username or Password is invalid";
@@ -83,33 +90,18 @@
                      $_SESSION["lname"] = $row['USER_LNAME'];
 		     $_SESSION["email"] = $row['USER_EMAIL'];
 
-<<<<<<< Updated upstream
 		    // Redirects to another page once 
                      header('Location: account.php');
                    
 				 } else {
                 	
-=======
-
-					// Redirects to another page once
-                    // header('Location: account.php');
-
-                //  else {
-
->>>>>>> Stashed changes
                     // Displays an error message if the username or password is invalid.
                 ?> <script>window.alert('Login Credentials invalid!');</script> <?php
 
                 // Reloads current page, which resolves issue were login it not recognizible in header.
-<<<<<<< Updated upstream
                  header('Location: ' . $_SERVER['REQUEST_URI']);
                 
 		  }
-=======
-                // header('Location: ' . $_SERVER['REQUEST_URI']);
-
-				// There is a closing bracket for the if-else statement here.
->>>>>>> Stashed changes
             }
         }
     ?>
@@ -123,20 +115,20 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="index.php"><img src="img/trailmixacorn.png" alt="TrailMix" style="width:auto;height:22px;"></a>
+                <a class="navbar-brand" href="index.php"><img src="img/trailmixacorn.png" alt="TrailMix" style="width:30px;height:30px;"></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a id="GoToSplash" href="#splash-screen">Home</a></li>
-                    <li><a id="GoToAbout" href="#about-us">About Us</a></li>
-                    <li><a id=GoToContact" href="#contact-us">Contact Us</a></li>
+                    <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php') !== false) {echo 'class="active"'; session_write_close();} ?> ><a href="index.php">Home</a></li>
+                    <li <?php if (stripos($_SERVER['REQUEST_URI'],'About_Us.php') !== false) {echo 'class="active"'; session_write_close();} ?> ><a href="About_Us.php">About Us</a></li>
+                    <li <?php if (stripos($_SERVER['REQUEST_URI'],'Contact_Us.php') !== false) {echo 'class="active"'; session_write_close();} ?> ><a href="Contact_Us.php">Contact Us</a></li>
                 </ul>
-
+                
                 <!--Places the signup button on the right-hand side of the navbar,
                 as well as the login dropdown-->
                 <ul class="nav navbar-nav navbar-right">
-                    <?php
-                        /* Checks if a user is already signed in. If signed in, it
+                    <?php 
+                        /* Checks if a user is already signed in. If signed in, it 
                         will display user's name and log out button.*/
                         if(isset($_SESSION["email"])){
                     ?>
@@ -159,7 +151,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
 							<div class="dropdown-menu">
-
+								
 								<form id="login" method="POST">
 									<div class="form-group">
 										<input type="text" name="logEmail" class="form-control" placeholder="Email">
