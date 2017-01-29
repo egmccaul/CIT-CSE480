@@ -135,12 +135,12 @@
 						<li><h4 style="color:white; font-size: 15px">Welcome, <?php echo $_SESSION["name"];?> </h4></li>
 						<li>
 							<form class="navbar-form">
-								<a href="account.php" class="btn btn-primary active" <?php session_write_close();?>>Account</a>
+								<a href="account.php" class="btn btn-trailmix active" <?php session_write_close();?>>Account</a>
 							</form>
 						</li>
 						<li>
 							<form class="navbar-form">
-								<a href="logout.php" class="btn btn-primary active">Logout</a>
+								<a href="logout.php" class="btn btn-trailmix active">Logout</a>
 							</form>
 						</li>
                     <?php
