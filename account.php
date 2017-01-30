@@ -91,7 +91,79 @@
 			<div id="user_form" style="display:none;">
 				<!-- Will hold the editable user information, which will be hidden by default until edit button pressed. -->
 			</div>
+		<div id="user_form" style="display:none;">
+				<div class="row" >
+					<!-- Outputs users name above image. -->
+					<h4><?php echo "Welcome, ".$_SESSION['name']." ".$_SESSION['lname'];?></h4>
+				</div>
+				<div class="row">
+					<!-- enter user image here. Just using placeholder image at the moment. -->
+					<img src="http://mdepinet.org/wp-content/uploads/person-placeholder.jpg" class="img-responsive">
+				</div>
+				<div class="row">
+					<div class="col-md-10">
+						<h3>Profile</h3>
+					</div>
+					<div class="col-md-2">
+						<br>
+						<!-- Holds the edit button, which will unlock the populated fields for editing. -->
+						<button class="btn btn-trailmix" onclick='showContent("populated_info"); hideContent("user_form");'>Edit <span class="glyphicon glyphicon-edit"></span></button>
+					</div>
+				</div>
+				<hr COLOR="yellow">
+				
+				<form method='post'>
+					<!-- Holds row for user first name information entry. -->
+					<div class="row">
+						<div class="col-md-6">
+							<p>First Name:</p>
+						</div>
+						<div class="col-md-6">
+							<!-- Placeholder for actual users profile. -->
+							<input id="fname_text" type="text" name="fname_new" class="form-control" value='<?php echo $_SESSION["name"];?>'>
+						</div>
+					</div>
+					<br>
+					
+					<!-- Holds row for user last name information entry. -->
+					<div class="row">
+						<div class="col-md-6">
+							<p>Last Name:</p>
+						</div>
+						<div class="col-md-6">
+							<!-- Placeholder for actual users profile. -->
+							<input id="lname_text" type="text" name="lname_new" class="form-control" value='<?php echo $_SESSION["lname"];?>'>
+						</div>
+					</div>
+					<br>
+					
+					<!-- Holds row for user email information entry. -->
+					<div class="row">
+						<div class="col-md-6">
+							<p>Email:</p>
+						</div>
+						<div class="col-md-6">
+							<!-- Placeholder for actual users profile. 
+								Don't forget to add the email session to the header.php file. -->
+							<input id="email_text" type="email" name="email_new" class="form-control" value='<?php echo $_SESSION["email"];?>'>
+						</div>
+					</div>
+					<hr>
+					
+					<!-- Holds row for user password information entry. -->
+					<div class="row">
+						<div class="col-md-6">
+							<p>Password:</p>
+						</div>
+						<div class="col-md-6">
+							<!-- Holds button to allow editing of password. -->
+							<button class="btn btn-trailmix" onclick='showContent("pass_edit");'>Edit <span class="glyphicon glyphicon-edit"></span></button>
+						</div>
+					</div>
+					<br>
+
 		</div>
+	    
 		<div class="col-sm-5 col-sm-push-1">
             <div id="camera_section">
                 <div class="row">
