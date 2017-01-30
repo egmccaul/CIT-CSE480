@@ -147,42 +147,29 @@
 					</div>
 					<hr>
 					
-					<!-- Holds row for user password information entry. -->
+					<!-- Holds row for user confirm password information entry. -->
 					<div class="row">
 						<div class="col-md-6">
-							<p>Password:</p>
+							<p>New Password:</p>
 						</div>
 						<div class="col-md-6">
-							<!-- Holds button to allow editing of password. -->
-							<button class="btn btn-trailmix" onclick='showContent("pass_edit");'>Edit <span class="glyphicon glyphicon-edit"></span></button>
+							<!-- if edit is selected display a form field instead of placeholder -->
+							<!-- Placeholder for stared passward. -->
+							<input id="pass1_text" type="password" name="pass1" class="form-control">
 						</div>
 					</div>
 					<br>
-					<div id="pass_edit" style="display:none;">
-						<!-- Holds row for user confirm password information entry. -->
-						<div class="row">
-							<div class="col-md-6">
-								<p>New Password:</p>
-							</div>
-							<div class="col-md-6">
-								<!-- if edit is selected display a form field instead of placeholder -->
-								<!-- Placeholder for stared passward. -->
-								<input id="pass1_text" type="password" name="pass1" class="form-control">
-							</div>
+					<div class="row">
+						<div class="col-md-6">
+							<p>Confirm Password:</p>
 						</div>
-						<br>
-						<div class="row">
-							<div class="col-md-6">
-								<p>Confirm Password:</p>
-							</div>
-							<div class="col-md-6">
-								<!-- if edit is selected display a form field instead of placeholder -->
-								<!-- Placeholder for stared passward. -->
-								<input id="pass2_text" type="password" name="pass2" class="form-control">
-							</div>
+						<div class="col-md-6">
+							<!-- if edit is selected display a form field instead of placeholder -->
+							<!-- Placeholder for stared passward. -->
+							<input id="pass2_text" type="password" name="pass2" class="form-control">
 						</div>
-						<button class="btn btn-trailmix">Edit <span class="glyphicon glyphicon-edit"></span></button>
 					</div>
+
 					<br>
 					
 					<!-- Not sure if we will use this section, just basing off wireframes. -->
@@ -262,7 +249,17 @@
 		</div>
 	</div>
 </div>
+
 <!-- Enter Javascript for hide and show functionality -->
+<script language="JavaScript">
+  
+  function showContent(id){
+    document.getElementById(id).style.display = "block";
+  }
+  function hideContent(id){
+    document.getElementById(id).style.display = "none";
+  }
+</script>
 
 <?php
 	/* Add in the link to the footer */
