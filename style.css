@@ -33,18 +33,22 @@ which is used by every page*/
     }
 
 
+
+
 /********************************************************
 
 WELCOME PAGE
 
 *********************************************************/
 
-    /* Note: end of page wrapper is contained in the footer, right before the body end tag*/
+
+
+/* Note: end of page wrapper is contained in the footer, right before the body end tag*/
 /*  .pagewrapper{}*/
 
 
 
-    /* Change the button color to yellow */
+/* Change the button color to yellow */
     .btn-trailmix{
         background-color: #eccf14;
         color: #222 !important;
@@ -145,8 +149,10 @@ WELCOME PAGE
 	
 
 /****************************************
-CONTENT SECTION
+CONTENT SECTION for middle section
 *****************************************/
+
+
 
   .feature1 p {
   	font-size: 28px;
@@ -162,6 +168,8 @@ CONTENT SECTION
 
   }
 
+
+/*going to make this picture stick*/
   .photo-section {
 	margin:0;
     height: 600px;
@@ -175,6 +183,7 @@ CONTENT SECTION
     display: block;
        
   }
+
 
 
 /********************************************
