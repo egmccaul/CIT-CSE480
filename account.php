@@ -214,7 +214,6 @@
 			</div>
 			
 		</div>
-		</div>
 	    
 		<div class="col-sm-5 col-sm-push-1">
             <div id="camera_section">
