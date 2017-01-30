@@ -267,7 +267,7 @@
 			
 		</div>
 	</div>
-
+</div>
 <!-- Enter Javascript for hide and show functionality -->
 
 <?php
