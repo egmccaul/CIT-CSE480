@@ -161,7 +161,64 @@
 						</div>
 					</div>
 					<br>
-
+<!-- This section will begin on line 164 if editing directly on github. -->
+<div id="pass_edit" style="display:none;">
+						<!-- Holds row for user confirm password information entry. -->
+						<div class="row">
+							<div class="col-md-6">
+								<p>New Password:</p>
+							</div>
+							<div class="col-md-6">
+								<!-- if edit is selected display a form field instead of placeholder -->
+								<!-- Placeholder for stared passward. -->
+								<input id="pass1_text" type="password" name="pass1" class="form-control">
+							</div>
+						
+						<br>
+							<div class="row">
+								<div class="col-md-6">
+									<p>Confirm Password:</p>
+								</div>
+								<div class="col-md-6">
+									<!-- if edit is selected display a form field instead of placeholder -->
+									<!-- Placeholder for stared passward. -->
+									<input id="pass2_text" type="password" name="pass2" class="form-control">
+								</div>
+							</div>
+						</div>
+						<button class="btn btn-trailmix">Edit <span class="glyphicon glyphicon-edit"></span></button>
+					</div>
+					<br>
+					
+					<!-- Not sure if we will use this section, just basing off wireframes. -->
+					<div class="row">
+						<div class="col-md-6">
+							<p>Date of Birth:</p>
+						</div>
+						<div class="col-md-6">
+							<!-- Placeholder for actual users date of birth. -->
+							<p>10/10/87</p>
+						</div>
+					</div>
+					
+					<!-- Not sure if we will use this section, just basing off wireframes. -->
+					<div class="row">
+						<div class="col-md-6">
+							<p>Location:</p>
+						</div>
+						<div class="col-md-6">
+							<!-- Placeholder for actual users date of birth. -->
+							<p>Norfolk, VA</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-success" method="post">Submit</button>
+					</div>
+				</form>
+				<br>
+			</div>
+			
+		</div>
 		</div>
 	    
 		<div class="col-sm-5 col-sm-push-1">
@@ -210,7 +267,6 @@
 			
 		</div>
 	</div>
-</div>
 
 <!-- Enter Javascript for hide and show functionality -->
 
