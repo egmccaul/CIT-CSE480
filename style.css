@@ -44,16 +44,6 @@ WELCOME PAGE
 
 
 
-    .text-center{
-        text-align: center;
-    }
-  .text-left{
-    text-align: left;
-  }
-  .text-right{
-    text-align: right;
-  }
-
     /* Change the button color to yellow */
     .btn-trailmix{
         background-color: #eccf14;
@@ -112,33 +102,7 @@ WELCOME PAGE
     width:auto;
   }
 
-  .about {
-    background-image: url('img/AboutPic.jpg'); /**** Why isn't this working****/
-    background-size: cover;
-    height: 1000;
-    font-size: 36px;
-    color: #fff;
-
-
-  }
-
-  
-
-/* Creates formatting for the index.php page */
-
-
-
-/* Creates formatting for the general header, 
-which is used by every page*/
-
-    /* Creates some whitespace around the drop-down login form fields, which is
-    contained in the navigation bar at the top.*/
-  	
-	/* Makes the background of the dropdown login menu disappear. */
-	
-
-	
-	/* Note: end of page wrapper is contained in the footer, right before the body end tag*/
+/* Note: end of page wrapper is contained in the footer, right before the body end tag*/
 	.pagewrapper{
         position: absolute;
         width: 100%;
@@ -178,31 +142,47 @@ which is used by every page*/
         color: #e3d8ac;
     }
 
-	.start-screen {
-    color: #ddd;
+	
+
+/****************************************
+CONTENT SECTION
+*****************************************/
+
+  .feature1 p {
+  	font-size: 28px;
+  	margin-top: 20px;
   }
 
+  .feature1img img {
+  	margin-top: 20px;
+  	margin-bottom: 25px;
+	border-radius: 10px;
+    box-shadow: 2px 2px 2px #111;
+    width:100%;
 
-  .start-screen h2{
-    margin:50px 0 10px 0;
-    font-size:29px;
   }
-  .start-screen h1{
-    margin: 10px 0 50px 0;
+
+  .photo-section {
+	margin:0;
+    height: 600px;
+    width: 100%;
+	z-index: 2;
+    background-image: url('img/deer2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    font-weight:300;
-    font-size:44px;
+    display: block;
+       
   }
 
-  .start-screen .cta{
-    padding:25px 40px 25px 40px;
-    font-size: 26px;
-  }
 
-  /* This is the style code for the registration page. This needs to be appended on the style.css page. */
+/********************************************
+ This is the style code for the registration page. This needs to be appended on the style.css page. 
+ ***********************************************/
   #form_layout{
-    margin-top: 300px;
+    margin: 200px auto 0;
+    display: block;
     background-color:rgba(22,25,26, 0.7);
     color: #eccf14;
     border-radius: 10px;

@@ -24,14 +24,15 @@ include('header.php');
 			<div class="col-md-6 content-section feature1">
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
 			</div> <!-- end of about class -->
-			<div class="col-md-6">
-				<img src="img/app-screenshot.png" alt="" />
+			<div class="col-md-6 feature1img">
+				<img src="img/hunterphone.jpg" alt="hunter-with-phone" />
 			</div>
 		</div>
 	</div>
 
 	<div class="row content-section photo-section feature1">
 		<div class="container">
+			
 
 		</div>
 	</div>
