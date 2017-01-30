@@ -89,9 +89,6 @@
 			</div>
 
 			<div id="user_form" style="display:none;">
-				<!-- Will hold the editable user information, which will be hidden by default until edit button pressed. -->
-			</div>
-		<div id="user_form" style="display:none;">
 				<div class="row" >
 					<!-- Outputs users name above image. -->
 					<h4><?php echo "Welcome, ".$_SESSION['name']." ".$_SESSION['lname'];?></h4>
@@ -161,8 +158,7 @@
 						</div>
 					</div>
 					<br>
-<!-- This section will begin on line 164 if editing directly on github. -->
-<div id="pass_edit" style="display:none;">
+					<div id="pass_edit" style="display:none;">
 						<!-- Holds row for user confirm password information entry. -->
 						<div class="row">
 							<div class="col-md-6">
@@ -173,17 +169,16 @@
 								<!-- Placeholder for stared passward. -->
 								<input id="pass1_text" type="password" name="pass1" class="form-control">
 							</div>
-						
+						</div>
 						<br>
-							<div class="row">
-								<div class="col-md-6">
-									<p>Confirm Password:</p>
-								</div>
-								<div class="col-md-6">
-									<!-- if edit is selected display a form field instead of placeholder -->
-									<!-- Placeholder for stared passward. -->
-									<input id="pass2_text" type="password" name="pass2" class="form-control">
-								</div>
+						<div class="row">
+							<div class="col-md-6">
+								<p>Confirm Password:</p>
+							</div>
+							<div class="col-md-6">
+								<!-- if edit is selected display a form field instead of placeholder -->
+								<!-- Placeholder for stared passward. -->
+								<input id="pass2_text" type="password" name="pass2" class="form-control">
 							</div>
 						</div>
 						<button class="btn btn-trailmix">Edit <span class="glyphicon glyphicon-edit"></span></button>
