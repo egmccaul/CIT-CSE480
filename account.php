@@ -1,6 +1,9 @@
 <?php
 	/* Add in the link to the header */
 	include('header.php');
+	
+/* This is the php code that will allow you to push the data to the database. */
+	
 ?>
 
 <div class="container" id="account_page">
@@ -112,19 +115,19 @@
 				<form method='post'>
 					<!-- Holds row for user first name information entry. -->
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<p>First Name:</p>
 						</div>
 						<div class="col-md-6">
 							<!-- Placeholder for actual users profile. -->
-							<input id="fname_text" type="text" name="fname_new" class="form-control" value='<?php echo $_SESSION["name"];?>'>
+							<input id="fname_text" type="text" name="fname_new" class="form-control" value='<?php echo $_SESSION["name"];?>' required>
 						</div>
 					</div>
 					<br>
 					
 					<!-- Holds row for user last name information entry. -->
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<p>Last Name:</p>
 						</div>
 						<div class="col-md-6">
@@ -136,7 +139,7 @@
 					
 					<!-- Holds row for user email information entry. -->
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<p>Email:</p>
 						</div>
 						<div class="col-md-6">
@@ -148,33 +151,42 @@
 					<hr>
 					
 					<!-- Holds row for user confirm password information entry. -->
-					<div class="row">
-						<div class="col-md-6">
-							<p>New Password:</p>
+					<div id="pass_edit">
+						<div class="row">
+							<div class="col-md-3">
+								<p>New Password:</p>
+							</div>
+							<div class="col-md-6">
+								<!-- if edit is selected display a form field instead of placeholder -->
+								<!-- Placeholder for stared passward. -->
+								<input type="password" id="pass1" name="pass1" class="form-control">
+								<meter max="4" id="password-strength-meter"></meter>
+							</div>
+							<div class="col-md-3">
+								<!-- Add in a meter to tell whether password meets criteria -->
+								<p id="password-strength-text"></p>
+							</div>
 						</div>
-						<div class="col-md-6">
-							<!-- if edit is selected display a form field instead of placeholder -->
-							<!-- Placeholder for stared passward. -->
-							<input id="pass1_text" type="password" name="pass1" class="form-control">
+					
+						<div class="row">
+							<div class="col-md-3">
+								<p>Confirm Password:</p>
+							</div>
+							<div class="col-md-6">
+								<!-- if edit is selected display a form field instead of placeholder -->
+								<!-- Placeholder for stared passward. -->
+								<input type="password" id="pass2" name="pass2" class="form-control" onkeyup="checkPass(); return false;">
+							</div>
+							<div class="col-md-3">
+								<span id="confirmMessage" class="confirmMessage"></span>
+							</div>
 						</div>
 					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							<p>Confirm Password:</p>
-						</div>
-						<div class="col-md-6">
-							<!-- if edit is selected display a form field instead of placeholder -->
-							<!-- Placeholder for stared passward. -->
-							<input id="pass2_text" type="password" name="pass2" class="form-control">
-						</div>
-					</div>
-
-					<br>
+					<hr>
 					
 					<!-- Not sure if we will use this section, just basing off wireframes. -->
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<p>Date of Birth:</p>
 						</div>
 						<div class="col-md-6">
@@ -185,7 +197,7 @@
 					
 					<!-- Not sure if we will use this section, just basing off wireframes. -->
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<p>Location:</p>
 						</div>
 						<div class="col-md-6">
@@ -249,7 +261,6 @@
 		</div>
 	</div>
 </div>
-
 <!-- Enter Javascript for hide and show functionality -->
 <script language="JavaScript">
   
@@ -259,6 +270,64 @@
   function hideContent(id){
     document.getElementById(id).style.display = "none";
   }
+  
+/* Holds JavaScript for password meter */
+	var strength = {
+	  0: "Bad",
+	  1: "Weak",
+	  2: "Good",
+	  3: "Strong",
+	  4: "Very Strong"
+	}
+	var password = document.getElementById('pass1');
+	var meter = document.getElementById('password-strength-meter');
+	var text = document.getElementById('password-strength-text');
+
+	password.addEventListener('input', function() {
+	  var val = password.value;
+	  var result = zxcvbn(val);
+
+	  // Update the password strength meter
+	  meter.value = result.score;
+
+	  // Update the text indicator
+	  if (val !== "") {
+		text.innerHTML = "Strength: " + strength[result.score]; 
+	  } else {
+		text.innerHTML = "";
+	  }
+	});
+	
+/* Checks the confirmation password field matchs that of the new password field. */
+	function checkPass()
+	{
+		//Store the password field objects into variables ...
+		var pass1 = document.getElementById('pass1');
+		var pass2 = document.getElementById('pass2');
+		//Store the Confimation Message Object ...
+		var message = document.getElementById('confirmMessage');
+		//Set the colors we will be using ...
+		var goodColor = "#66cc66";
+		var badColor = "#ff6666";
+		//Compare the values in the password field 
+		//and the confirmation field
+		if(pass1.value == pass2.value){
+			//The passwords match. 
+			//Set the color to the good color and inform
+			//the user that they have entered the correct password 
+			pass2.style.boxShadow = "0px 0px 30px green";
+			message.style.color = goodColor;
+			message.innerHTML = "Passwords Match!"
+		}else{
+			//The passwords do not match.
+			//Set the color to the bad color and
+			//notify the user.
+			pass2.style.boxShadow = "0px 0px 30px red";
+			message.style.color = badColor;
+			message.innerHTML = "Passwords Do Not Match!"
+		}
+	}  
+  
 </script>
 
 <?php
