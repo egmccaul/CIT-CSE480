@@ -51,6 +51,8 @@
 			$pass_update->bindParam(':lname', $lname, PDO::PARAM_STR);
 			$pass_update->bindParam(':email', $email, PDO::PARAM_STR);
 			$pass_update->bindParam(':pass', $pass, PDO::PARAM_STR);
+			$pass_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
+
 			
 			// Executes query to find other account which might already use this new email.
             $executed = $pass_update->execute();
@@ -66,8 +68,10 @@
 			
 			// Executes query to find other account which might already use this new email.
             $executed = $std_update->execute();
+
 		}
-		
+			header('Location: ' . $_SERVER['REQUEST_URI']);
+
 	} else {
 ?>
 <style>
