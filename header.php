@@ -22,9 +22,6 @@
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-		<!-- Adds in functionality for password checking/meter. -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
-		
         <!-- Our file css -->
         <link rel="stylesheet" href="style.css" />
 </head>
@@ -69,17 +66,17 @@
                     // Execute query and gather database information
                      $executed = $statement->execute();
                      $row = $statement->fetch(PDO::FETCH_ASSOC);
-		    
+
                     // Sets session variables
                      $_SESSION["name"] = $row['USER_FNAME'];
                      $_SESSION["lname"] = $row['USER_LNAME'];
 					 $_SESSION["email"] = $row['USER_EMAIL'];
 
-		    // Redirects to another page once 
+		    // Redirects to another page once
                      header('Location: account.php');
-                   
+
 				 } else {
-                	
+
 
 
 					// Redirects to another page once
@@ -94,7 +91,7 @@
                 // Reloads current page, which resolves issue were login it not recognizible in header.
 
                  header('Location: ' . $_SERVER['REQUEST_URI']);
-                
+
 		  }
 
                 // header('Location: ' . $_SERVER['REQUEST_URI']);
@@ -113,12 +110,12 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="index.php"><img src="img/trailmixacorn.png" alt="TrailMix" style="width:auto;height:22px;"></a>
+                <a class="navbar-brand" href="index.php"><img src="img/trailmixacorn.png" alt="TrailMix" style="width:auto;height:20px;"></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a id="GoToSplash" href="#splash-screen">Home</a></li>
-                    <li><a id="GoToAbout" href="#about-us">About Us</a></li>
+                    <li><a id="GoToLearnMore" href="#learn-more">Learn More</a></li>
                     <li><a id="GoToContact" href="#contact-us">Contact Us</a></li>
                 </ul>
 

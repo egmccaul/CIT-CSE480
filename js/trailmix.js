@@ -3,6 +3,22 @@ $(document).ready(function(){
         $(".splash-logo").css("opacity", 1 - $(window).scrollTop() / 250);
       });
 
+    // Change navbar BG color on scroll to #learn-more
+    var scroll_start = 0;
+    var startchange = $("#learn-more");
+    var offset = startchange.offset();
+
+    if (startchange.length) {
+        $(document).scroll(function () {
+            scroll_start = $(this).scrollTop();
+            if (scroll_start > offset.top) {
+                $("nav").css('background-color', '#222');
+            } else {
+                $('nav').css('background-color', 'transparent');
+            }
+        });
+    }
+
 	"use strict";
 	$.fn.scrollTo = function( options ) {
 
@@ -41,6 +57,6 @@ $(document).ready(function(){
 			});
 		});
 	};
-	$('#GoToSplash, #GoToAbout, #GoToContact' ).scrollTo({ speed: 1400 });
+	$('#GoToSplash, #GoToLearnMore, #GoToContact' ).scrollTo({ speed: 1400 });
 
 });

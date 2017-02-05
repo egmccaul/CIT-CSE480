@@ -1,3 +1,5 @@
+/*Setting Body heignt*/
+
 body, html {
    height:100%;
 }
@@ -25,14 +27,31 @@ which is used by every page*/
         font-family: Lucida Sans Unicode;
         font-size: 10px
     }
+
+    /*makes nav bar turn to black when 2nd div is aligned*/
     .navbar {
        background-color: transparent;
        background: transparent;
        border-color: transparent;
        font-family:Lucida Sans Unicode;
+       transition: background-color 1s;
+
     }
 
 
+    /*ease transition sets slight animation on for sizing*/
+
+    div {
+      transition: all 2s ease; 
+    }
+
+    p {
+       transition: all 2s ease;
+    }
+
+    span{
+       transition: all 2s ease;
+    }
 
 
 /********************************************************
@@ -47,11 +66,10 @@ WELCOME PAGE
 /*  .pagewrapper{}*/
 
 
-
 /* Change the button color to yellow */
     .btn-trailmix{
-        background-color: #eccf14;
-        color: #222 !important;
+      background-color: #253;
+      color: #eccf14;
     }
 
     /* Adds formatting for the brand icon.*/
@@ -93,8 +111,8 @@ WELCOME PAGE
   }
 
   .splash-screen .cta{
-    padding:25px 40px 25px 40px;
-    font-size: 26px;
+    padding: 10px 20px 10px 20px;
+    font-size: 18px;
   }
 
   .splash-logo{
@@ -115,79 +133,100 @@ WELCOME PAGE
         background-size: cover;
         background-color: #fff;
     }
-	
+
 	.main-logo img {
         height: 200px;
         width:auto;
         margin-top: 300px;
 
     }
-	
+
 	.center{
         text-align: center;
         margin: 0 auto;
         display: block;
     }
-	
+
 	/* Change the button color to yellow */
 	.btn-trailmix{
-        background-color: #eccf14;
-        color: #222 !important;
+        background-color: #242;
+        color: #eccf14 !important;
     }
-	
+
 	/* Adds formatting for the brand icon.*/
 	.navbar-brand img{
         width:20px;
         height:auto;
     }
-	
+
 	/* Change the color of the text for links in navbar. */
 	#myNavbar li a {
         color: #e3d8ac;
     }
 
-	
+
 
 /****************************************
 CONTENT SECTION for middle section
 *****************************************/
 
+.feature-section {
+  min-height:400px;
+  padding-top:100px;
+  padding-bottom:100px;
+}
 
+.feature-section p {
+  font-size:32px;
+  font-weight: 300;
+}
 
-  .feature1 p {
-  	font-size: 28px;
-  	margin-top: 20px;
-  }
+.feature-text-left {
+  text-align: left;
+  padding:60px 125px 0 0;
+}
 
-  .feature1img img {
-  	margin-top: 20px;
-  	margin-bottom: 25px;
-	border-radius: 10px;
-    box-shadow: 2px 2px 2px #111;
-    width:100%;
+.feature-text-right {
+  text-align: right;
+  padding:60px 0 0 125px;
+}
 
-  }
+.feature-img img {
+	vertical-align: middle;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #111;
+  width:100%;
+}
 
 
 /*going to make this picture stick*/
   .photo-section {
-	margin:0;
+    margin:0;
     height: 600px;
     width: 100%;
-	z-index: 2;
-    background-image: url('img/deer2.jpg');
+    z-index: 2;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center center;
     padding: 0;
     text-align: center;
     display: block;
-       
   }
 
+  #feature1-photo{
+    background-image: url('img/deer2.jpg');
+  }
 
+  #feature2-photo{
+    background-image: url('img/placeholder-1400x600.jpg');
+  }
+
+  #feature3-photo{
+    background-image: url('img/placeholder-1400x600.jpg');
+  }
 
 /********************************************
- This is the style code for the registration page. This needs to be appended on the style.css page. 
+ This is the style code for the registration page. This needs to be appended on the style.css page.
  ***********************************************/
   #form_layout{
     margin: 200px auto 0;
@@ -207,104 +246,39 @@ CONTENT SECTION for middle section
     padding-left: 20px;
   }
 
-/******************************************
+/* This needs to be added to the style.css file. This holds the formatting for the account.php page. */
 
-ACCOUNT PAGE 
-
-*******************************************/
-	
-	/* Adds formatting for each of the sections. */
-    #account_page{
+#account_page{
     margin-top: 50px;
-	margin-bottom: 50px;
-	color: #eccf14;
-	font-family: Lucida Sans Unicode;
-	font-size: 15px;
-	width:80%;
-    }
-    #populated_info{
-        background-color: rgba(22,25,26, 0.8);
-        border-radius: 10px;
-        padding: 15px 25px 15px 25px;
-    }
-    #user_form{
-        background-color: rgba(22,25,26, 0.8);
-        border-radius: 10px;
-        padding: 15px 25px 15px 25px;
-    }
-    #camera_section{
-        background-color: rgba(22,25,26, 0.8);
-        border-radius: 10px;
-        padding: 15px 25px 15px 25px;
-    }
-	#add_camera{
-		background-color: rgba(22,25,26, 0.8);
-        border-radius: 10px;
-        padding: 15px 25px 15px 25px;
-	}
-	#edit_camera{
-		background-color: rgba(22,25,26, 0.8);
-        border-radius: 10px;
-        padding: 15px 25px 15px 25px;
-	}
-    #camera_cancel{
-		width: 125px;
-	}
-	#camera_submit{
-		width: 125px;
-	}
+    color: #eccf14;
+    font-family: Lucida Sans Unicode;
+    font-size: 15px;
+    width:80%;
+}
+#populated_info{
+    background-color: rgba(22,25,26, 0.8);
+    border-radius: 10px;
+    padding: 15px 25px 15px 25px;
+}
+#user_form{
+    background-color: rgba(22,25,26, 0.8);
+    border-radius: 10px;
+    padding: 15px 25px 15px 25px;
+}
+#camera_section{
+    background-color: rgba(22,25,26, 0.8);
+    border-radius: 10px;
+    padding: 15px 25px 15px 25px;
+}
+button{
+    float: right;
+}
+.img-responsive{
+    width: 300px;
+    padding: 15px 25px 15px 25px;
+    margin: 0 auto;
+}
 
-    #account_page button{
-		margin: 5px;
-        float: right;
-    }
-    .img-responsive{
-        width: 300px;
-        padding: 15px 25px 15px 25px;
-        margin: 0 auto;
-    }
-	#pass2{
-		padding: 7px 12px 7px 12px;
-		font-size: 15px;
-		border-radius: 4px;
-		width: 100%;
-		color: black;
-		border: 1px;
-	}
-	
-/* Add in styling for the password meter bar */
-	meter {
-	  /* Reset the default appearance */
-	  //-webkit-appearance: none;
-		 -moz-appearance: none;
-			  appearance: none;
-
-	  margin: 0 auto 1em;
-	  width: 100%;
-	  height: 0.5em;
-
-	  /* Applicable only to Firefox */
-	  background: none;
-	  background-color: rgba(0, 0, 0, 0.1);
-	}
-	meter::-webkit-meter-bar {
-	  background: none;
-	  background-color: rgba(0, 0, 0, 0.1);
-	}
-	
-/* Adds in styling for the password meter value */
-	/* Webkit based browsers */
-	meter[value="1"]::-webkit-meter-optimum-value { background: red; }
-	meter[value="2"]::-webkit-meter-optimum-value { background: orange; }
-	meter[value="3"]::-webkit-meter-optimum-value { background: yellow; }
-	meter[value="4"]::-webkit-meter-optimum-value { background: green; }
-
-	/* Gecko based browsers */
-	meter[value="1"]::-moz-meter-bar { background: red; }
-	meter[value="2"]::-moz-meter-bar { background: orange; }
-	meter[value="3"]::-moz-meter-bar { background: yellow; }
-	meter[value="4"]::-moz-meter-bar { background: green; }
 
 
 /* Creates formatting for the index.php page */
-	
