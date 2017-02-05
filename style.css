@@ -212,9 +212,11 @@ CONTENT SECTION for middle section
 ACCOUNT PAGE 
 
 *******************************************/
-
+	
+	/* Adds formatting for each of the sections. */
     #account_page{
     margin-top: 50px;
+	margin-bottom: 50px;
 	color: #eccf14;
 	font-family: Lucida Sans Unicode;
 	font-size: 15px;
@@ -235,7 +237,25 @@ ACCOUNT PAGE
         border-radius: 10px;
         padding: 15px 25px 15px 25px;
     }
+	#add_camera{
+		background-color: rgba(22,25,26, 0.8);
+        border-radius: 10px;
+        padding: 15px 25px 15px 25px;
+	}
+	#edit_camera{
+		background-color: rgba(22,25,26, 0.8);
+        border-radius: 10px;
+        padding: 15px 25px 15px 25px;
+	}
+    #camera_cancel{
+		width: 125px;
+	}
+	#camera_submit{
+		width: 125px;
+	}
+
     #account_page button{
+		margin: 5px;
         float: right;
     }
     .img-responsive{
