@@ -259,6 +259,75 @@
 			<br>
 			
 		</div>
+		<div id="add_camera" style="display:none;">
+				<div class="row">
+					<h3>Cameras</h3>
+					<hr>
+					<p>Add a new camera to your account.</p>
+				</div>
+				<br>
+				<br>
+				<form>
+					<div class="row">
+						<div class="col-md-3">
+							<label for="add_camera_name">Camera Name:</label>
+						</div>
+						<div class="col-md-8">
+							<input id="add_camera_name" type="text" name="camera_name" class="form-control">
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-3">
+							<label for="camera_desc">Camera Description:</label>
+						</div>
+						<div class="col-md-8">
+							<input id="camera_desc" type="text" name="camera_desc" class="form-control">
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<button id="camera_submit" class="btn btn-success" type="submit">Add Camera <span class="glyphicon glyphicon-plus"></span></button>
+						<button id="camera_cancel" class="btn btn-danger" type="button" onclick='showContent("camera_section"); hideContent("add_camera");'>Cancel</button>
+					</div>
+				</form>
+			</div>
+
+
+			<div id="edit_camera" style="display:none;">
+				<div class="row">
+					<h3>Cameras</h3>
+					<hr>
+					<p>Edit a camera associated with your account.</p>
+				</div>
+				<br>
+				<br>
+				<form>
+					<div class="row">
+						<div class="col-md-3">
+							<label for="camera_name">Camera Name:</label>
+						</div>
+						<div class="col-md-8">
+							<input id="camera_name" type="text" name="camera_name" class="form-control" value="">
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-3">
+							<label for="camera_desc">Camera Description:</label>
+						</div>
+						<div class="col-md-8">
+							<input id="camera_desc" type="text" name="camera_desc" class="form-control" value="">
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<button id="camera_submit" class="btn btn-success" type="submit">Add Camera <span class="glyphicon glyphicon-plus"></span></button>
+						<button id="camera_cancel" class="btn btn-danger" type="button" onclick='showContent("camera_section"); hideContent("edit_camera");'>Cancel</button>
+					</div>
+				</form>
+			</div>
+
 	</div>
 </div>
 <!-- Enter Javascript for hide and show functionality -->
