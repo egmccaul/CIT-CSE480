@@ -216,6 +216,7 @@
 	    
 		<div class="col-sm-5 col-sm-push-1">
             <div id="camera_section">
+
                 <div class="row">
 					<div class="col-md-10">
 						<h3>Cameras</h3>
@@ -257,9 +258,7 @@
 				<br>
 			</div>
 			<br>
-			
-		</div>
-		<div id="add_camera" style="display:none;">
+			<div id="add_camera" style="display:none;">
 				<div class="row">
 					<h3>Cameras</h3>
 					<hr>
@@ -327,7 +326,7 @@
 					</div>
 				</form>
 			</div>
-
+		</div>
 	</div>
 </div>
 <!-- Enter Javascript for hide and show functionality -->
