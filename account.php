@@ -327,7 +327,7 @@
 					</div>
 				</form>
 			</div>
-
+		</div>
 	</div>
 </div>
 <!-- Enter Javascript for hide and show functionality -->
