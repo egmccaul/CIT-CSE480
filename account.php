@@ -4,7 +4,101 @@
 	
 /* This is the php code that will allow you to push the data to the database. */
 	
+	/* Checks whether the fields for first name, last name, and email are entered. */
+	if (isset($_POST['fname_new']) && isset($_POST['lname_new']) && isset($_POST['email_new'])){
+		
+		/* Not sure if we really need to setup variables to hold these values. */
+		$fname = $_POST['fname_new'];
+		$lname = $_POST['lname_new'];
+		
+		/* Check whether new email is different than current email. If different check to see if account exists. */
+		if ($_SESSION['email'] != $_POST['email_new']){
+			
+			/* Check whether new email address already has an account. */
+			$email_check = $dbh->prepare("");
+			
+			/* Bind new submitted email string to prevent SQL injection. */
+			$email_check->bindParam(':email', $_POST['email_new'], PDO::PARAM_STR);
+			
+			// Executes query to find other account which might already use this new email.
+            $executed = $email_check->execute();
+			
+			// Count number of rows to see if any are found.
+            $number_rows = $email_check->fetchColumn();
+
+            // If a user is found to match the criteria
+            if ($number_rows = 1) {
+				?> <script>window.alert('Error updating email address.');</script><?php
+			} else {
+				
+				/* Setup variable to hold new email address. */
+				$email = $_POST['email_new'];
+			}
+		} else {
+			$email = $_SESSION['email'];
+		}
+		
+		/* Checks whether a new password and confirm password is entered. */
+		if (isset($_POST['pass1']) && isset($_POST['pass2']) && ($_POST['pass1'] == $_POST['pass2'])){
+			
+			$pass = $_POST['pass1'];
+			
+			/* Enter Query to update all criteria: first name, last name, email address, and password. */
+			$pass_update = $dbh->prepare("");
+			
+			/* Bind new submitted email string to prevent SQL injection. */
+			$pass_update->bindParam(':fname', $fname, PDO::PARAM_STR);
+			$pass_update->bindParam(':lname', $lname, PDO::PARAM_STR);
+			$pass_update->bindParam(':email', $email, PDO::PARAM_STR);
+			$pass_update->bindParam(':pass', $pass, PDO::PARAM_STR);
+			
+			// Executes query to find other account which might already use this new email.
+            $executed = $pass_update->execute();
+			
+		} else {
+			/* Enter Query to update only the first name, last name, and email address. */
+			$std_update = $dbh->prepare("");
+			
+			/* Bind new submitted email string to prevent SQL injection. */
+			$std_update->bindParam(':fname', $fname, PDO::PARAM_STR);
+			$std_update->bindParam(':lname', $lname, PDO::PARAM_STR);
+			$std_update->bindParam(':email', $email, PDO::PARAM_STR);
+			
+			// Executes query to find other account which might already use this new email.
+            $executed = $std_update->execute();
+		}
+		
+	} else {
 ?>
+<style>
+	/* add additional styling for new sections. */
+	#add_camera{
+		background-color: rgba(22,25,26, 0.8);
+        border-radius: 10px;
+        padding: 15px 25px 15px 25px;
+	}
+	#edit_camera{
+		background-color: rgba(22,25,26, 0.8);
+        border-radius: 10px;
+        padding: 15px 25px 15px 25px;
+	}
+
+	/* add a few formatting items to previously created items on the stylesheet. */
+	button{
+		margin: 5px;
+	}
+	#account_page{
+		margin-bottom: 50px;
+	}
+	
+	/* Still need to figure out what button scheme we would like to go with. */
+	#camera_cancel{
+		width: 125px;
+	}
+	#camera_submit{
+		width: 125px;
+	}
+</style>
 
 <div class="container" id="account_page">
     <div class="row" >
@@ -107,7 +201,7 @@
 					<div class="col-md-2">
 						<br>
 						<!-- Holds the edit button, which will unlock the populated fields for editing. -->
-						<button class="btn btn-trailmix" onclick='showContent("populated_info"); hideContent("user_form");'>Edit <span class="glyphicon glyphicon-edit"></span></button>
+						<button class="btn btn-danger" onclick='showContent("populated_info"); hideContent("user_form");'>Cancel <span class="glyphicon glyphicon-undo"></span></button>
 					</div>
 				</div>
 				<hr COLOR="yellow">
@@ -206,7 +300,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-success" method="post">Submit</button>
+						<button type="submit" class="btn btn-success">Submit</button>
+						<button type="reset" class="btn btn-danger">Reset Form</button>
 					</div>
 				</form>
 				<br>
@@ -215,6 +310,8 @@
 		</div>
 	    
 		<div class="col-sm-5 col-sm-push-1">
+			
+			<!-- php to gather the camera information associated to the user's account. -->
             <div id="camera_section">
                 <div class="row">
 					<div class="col-md-10">
@@ -222,7 +319,7 @@
 					</div>
 					<div class="col-md-2">
 						<br>
-						<button class="btn btn-trailmix">Add <span class="glyphicon glyphicon-plus"></span></button>
+						<button class="btn btn-trailmix" onclick='showContent("add_camera"); hideContent("camera_section");'>Add <span class="glyphicon glyphicon-plus"></span></button>
 					</div>
 				</div>
 				<hr>
@@ -249,16 +346,48 @@
 						<p>West Trail</p>
 					</div>
 					<div class="col-md-2">
-						<button class="btn btn-trailmix">Edit <span class="glyphicon glyphicon-edit"></span></button>
+						<button class="btn btn-trailmix" onclick='showContent("edit_camera"); hideContent("camera_section");'>Edit <span class="glyphicon glyphicon-edit"></span></button>
 					</div>
 					<br>
 					<br>
 				</div>
 				<br>
 			</div>
-			<br>
 			
-		
+			<!-- php to add new camera to user's profile. -->
+			<?php
+				if ((isset($_POST['add_camera_name'])) && (isset($_POST['add_camera_desc']))){
+					
+					/* Verify the camera name is not already associated with the user. */
+					$newCam_Check = $dbh->prepare("");
+			
+					/* Bind new submitted email string to prevent SQL injection. */
+					$newCam_Check->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
+					$newCam_Check->bindParam(':cam_name', $_POST['add_camera_name'], PDO::PARAM_STR);
+					
+					// Executes query to find other account which might already use this new email.
+					$executed = $newCam_Check->execute();
+					
+					// Count number of rows to see if any are found.
+					$number_rows = $newCam_Check->fetchColumn();
+
+					// If a user is found to match the criteria
+					if ($number_rows = 1) {
+						?> <script>window.alert('Camera name is already in use.');</script><?php
+					} else {
+						/* if it is not associated with the user, then insert new association into camera table. */
+						$newCam_Insert = $dbh->prepare("");
+				
+						/* Bind new submitted email string to prevent SQL injection. */
+						$newCam_Insert->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
+						$newCam_Insert->bindParam(':cam_name', $_POST['add_camera_name'], PDO::PARAM_STR);
+						$newCam_Insert->bindParam(':cam_desc', $_POST['add_camera_desc'], PDO::PARAM_STR);
+						
+						// Executes query to find other account which might already use this new email.
+						$executed = $newCam_Check->execute();
+					}
+				}
+			?>
 			<div id="add_camera" style="display:none;">
 				<div class="row">
 					<h3>Cameras</h3>
@@ -292,8 +421,41 @@
 					</div>
 				</form>
 			</div>
+			
+			<!-- php to update camera associated with user's profile. -->
+			<?php
+				if ((isset($_POST['camera_name'])) && (isset($_POST['camera_desc']))){
+					
+					/* Verify the new camera name is not already associated with the user. */
+					$newCam_Check = $dbh->prepare("");
+			
+					/* Bind new submitted email string to prevent SQL injection. */
+					$newCam_Check->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
+					$newCam_Check->bindParam(':cam_name', $_POST['camera_name'], PDO::PARAM_STR);
+					
+					// Executes query to find other account which might already use this new email.
+					$executed = $newCam_Check->execute();
+					
+					// Count number of rows to see if any are found.
+					$number_rows = $newCam_Check->fetchColumn();
 
-
+					// If a user is found to match the criteria
+					if ($number_rows = 1) {
+						?> <script>window.alert('Camera name already in use.');</script><?php
+					} else {
+						/* if it is not associated with the user, then insert new association into camera table. */
+						$newCam_Insert = $dbh->prepare("");
+				
+						/* Bind new submitted email string to prevent SQL injection. */
+						$newCam_Insert->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
+						$newCam_Insert->bindParam(':cam_name', $_POST['camera_name'], PDO::PARAM_STR);
+						$newCam_Insert->bindParam(':cam_desc', $_POST['camera_desc'], PDO::PARAM_STR);
+						
+						// Executes query to find other account which might already use this new email.
+						$executed = $newCam_Check->execute();
+					}
+				}
+			?>
 			<div id="edit_camera" style="display:none;">
 				<div class="row">
 					<h3>Cameras</h3>
@@ -327,7 +489,7 @@
 					</div>
 				</form>
 			</div>
-		</div>
+			<br>
 	</div>
 </div>
 <!-- Enter Javascript for hide and show functionality -->
@@ -400,6 +562,9 @@
 </script>
 
 <?php
+	/* Ends the above bracket from the php. */
+	}
+	
 	/* Add in the link to the footer */
 	include('footer.php');
 ?>
