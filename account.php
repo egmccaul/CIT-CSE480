@@ -49,7 +49,7 @@
 			$std_update->bindParam(':fname', $fname, PDO::PARAM_STR);
 			$std_update->bindParam(':lname', $lname, PDO::PARAM_STR);
 			$std_update->bindParam(':email', $email, PDO::PARAM_STR);
-			$pass_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
+			$std_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
 
 			
 			// Executes query to find other account which might already use this new email.
