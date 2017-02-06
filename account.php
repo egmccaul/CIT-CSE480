@@ -15,7 +15,7 @@
 		if ($_SESSION['email'] != $_POST['email_new']){
 			
 			/* Check whether new email address already has an account. */
-			$email_check = $dbh->prepare("SELECT * FROM USER WHERE USER_EMAIL=:email;");
+			$email_check = $dbh->prepare("SELECT USER_EMAIL FROM USER WHERE USER_EMAIL=:email;");
 			
 			/* Bind new submitted email string to prevent SQL injection. */
 			$email_check->bindParam(':email', $_POST['email_new'], PDO::PARAM_STR);
