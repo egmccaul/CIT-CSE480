@@ -83,17 +83,23 @@ include('header.php');
 	-->
 
 	
-	<!-- <div class="row content-section">
+	 <div class="row content-section">
 		<div class="container">
 			<div id="about-us" class="col-md-6">
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+				<p> We at Inspired are a team of developers who love technology and are commited to providing our customers quality products.
+				</p>
+				<p> We are looking to innovate different aspects of technology and hopefully allow these innovations to benefit the people that use them.
+				</p>
+				<p> TrailMix is a little project we decided to create to help bring to light the hobby of hunting and wildlife capture.
+				</p>
+				<p> With TrailMix hunters and wildlife enthusiassts can now remotely manage their trail cameras without tediously visiting them daily.
 				</p>
 			</div> <!-- end of about class -->
 			<!-- <div class="col-md-6">
 				<img src="img/app-screenshot.png" alt="" />
 			</div>
 		</div>
-	</div> -->
+	</div>
 
 	<!-- <div class="row">
 		<div class="container">
