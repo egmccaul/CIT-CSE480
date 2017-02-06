@@ -15,7 +15,7 @@
 		if ($_SESSION['email'] != $_POST['email_new']){
 			
 			/* Check whether new email address already has an account. */
-			$email_check = $dbh->prepare("");
+			$email_check = $dbh->prepare("SELECT * FROM USER WHERE USER_EMAIL=:email;");
 			
 			/* Bind new submitted email string to prevent SQL injection. */
 			$email_check->bindParam(':email', $_POST['email_new'], PDO::PARAM_STR);
@@ -44,7 +44,7 @@
 			$pass = $_POST['pass1'];
 			
 			/* Enter Query to update all criteria: first name, last name, email address, and password. */
-			$pass_update = $dbh->prepare("");
+			$pass_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname , USER_LNAME=:lname , USER_EMAIL=:email , USER_PASS=:pass WHERE USER_EMAIL=:email_old;");
 			
 			/* Bind new submitted email string to prevent SQL injection. */
 			$pass_update->bindParam(':fname', $fname, PDO::PARAM_STR);
@@ -59,7 +59,7 @@
 			
 		} else {
 			/* Enter Query to update only the first name, last name, and email address. */
-			$std_update = $dbh->prepare("");
+			$std_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname, USER_LNAME=:lname, USER_EMAIL=:email WHERE USER_EMAIL=:email_old;");
 			
 			/* Bind new submitted email string to prevent SQL injection. */
 			$std_update->bindParam(':fname', $fname, PDO::PARAM_STR);
