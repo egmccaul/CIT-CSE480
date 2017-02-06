@@ -60,15 +60,22 @@ include('header.php');
 	</div>
 
   <div class="row">
-		<div class="container feature-section">
-			<div class="col-md-6 feature-text-left">
-				<p>View your map when you arrive to select the area of your trail that has the most activity</p>
-			</div> <!-- end of about class -->
-			<div class="col-md-6 feature-img">
-				<img src="img/placeholder-960x480.jpg" alt="motion activated camera mounted to tree" />
-			</div>
-		</div>
-	</div>
+                <div class="container feature-section">
+			
+		<div class="col-md-6 feature-text-left">
+
+		<p>View your map when you arrive to select the area of your trail that has the most activity</p>
+		</div> <!-- end of about class -->
+			
+		<div class="col-md-6 feature-img">
+				
+		<img src="img/heatmap.jpg" alt="Heat map of deer activity" />
+	
+</div>
+		
+</div>
+	
+</div>
 
 	<div id="feature3-photo" class="row content-section photo-section">
     <!-- #feature3-photo background-image will be a screenshot of the map screen showing camera locations with hit-count badges for # of movements captured for each -->
