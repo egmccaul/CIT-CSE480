@@ -25,10 +25,10 @@
 			
 			// Count number of rows to see if any are found.
             $number_rows = $email_check->fetchColumn();
-            echo "THE NUMBER OF ROWS IS".$number_rows; 
+            echo "THE NUMBER OF ROWS IS" . $number_rows; 
 
             // If a user is found to match the criteria
-            if ($number_rows == 1) {
+            if ($number_rows != false) {
 				?> <script>window.alert('Error updating email address.');</script><?php
 			} else {
 				
