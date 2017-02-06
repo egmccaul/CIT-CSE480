@@ -77,6 +77,18 @@ include('header.php');
 		</div>
 	</div>
 
+	<div class="row content-section">
+		<div class="container">
+			<div id="about-us" class="col-md-6">
+				<p> We at Inspired are a team of developers who love technology and are commited to providing our customers quality products.
+				</p>
+				<p> We are looking to innovate different aspects of technology and hopefully allow these innovations to benefit the people that use them.
+				</p>
+				<p> TrailMix is a little project we decided to create to help bring to light the hobby of hunting and wildlife capture.
+				</p>
+				<p> With TrailMix hunters and wildlife enthusiassts can now remotely manage their trail cameras without tediously visiting them daily.
+				</p>
+			</div> <!-- end of about class -->
 
 	<!-- 
 		CALL TO ACTION SECTION WILL GO HERE. Maybe just a button to SIGN UP NOW to then link to registration.
