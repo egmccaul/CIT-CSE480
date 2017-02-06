@@ -162,7 +162,7 @@
 						</li>
 						<li>
 							<form class="navbar-form">
-								<a href="register.php" class="btn btn-trailmix active" <?php session_write_close();?>>Sign Up</a>
+								<a href="register.php" class="btn btn-trailmix active" style="text-shadow: 2px 2px 2px black;"<?php session_write_close();?>>Sign Up</a>
 							</form>
 						</li>
                     <?php } ?>
