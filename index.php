@@ -24,9 +24,9 @@ include('header.php');
 				<p>Mount your Trailmix Motion Activated Camera to a tree along a path to watch it</p>
 			</div> 
 			<!-- end of learn-more div class -->
-			
-			<div class="col-md-6 feature-img">
-				<img src="img/placeholder-960x480.jpg" alt="motion activated camera mounted to tree" />
+			<div class ="col-md-6 feature-img">
+				<img src="http://www.besttrailcamerareviews.org/wp-content/uploads/2015/01/Moultrie-M-880-outside.jpg"
+				alt ="motion activated camera mounted to tree" />
 			</div>
 		</div>
 	</div>
