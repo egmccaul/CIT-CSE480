@@ -39,7 +39,22 @@
 		}
 		
 		/* Checks whether a new password and confirm password is entered. */
-		if (isset($_POST['pass1']) && isset($_POST['pass2']) && ($_POST['pass1'] == $_POST['pass2'])){
+		if (empty($_POST['pass1']) && empty($_POST['pass2'])){
+			
+			/* Enter Query to update only the first name, last name, and email address. */
+			$std_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname, USER_LNAME=:lname, USER_EMAIL=:email WHERE USER_EMAIL=:email_old;");
+			
+			/* Bind new submitted email string to prevent SQL injection. */
+			$std_update->bindParam(':fname', $fname, PDO::PARAM_STR);
+			$std_update->bindParam(':lname', $lname, PDO::PARAM_STR);
+			$std_update->bindParam(':email', $email, PDO::PARAM_STR);
+			$pass_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
+
+			
+			// Executes query to find other account which might already use this new email.
+            $executed = $std_update->execute();
+			
+		} elseif (($_POST['pass1'] == $_POST['pass2'])){
 			
 			$pass = $_POST['pass1'];
 			
@@ -56,21 +71,9 @@
 			
 			// Executes query to find other account which might already use this new email.
             $executed = $pass_update->execute();
-			
+
 		} else {
-			/* Enter Query to update only the first name, last name, and email address. */
-			$std_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname, USER_LNAME=:lname, USER_EMAIL=:email WHERE USER_EMAIL=:email_old;");
-			
-			/* Bind new submitted email string to prevent SQL injection. */
-			$std_update->bindParam(':fname', $fname, PDO::PARAM_STR);
-			$std_update->bindParam(':lname', $lname, PDO::PARAM_STR);
-			$std_update->bindParam(':email', $email, PDO::PARAM_STR);
-			$pass_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
-
-			
-			// Executes query to find other account which might already use this new email.
-            $executed = $std_update->execute();
-
+			?> <script>window.alert('Something went wrong on update.');</script><?php
 		}
 			header('Location: ' . $_SERVER['REQUEST_URI']);
 
