@@ -117,6 +117,7 @@
                     <li><a id="GoToSplash" href="#splash-screen">Home</a></li>
                     <li><a id="GoToLearnMore" href="#learn-more">Learn More</a></li>
                     <li><a id="GoToContact" href="#contact-us">Contact Us</a></li>
+		    <li><a id="GoToAlbum" href="https://trailmix-tbdownie.c9users.io/cit480-test/album.php">Album</a></li>
                 </ul>
 
                 <!--Places the signup button on the right-hand side of the navbar,
