@@ -38,8 +38,8 @@
      }
      .float{
          display:inline-block;
-         height:200px;
-         width: 200px;
+         height:268px;
+         width: 400px;
          margin-left:auto;
          margin-right:auto;
           float:left;
@@ -48,20 +48,17 @@
       width:400px;
       height:268px;
      padding-right: 50px;
-     padding-left:0px;
      }
        #picture2{
       width:400px;
       height:268px;
      
       padding-right: 50px;
-     padding-left:117px;
+     padding-left:auto;
      }
      #picture3{
        width:400px;
        height:268px;
-        padding-right: 0px;
-     padding-left:50px;
      }
      #picture4{
        
