@@ -1,4 +1,4 @@
-
+</div><!-------- END PAGE_WRAPPER -------->   
 
     <!-- Holds the footer/copyright information of the page. -->
         <div id="foot" class="col-sm-12">
@@ -8,7 +8,6 @@
 				Tyler Miller</p>
             </footer>
         </div>
-        </div><!-------- END PAGE_WRAPPER -------->   
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
