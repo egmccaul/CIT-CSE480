@@ -125,15 +125,16 @@ WELCOME PAGE
   }
 
 /* Note: end of page wrapper is contained in the footer, right before the body end tag*/
-  .pagewrapper {
+ 	.pagewrapper { 
     position: absolute;
     width: 100%;
-    height: 250%;
+    height: 100%;
     background-image: url(img/trailmixbackround.jpg);
     background-size: cover;
     background-color: #fff;
-    background-attachment: fixed;
+    /*had to make seperate id's for scroll not to height to touch index*/
 }
+
 
 	.main-logo img {
         height: 200px;
@@ -254,8 +255,17 @@ CONTENT SECTION for middle section
     color: #eccf14;
     font-family: Lucida Sans Unicode;
     font-size: 15px;
-    width:80%;
+    position: absolute;
+    width: 100%;
+    height: 150%;
+    background-image: url(img/trailmixbackround.jpg);
+    background-size: cover;
+    background-color: #fff;
+    background-attachment: fixed;
+    /*changed id to make this seperate from head as pagewrapper is in head. touching all 
+    classes/ids that hold pagewrapper and it's own div in now we have this account_page.*/
 }
+
 #populated_info{
     background-color: rgba(22,25,26, 0.8);
     border-radius: 10px;
