@@ -4,7 +4,7 @@ include('header.php');
 ?>
 
 <!-- Enter HTML here -->
-<div class="pagewrapper">
+
 <div id="splash-screen" class="splash-screen">
     <div class="col-md-12 text-center splash-logo">
       <img src="img/trailmix-logo.png">
@@ -139,7 +139,7 @@ include('header.php');
 		</div>
 	</div> 
 </div> -->
-</div>
+
 <?php
 /* Adds in the footer at the bottom of the page.*/
 include('footer.php');
