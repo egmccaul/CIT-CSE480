@@ -251,7 +251,9 @@ CONTENT SECTION for middle section
 /* This needs to be added to the style.css file. This holds the formatting for the account.php page. */
 
 #account_page{
-    margin-top: 40px;
+    margin-top: 50px;
+    margin-bottom: 0;
+    padding-bottom: 0;
     color: #eccf14;
     font-family: Lucida Sans Unicode;
     font-size: 15px;
