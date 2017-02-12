@@ -251,14 +251,13 @@ CONTENT SECTION for middle section
 /* This needs to be added to the style.css file. This holds the formatting for the account.php page. */
 
 #account_page{
-	position: absolute;
     margin-top: 30px;
     color: #eccf14;
     font-family: Lucida Sans Unicode;
     font-size: 15px;
     position: absolute;
     width: 100%;
-    height: 250%;
+    height: auto;
     background-image: url(img/trailmixbackround.jpg);
     background-size: cover;
     background-color: #fff;
