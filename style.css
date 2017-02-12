@@ -125,14 +125,15 @@ WELCOME PAGE
   }
 
 /* Note: end of page wrapper is contained in the footer, right before the body end tag*/
-	.pagewrapper{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-image: url('img/trailmixbackround.jpg');
-        background-size: cover;
-        background-color: #fff;
-    }
+  .pagewrapper {
+    position: absolute;
+    width: 100%;
+    height: 250%;
+    background-image: url(img/trailmixbackround.jpg);
+    background-size: cover;
+    background-color: #fff;
+    background-attachment: fixed;
+}
 
 	.main-logo img {
         height: 200px;
