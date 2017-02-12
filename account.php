@@ -2,84 +2,178 @@
 	/* Add in the link to the header */
 	include('header.php');
 	
-/* This is the php code that will allow you to push the data to the database. */
+	session_start();
 	
-	/* Checks whether the fields for first name, last name, and email are entered. */
+/* This is the php code that will allow you to push the data to the database. */
+
+	// Check database for current values and sets sessions based on values
+    $statement = $dbh->prepare("SELECT * FROM USER WHERE USER_EMAIL = :email");
+    // PDO binds entry to protect against SQL Injection
+    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+
+    // Executes query
+    $executed = $statement->execute();
+
+    // Fetches information from table
+    $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+    // Resets session variables
+    $_SESSION["user_id"] = $row['USER_ID'];
+    $_SESSION["name"] = $row['USER_FNAME'];
+    $_SESSION["lname"] = $row['USER_LNAME'];
+    $_SESSION["email"] = $row['USER_EMAIL'];
+	
+/* Checks whether the fields for first name, last name, and email are entered. */
 	if (isset($_POST['fname_new']) && isset($_POST['lname_new']) && isset($_POST['email_new'])){
 		
 		/* Not sure if we really need to setup variables to hold these values. */
 		$fname = $_POST['fname_new'];
 		$lname = $_POST['lname_new'];
+		$email_new = $_POST['email_new'];
 		
 		/* Check whether new email is different than current email. If different check to see if account exists. */
-		if ($_SESSION['email'] != $_POST['email_new']){
+		if ($_SESSION['email'] <> $_POST['email_new']){
 			
 			/* Check whether new email address already has an account. */
-			$email_check = $dbh->prepare("SELECT USER_EMAIL FROM USER WHERE USER_EMAIL=:email;");
+			$email_check = $dbh->prepare("SELECT USER_EMAIL FROM USER WHERE USER_EMAIL=:email");
 			
 			/* Bind new submitted email string to prevent SQL injection. */
-			$email_check->bindParam(':email', $_POST['email_new'], PDO::PARAM_STR);
+			$email_check->bindParam(':email', $email_new, PDO::PARAM_STR);
 			
 			// Executes query to find other account which might already use this new email.
             $executed = $email_check->execute();
 			
 			// Count number of rows to see if any are found.
             $number_rows = $email_check->fetchColumn();
-            echo "THE NUMBER OF ROWS IS" . $number_rows; 
+            echo $number_rows; 
 
             // If a user is found to match the criteria
             if ($number_rows != false) {
-				?> <script>window.alert('Error updating email address.');</script><?php
+				?> <script>window.alert('Error updating email address.');</script> <?php
 			} else {
 				
-				/* Setup variable to hold new email address. */
-				$email = $_POST['email_new'];
+				/* Checks whether a new password and confirm password is entered. */
+				if (empty($_POST['pass1']) && empty($_POST['pass2'])){
+					
+					/* Enter Query to update only the first name, last name, and email address. */
+					$std_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname, USER_LNAME=:lname, USER_EMAIL=:email WHERE USER_EMAIL=:email_old");
+					
+					/* Bind new submitted email string to prevent SQL injection. */
+					$std_update->bindParam(':fname', $fname, PDO::PARAM_STR);
+					$std_update->bindParam(':lname', $lname, PDO::PARAM_STR);
+					$std_update->bindParam(':email', $email_new, PDO::PARAM_STR);
+					$std_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
+
+					
+					// Executes query to find other account which might already use this new email.
+					$stdUpdate_executed = $std_update->execute();
+					
+					if ($stdUpdate_executed = true){
+						// Display a successful update message.
+						$_SESSION['email'] = $email_new;
+						
+						?> <script>window.alert('Standard Information update successful!');</script> <?php
+					} else {
+						?> <script>window.alert('Standard Information updated failed!');</script> <?php
+						
+						$_SESSION['email'] = $email_new;
+					}
+					
+				} elseif (($_POST['pass1'] == $_POST['pass2'])){
+					
+					$pass = $_POST['pass1'];
+					
+					/* Enter Query to update all criteria: first name, last name, email address, and password. */
+					$pass_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname , USER_LNAME=:lname , USER_EMAIL=:email , USER_PASS=:pass WHERE USER_EMAIL=:email_old;");
+					
+					/* Bind new submitted email string to prevent SQL injection. */
+					$pass_update->bindParam(':fname', $fname, PDO::PARAM_STR);
+					$pass_update->bindParam(':lname', $lname, PDO::PARAM_STR);
+					$pass_update->bindParam(':email', $email_new, PDO::PARAM_STR);
+					$pass_update->bindParam(':pass', $pass, PDO::PARAM_STR);
+					$pass_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
+
+					
+					// Executes query to find other account which might already use this new email.
+					$psUpdate_executed = $pass_update->execute();
+					
+					 if ($psUpdate_executed = true){
+						 $_SESSION['email'] = $email_new;
+						 
+						 // Display a successful update message.
+						 ?> <script>window.alert('Standard Information and Password update successful!');</script> <?php
+						
+					} else {
+						
+						?> <script>window.alert('Standard Information and Password update failed!');</script> <?php
+					}
+					 
+				} else {
+					?> <script>window.alert('Something went wrong on update.');</script><?php
+				}
+				
+				//header('Location: ' . $_SERVER['REQUEST_URI']);
 			}
 		} else {
 			$email = $_SESSION['email'];
+			
+			/* Checks whether a new password and confirm password is entered. */
+			if (empty($_POST['pass1']) && empty($_POST['pass2'])){
+				
+				/* Enter Query to update only the first name, last name, and email address. */
+				$std_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname, USER_LNAME=:lname, USER_EMAIL=:email WHERE USER_EMAIL=:email_old");
+				
+				/* Bind new submitted email string to prevent SQL injection. */
+				$std_update->bindParam(':fname', $fname, PDO::PARAM_STR);
+				$std_update->bindParam(':lname', $lname, PDO::PARAM_STR);
+				$std_update->bindParam(':email', $email, PDO::PARAM_STR);
+				$std_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
+
+				
+				// Executes query to find other account which might already use this new email.
+				$stdUpdate_executed = $std_update->execute();
+				
+				if ($stdUpdate_executed = true){
+					// Display a successful update message.
+					?> <script>window.alert('Standard Information update successful!');</script> <?php
+				} else {
+					?> <script>window.alert('Standard Information update failed!');</script> <?php
+				}
+				
+			} elseif (($_POST['pass1'] == $_POST['pass2'])){
+				
+				$pass = $_POST['pass1'];
+				
+				/* Enter Query to update all criteria: first name, last name, email address, and password. */
+				$pass_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname , USER_LNAME=:lname , USER_EMAIL=:email , USER_PASS=:pass WHERE USER_EMAIL=:email_old;");
+				
+				/* Bind new submitted email string to prevent SQL injection. */
+				$pass_update->bindParam(':fname', $fname, PDO::PARAM_STR);
+				$pass_update->bindParam(':lname', $lname, PDO::PARAM_STR);
+				$pass_update->bindParam(':email', $email, PDO::PARAM_STR);
+				$pass_update->bindParam(':pass', $pass, PDO::PARAM_STR);
+				$pass_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
+
+				
+				// Executes query to find other account which might already use this new email.
+				$psUpdate_executed = $pass_update->execute();
+				
+				 if ($psUpdate_executed = true){
+					// Display a successful update message.					
+					?> <script>window.alert('Standard Information and Password update successful!');</script> <?php
+				} else {
+					?> <script>window.alert('Standard Information and Password update failed!');</script> <?php
+				}
+			}
+				//header('Location: ' . $_SERVER['REQUEST_URI']);
 		}
 		
-		/* Checks whether a new password and confirm password is entered. */
-		if (empty($_POST['pass1']) && empty($_POST['pass2'])){
-			
-			/* Enter Query to update only the first name, last name, and email address. */
-			$std_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname, USER_LNAME=:lname, USER_EMAIL=:email WHERE USER_EMAIL=:email_old;");
-			
-			/* Bind new submitted email string to prevent SQL injection. */
-			$std_update->bindParam(':fname', $fname, PDO::PARAM_STR);
-			$std_update->bindParam(':lname', $lname, PDO::PARAM_STR);
-			$std_update->bindParam(':email', $email, PDO::PARAM_STR);
-			$std_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
-
-			
-			// Executes query to find other account which might already use this new email.
-            $executed = $std_update->execute();
-			
-		} elseif (($_POST['pass1'] == $_POST['pass2'])){
-			
-			$pass = $_POST['pass1'];
-			
-			/* Enter Query to update all criteria: first name, last name, email address, and password. */
-			$pass_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname , USER_LNAME=:lname , USER_EMAIL=:email , USER_PASS=:pass WHERE USER_EMAIL=:email_old;");
-			
-			/* Bind new submitted email string to prevent SQL injection. */
-			$pass_update->bindParam(':fname', $fname, PDO::PARAM_STR);
-			$pass_update->bindParam(':lname', $lname, PDO::PARAM_STR);
-			$pass_update->bindParam(':email', $email, PDO::PARAM_STR);
-			$pass_update->bindParam(':pass', $pass, PDO::PARAM_STR);
-			$pass_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
-
-			
-			// Executes query to find other account which might already use this new email.
-            $executed = $pass_update->execute();
-
-		} else {
-			?> <script>window.alert('Something went wrong on update.');</script><?php
-		}
-			header('Location: ' . $_SERVER['REQUEST_URI']);
-
+		session_write_close();
+		
+		header("Refresh: 5; url=account.php");
+		
 	} else {
-?>
+?>	
 <style>
 	/* add additional styling for new sections. */
 	#add_camera{
