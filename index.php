@@ -12,7 +12,7 @@ include('header.php');
           <h2>Movement on your trail?</h2>
           <h1>Instant notification.</h1>
 
-          <a id="GoToLearnMore" href="#learn-more" class="btn btn-trailmix cta" style="text-shadow:2px 2px 2px black;">Learn More</a>
+          <a id="GoToLearnMore" href="#learn-more" class="btn btn-trailmix cta">Learn More</a>
 
       </div>
     </div>
