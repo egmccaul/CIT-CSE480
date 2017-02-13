@@ -86,7 +86,7 @@ include('header.php');
 				
 				<div class="form-group">
 					<div class="col-sm-9 col-sm-offset-3">
-						<input type="submit" class="btn btn-trailmix" style="text-shadow: 2px 2px 2px black;"value="Submit Registration">
+						<input type="submit" class="btn btn-trailmix" value="Submit Registration">
 					</div>
 				</div>
 			</form>
