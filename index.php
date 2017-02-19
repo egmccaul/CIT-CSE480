@@ -98,47 +98,6 @@ include('header.php');
 				</p>
 			</div> <!-- end of about class -->
 
-	<!-- 
-		CALL TO ACTION SECTION WILL GO HERE. Maybe just a button to SIGN UP NOW to then link to registration.
-	-->
-
-	
-	<!-- <div class="row content-section">
-		<div class="container">
-			<div id="about-us" class="col-md-6">
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-				</p>
-			</div> <!-- end of about class -->
-			<!-- <div class="col-md-6">
-				<img src="img/app-screenshot.png" alt="" />
-			</div>
-		</div>
-	</div> -->
-
-	<!-- <div class="row">
-		<div class="container">
-			<div id="about-us" class="col-md-6 content-section">
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-				</p>
-			</div> <!-- end of about class -->
-			<!-- <div class="col-md-6">
-				<img src="img/app-screenshot.png" alt="" />
-			</div>
-		</div>
-	</div>
-</div> -->
-
-<!-- <div class="row">
-	<div class="container">
-		<div id="contact-us" class="content-section">
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-			</p>
-		</div> <!-- end of contact class -->
-		<!-- <div class="col-md-6">
-			<img src="img/app-screenshot.png" alt="" />
-		</div>
-	</div> 
-</div> -->
 
 <?php
 /* Adds in the footer at the bottom of the page.*/

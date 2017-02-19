@@ -192,7 +192,7 @@
 		margin: 5px;
 	}
 	#account_page{
-		margin-bottom: 50px;
+		padding-bottom: 75px;
 	}
 	
 	/* Still need to figure out what button scheme we would like to go with. */

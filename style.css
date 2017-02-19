@@ -262,9 +262,36 @@ CONTENT SECTION for middle section
     background-size: cover;
     background-color: #fff;
     background-attachment: fixed;
+
     /*changed id to make this seperate from head as pagewrapper is in head. touching all 
     classes/ids that hold pagewrapper and it's own div in now we have this account_page.*/
 }
+
+#album_page{
+    margin-top: 30px;
+    color: #eccf14;
+    font-family: Lucida Sans Unicode;
+    font-size: 15px;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    background-image: url(img/trailmixbackround.jpg);
+    background-size: cover;
+    background-color: #fff;
+    background-attachment: fixed;
+
+}
+
+.thumbnail {
+    opacity: .8;
+    background-color: black;
+    border: none;
+}
+
+.album_title{
+  text-align: center;
+}
+
 
 #populated_info{
     background-color: rgba(22,25,26, 0.8);
