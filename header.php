@@ -114,12 +114,31 @@
                 <a class="navbar-brand" href="index.php"><img src="img/trailmixacorn.png" alt="TrailMix" style="width:auto;height:20px;"></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
+                <div class="collapse navbar-collapse" id="myNavbar">
+				<?php if(((basename($_SERVER['PHP_SELF'])) == "index.php") && isset($_SESSION["email"])){ ?>
+				<ul class="nav navbar-nav">
                     <li><a id="GoToSplash" href="#splash-screen">Home</a></li>
                     <li><a id="GoToLearnMore" href="#learn-more">Learn More</a></li>
                     <li><a id="GoToContact" href="#contact-us">Contact Us</a></li>
-		    <li><a id="GoToAlbum" href="https://trailmix-tbdownie.c9users.io/cit480-test/album.php">Album</a></li>
+					<li><a href="album.php">Album</a></li>
                 </ul>
+				<?php } else if((basename($_SERVER['PHP_SELF'])) == "index.php"){ ?>
+				<ul class="nav navbar-nav">
+                    <li><a id="GoToSplash" href="#splash-screen">Home</a></li>
+                    <li><a id="GoToLearnMore" href="#learn-more">Learn More</a></li>
+                    <li><a id="GoToContact" href="#contact-us">Contact Us</a></li>
+                </ul>
+				<?php } else if(isset($_SESSION["email"])){ ?>
+                
+				<ul class="nav navbar-nav">
+                    <li><a href="index.php">Home</a></li>
+					<li><a href="album.php">Album</a></li>
+				</ul>
+			<?php } else {?>
+				<ul class="nav navbar-nav">
+                    <li><a href="index.php">Home</a></li>
+				</ul>
+			<?php } ?>
 
                 <!--Places the signup button on the right-hand side of the navbar,
                 as well as the login dropdown-->
