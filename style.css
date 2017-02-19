@@ -132,6 +132,7 @@ WELCOME PAGE
     background-image: url(img/trailmixbackround.jpg);
     background-size: cover;
     background-color: #fff;
+	background-attachment: fixed;
     /*had to make seperate id's for scroll not to height to touch index*/
 }
 
