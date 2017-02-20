@@ -4,6 +4,11 @@ body, html {
    height:100%;
 }
 
+body {
+    color: #fff;
+    background-color: #444;
+}
+
 /* Creates formatting for the general header,
 which is used by every page*/
 
@@ -67,10 +72,10 @@ WELCOME PAGE
 
 
 /* Change the button color to yellow */
-    .btn-trailmix{
-      background-color: #253;
-      color: #eccf14;
-    }
+    .btn-trailmix {
+    background-color: #e1be24;
+    color: #fff;
+}
 
     /* Adds formatting for the brand icon.*/
     .navbar-brand img{
@@ -80,7 +85,7 @@ WELCOME PAGE
 
     /* Change the color of the text for links in navbar. */
     #myNavbar li a {
-        color: #e3d8ac;
+        color: #fff;
     }
 
     .splash-screen {
@@ -150,24 +155,11 @@ WELCOME PAGE
         display: block;
     }
 
-	/* Change the button color to yellow */
-	.btn-trailmix{
-        background-color: #242;
-        color: #eccf14 !important;
-    }
-
 	/* Adds formatting for the brand icon.*/
 	.navbar-brand img{
         width:20px;
         height:auto;
     }
-
-	/* Change the color of the text for links in navbar. */
-	#myNavbar li a {
-        color: #e3d8ac;
-    }
-
-
 
 /****************************************
 CONTENT SECTION for middle section
@@ -177,11 +169,12 @@ CONTENT SECTION for middle section
   min-height:400px;
   padding-top:100px;
   padding-bottom:100px;
+
 }
 
 .feature-section p {
-  font-size:32px;
-  font-weight: 300;
+  font-size:36px;
+  font-weight: 350;
 }
 
 .feature-text-left {
@@ -221,12 +214,29 @@ CONTENT SECTION for middle section
   }
 
   #feature2-photo{
-    background-image: url('img/placeholder-1400x600.jpg');
+    background-image: url('img/truefox.jpg');
   }
 
   #feature3-photo{
-    background-image: url('img/placeholder-1400x600.jpg');
+    background-image: url('img/dark.jpg');
   }
+
+  #about-us {
+    margin: 10% auto;
+    /* height: 200px; */
+    color: #eee;
+    font-size: 22px;
+    font-weight: 200px;
+    text-align: center;
+ }
+
+ .p { 
+  text-align: center;
+}
+
+.last{
+  margin-bottom: 10px;
+}
 
 /********************************************
  This is the style code for the registration page. This needs to be appended on the style.css page.
@@ -336,6 +346,8 @@ button{
 	  background: none;
 	  background-color: rgba(0, 0, 0, 0.1);
 	}
+
+ 
 	
 /* Adds in styling for the password meter value */
 	/* Webkit based browsers */

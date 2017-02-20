@@ -1,4 +1,4 @@
-</div><!-------- END PAGE_WRAPPER -------->   
+  
 
     <!-- Holds the footer/copyright information of the page. -->
         <div id="foot" class="col-sm-12">
