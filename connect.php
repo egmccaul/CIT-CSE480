@@ -3,8 +3,8 @@
 	/* Connect to a MySQL database using PHP and PDO 
 	   For testing, change localhost to server location if on local machine. */
 	$dsn = 'mysql:dbname=CIT480;host=localhost;port=3306';
-	$user = 'root';
-	$password = 'root';
+	$user = 'cit480';
+	$password = 'trailmix';
 
 	try {
 		$dbh = new PDO($dsn, $user, $password);
