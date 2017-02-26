@@ -2,11 +2,13 @@
 
 body, html {
    height:100%;
+   width: 100%;
 }
 
 body {
     color: #fff;
     background-color: #444;
+
 }
 
 /* Creates formatting for the general header,
