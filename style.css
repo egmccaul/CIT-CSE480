@@ -198,12 +198,13 @@ CONTENT SECTION for middle section
 /*going to make this picture stick*/
   .photo-section {
     margin:0;
-    height: 600px;
+    height: 700px;
     width: 100%;
     z-index: 2;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    background-attachment: fixed;
     padding: 0;
     text-align: center;
     display: block;
