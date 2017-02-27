@@ -111,6 +111,8 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 	color: #eccf14;
 	width: 100%;
 	padding-bottom: 30px;
+	position:fixed;
+	bottom:0px;
 }
 
 /* Sets up default image tile sizes, and surrounding whitespace around tile. */
