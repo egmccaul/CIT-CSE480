@@ -71,6 +71,9 @@ $totalPhotos = $countStatement->fetchColumn();
 
 // Find the number of pages of photos needed. Rounds up to nearest full page.
 $totalPages = ceil($totalPhotos / $photosPerPage); 
+if($totalPages < 1){
+	$totalPages = 1;
+}
 
 //Pagination Code
 	// Check that the page number is set.
@@ -112,7 +115,7 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 	width: 100%;
 	padding-bottom: 30px;
 	position:fixed;
-	bottom:0px;
+	bottom: 0px;
 }
 
 /* Sets up default image tile sizes, and surrounding whitespace around tile. */
@@ -265,7 +268,12 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 	<div class="text-center" id="photo_output">
 		<div class="row">
 			<!-- Tells user what photos are being displayed, and total images in album. -->
-			<p>Showing <?php echo ($startPhoto+1) . "-" . ($startPhoto+12); ?> of <?php echo $totalPhotos; ?></p>
+			<p>Showing <?php 
+				if ($totalPhotos > $photosPerPage){
+					echo ($startPhoto+1) . "-" . ($startPhoto+12) . " of " . $totalPhotos . "photos"; 
+				} else {
+					echo $totalPhotos . " of " . $totalPhotos . " photos";
+				}?></p>
 		</div>
 		<div class="row">
 			<ul class="pagination">
