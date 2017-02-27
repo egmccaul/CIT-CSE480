@@ -3,6 +3,43 @@
 // Adds in navbar and opening html.
 include('header.php');
 
+session_start();
+	
+/* This is the php code that will allow you to push the data to the database. */
+
+	// Check database for current values and sets sessions based on values
+    $statement = $dbh->prepare("SELECT * FROM USER WHERE USER_EMAIL = :email");
+    // PDO binds entry to protect against SQL Injection
+    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+
+    // Executes query
+    $executed = $statement->execute();
+
+    // Fetches information from table
+    $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+    // Resets session variables
+    $_SESSION["user_id"] = $row['USER_ID'];
+    $_SESSION["name"] = $row['USER_FNAME'];
+    $_SESSION["lname"] = $row['USER_LNAME'];
+    $_SESSION["email"] = $row['USER_EMAIL'];
+
+	// Check database for current values and sets sessions based on values
+    $statement = $dbh->prepare("SELECT * FROM CAMERA WHERE USER_ID = :id");
+    // PDO binds entry to protect against SQL Injection
+    $statement->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_STR);
+
+    // Executes query
+    $executed = $statement->execute();
+
+    // Fetches information from table
+    $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+    // Resets session variables
+    $_SESSION["camera_id"] = $row['CAMERA_ID'];
+    $_SESSION["cam_name"] = $row['CAMERA_NAME'];
+    $_SESSION["cam_desc"] = $row['CAMERA_DESC'];
+
 // Sets up sorting variable to allow images to appear by oldest or newest first.
 if(isset($_POST['sort_type']) && !empty($_POST['sort_type']) && $_POST['sort_type']=="asc")
 {
@@ -22,7 +59,9 @@ if(isset($_POST['sort_type']) && !empty($_POST['sort_type']) && $_POST['sort_typ
 $photosPerPage = 12;
 	
 // Check database for total number of photos
-$countStatement = $dbh->prepare("SELECT count(*) FROM photo");
+$countStatement = $dbh->prepare("SELECT count(*) FROM photo WHERE CAMERA_ID=:cam_id");
+
+$countStatement->bindParam(':cam_id', $_SESSION["camera_id"], PDO::PARAM_STR);
 
 // Executes query
 $countStatement->execute();
@@ -189,7 +228,9 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 		$photoSlideLink = 0;
 		
 		// Check database for current available classes based on student criteria
-		$classStatement = $dbh->prepare("SELECT * FROM photo ORDER BY photo_id " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
+		$classStatement = $dbh->prepare("SELECT * FROM photo WHERE CAMERA_ID=:cam_id ORDER BY photo_id " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
+
+		$classStatement->bindParam(':cam_id', $_SESSION["camera_id"], PDO::PARAM_STR);
 
 		// Executes query
 		$classExecuted = $classStatement->execute();
@@ -198,10 +239,10 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 		$classes = $classStatement->fetchAll();
 
 		foreach ($classes as $row=>$classRow){
-			$photo_id = $classRow['photo_id'];
-			$photo_path = $classRow['photo_path'];
-			// $photo_name = $classRow[''];
-			// $photo_desc = $classRow[''];
+			$photo_id = $classRow['PHOTO_ID'];
+			$photo_name = $classRow['PHOTO_TITLE'];
+			$photo_desc = $classRow['PHOTO_DESC'];
+			$photo_path = $classRow['PHOTO_PATH'];
 			?>
 			
 			<!-- Outputs a tile for every photo result found in database, until given limit is reached. -->
@@ -253,7 +294,7 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 				<!-- Holds the header for the pop-up modal. -->
 				<div class="modal-header">
 					<!-- Need to pull album session variable out and enter into modal header. -->
-					<div class="pull-left">My Gallery Title</div>
+					<div class="pull-left">TrailMix Photo Gallery</div>
 					<button type="button" class="close" data-dismiss="modal" title="Close"> <span class="glyphicon glyphicon-remove"></span></button>
 				</div>
 				
@@ -273,21 +314,22 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 							$loop_count = 0;
 							
 							// Check database for first 12 photos. Need to update SQL to pull images based on user, and camera ID. Good for current testing.
-							$classStatement = $dbh->prepare("SELECT * FROM photo ORDER BY photo_id " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
+							$classStatement = $dbh->prepare("SELECT * FROM photo WHERE CAMERA_ID=:cam_id ORDER BY photo_id " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
+
+							$classStatement->bindParam(':cam_id', $_SESSION["camera_id"], PDO::PARAM_STR);
 
 							// Executes query
 							$classExecuted = $classStatement->execute();
 
-							// Fetches all of the fields from the database query, and loops to pull out results.
+							// Gather all results and outputs in loop.
 							$classes = $classStatement->fetchAll();
 
 							foreach ($classes as $row=>$classRow){
-								// Gets the photo information from the database.
-								$photo_id = $classRow['photo_id'];
-								$photo_path = $classRow['photo_path'];
-								// $photo_name = $classRow[''];
-								// $photo_desc = $classRow[''];
-								
+								$photo_id = $classRow['PHOTO_ID'];
+								$photo_name = $classRow['PHOTO_TITLE'];
+								$photo_desc = $classRow['PHOTO_DESC'];
+								$photo_path = $classRow['PHOTO_PATH'];
+															
 								// Increments the loop count for the below if statement, to associate carousel slides.
 								$loop_count++;
 								
@@ -299,7 +341,7 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 										<div id="photo_info">
 											<div class="col-xs-8">
 												<!-- Outputs the title of the photo. Currentlying using photo ID, might want to change to user defined name. -->
-												<h3 id="photo_title">Image <?php echo $photo_id;?></h3>
+												<h3 id="photo_title">Image <?php echo $photo_id;?>: <?php echo $photo_name;?></h3>
 											</div>
 											<div class="col-xs-4">
 												<!-- Holds a button to allow users to download image to device. -->
@@ -307,7 +349,7 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 											</div>
 											<div class="col-xs-8">
 												<!-- Holds a description of the image. Currently hold place holder. Might want to change to user defined description. -->
-												<p>Slide <?php echo $photo_id;?>  description.</p>
+												<p><?php echo $photo_desc;?></p>
 											</div>
 											<div class="col-xs-4">
 												<!-- Holds a button that will allow users to change image title and description. -->
@@ -325,7 +367,7 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 														</div>
 														<div class="col-xs-9">
 															<!-- Input for Image title. Currently uses photo ID as title. -->
-															<input id="image_desc" type="text" name="image_title" class="form-control" value='<?php echo "Image " . $photo_id;?>'>
+															<input id="image_desc" type="text" name="image_title" class="form-control" value='<?php echo $photo_name;?>'>
 														</div>
 													</div>
 													<br>
@@ -335,7 +377,7 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 														</div>
 														<div class="col-xs-9">
 															<!-- Input for Image description. Currently uses photo ID as description. -->
-															<input id="image_desc" type="text" name="image_descript" class="form-control" value='<?php echo "Image " . $photo_id . " description.";?>'>
+															<input id="image_desc" type="text" name="image_descript" class="form-control" value='<?php echo $photo_desc;?>'>
 														</div>
 													</div>
 												</div>
@@ -371,7 +413,7 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 										<div id="photo_info<?php echo $photo_id;?>">
 											<div class="col-xs-8">
 												<!-- Holds the image title. Currently using photo ID as placeholder. -->
-												<h3 id="photo_title">Image <?php echo $photo_id;?></h3>
+												<h3 id="photo_title">Image <?php echo $photo_id;?>: <?php echo $photo_name;?></h3>
 											</div>
 											<div class="col-xs-4">
 												<!-- Holds button to download the image onto user's device. -->
@@ -379,7 +421,7 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 											</div>
 											<div class="col-xs-8">
 												<!-- Holds the image description. Currently using photo ID as placeholder. -->
-												<p>Slide <?php echo $photo_id;?>  description.</p>
+												<p><?php echo $photo_desc;?></p>
 											</div>
 											<div class="col-xs-4">
 												<!-- Holds button to allow users to enter user defined title and description. -->
@@ -397,7 +439,7 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 														</div>
 														<div class="col-xs-9">
 															<!-- Placeholder for actual image title. -->
-															<input id="image_desc" type="text" name="image_title" class="form-control" value='<?php echo "Image " . $photo_id;?>'>
+															<input id="image_desc" type="text" name="image_title" class="form-control" value='<?php echo $photo_name;?>'>
 														</div>
 													</div>
 													<br>
@@ -407,7 +449,7 @@ $totalPages = ceil($totalPhotos / $photosPerPage);
 														</div>
 														<div class="col-xs-9">
 															<!-- Placeholder for actual image description. -->
-															<input id="image_desc" type="text" name="image_descript" class="form-control" value='<?php echo "Image " . $photo_id . " description.";?>'>
+															<input id="image_desc" type="text" name="image_descript" class="form-control" value='<?php echo $photo_desc;?>;?>'>
 														</div>
 													</div>
 												</div>
