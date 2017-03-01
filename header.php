@@ -74,7 +74,7 @@
 					 $_SESSION["email"] = $row['USER_EMAIL'];
 
 		    // Redirects to another page once
-                     header('Location: account.php');
+                     header('Location: album.php');
 
 				 } else {
 
