@@ -73,7 +73,6 @@ WELCOME PAGE
 /*  .pagewrapper{}*/
 
 
-/* Change the button color to yellow */
     .btn-trailmix {
     background-color: #e1be24;
     color: #fff;
@@ -164,7 +163,7 @@ WELCOME PAGE
     }
 
 /****************************************
-CONTENT SECTION for middle section
+CONTENT SECTION for middle section - PARALLAX
 *****************************************/
 
 .feature-section {
@@ -242,7 +241,7 @@ CONTENT SECTION for middle section
 }
 
 /********************************************
- This is the style code for the registration page. This needs to be appended on the style.css page.
+REGISTRATION PAGE 
  ***********************************************/
   #form_layout{
     margin: 200px auto 0;
@@ -262,8 +261,9 @@ CONTENT SECTION for middle section
     padding-left: 20px;
   }
 
-/* This needs to be added to the style.css file. This holds the formatting for the account.php page. */
-
+/********************************************
+ACCOUNT PAGE  
+ ***********************************************/
 #account_page{
     margin-top: 30px;
     color: #eccf14;
@@ -280,6 +280,15 @@ CONTENT SECTION for middle section
     /*changed id to make this seperate from head as pagewrapper is in head. touching all 
     classes/ids that hold pagewrapper and it's own div in now we have this account_page.*/
 }
+/********************************************
+PHOTO PAGE
+***********************************************/
+
+
+
+/********************************************
+ALBUM PAGE
+ ***********************************************/
 
 #album_page{
     margin-top: 30px;
@@ -330,6 +339,12 @@ button{
     padding: 15px 25px 15px 25px;
     margin: 0 auto;
 }
+
+
+
+/********************************************
+PASSWORD METER BAR 
+ ***********************************************/
 /* Add in styling for the password meter bar */
 	meter {
 	  /* Reset the default appearance */
@@ -349,8 +364,6 @@ button{
 	  background: none;
 	  background-color: rgba(0, 0, 0, 0.1);
 	}
-
- 
 	
 /* Adds in styling for the password meter value */
 	/* Webkit based browsers */
@@ -367,4 +380,4 @@ button{
 
 
 
-/* Creates formatting for the index.php page */
+
