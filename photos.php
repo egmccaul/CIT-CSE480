@@ -49,137 +49,9 @@ session_start();
 	}
 	?>
 
-<style>
-#photo_page{
-	color: #eccf14;
-    font-family: Lucida Sans Unicode;
-    font-size: 15px;
-    position: absolute;
-    width: 100%;
-    height: auto;
-    background-image: url(img/trailmixbackround.jpg);
-    background-size: cover;
-    background-color: #fff;
-    background-attachment: fixed;
-	padding-bottom:150px;
-}
 
-/* Setup styling for the search results section at the bottom of the page, and pagination. */
-#photo_output{
-	background-color: rgba(22,25,26, 0.8);
-	color: #eccf14;
-	width: 100%;
-	padding-bottom: 30px;
-	position:fixed;
-	bottom: 0px;
-}
-#photo_tile{
-	background-color:rgba(22,25,26, 0.8);
-	padding:5px;
-	border-radius:10px;
-	margin: 5px;
-}
 
-/* Sets up default image tile sizes, and surrounding whitespace around tile. */
-#photo_page .img-thumbnail{
-	height:300px;
-	width:400px;
-	margin: 10px;
-	background-color: transparent;
-	border-color: transparent;
-}
-
-/* Sets stylizing on the ascend and descend filter buttons. */
-#photo_page button{
-	margin: 10px;
-	float: center;
-}
-#back_button{
-	float:left;
-}
-
-/* Settings for the save image button. */
-#save{
-	margin-right: 15px;
-	margin-top:23px;
-	float: right;
-}
-
-/* Settings for the cancel buttons on the update image description. */
-#cancel{
-	margin-right: 20px;
-	float: right;
-	margin-top: 0px;
-}
-
-/* Sets up most of the button styling on the modal. */
-.modal button{
-	margin-right: 10px;
-	margin-top:10px;
-	float: right;
-	margin-bottom:0px;
-}
-
-/* Settings for the edit button on the modal. */
-#edit_button{
-	margin-right:15px;
-}
-
-/* Settings for the save and reset button on the modal. */
-#update_group{
-	margin-right:7px;
-}
-
-/* Sets the amount of room at the bottom of the modal image for caption content. */
-.carousel-inner { 
-	padding-bottom:125px;
-}
-
-/* Sets styling for the caption under the image of the modal carousel. */
-.carousel-caption{
-	width:100%;
-	height: 250px;
-	background-color: rgba(22,25,26, 0.8);
-	position: absolute;
-	left:0;
-	right:auto;
-	bottom:-250px;
-	padding-top:0px;
-	padding-bottom: 10px;
-}
-
-/* Sets photo title in the modal caption to be left-aligned. */
-#photo_title{
-	text-align:left;
-}
-
-/* Sets the general size, and left/right buttons on the modal carousel. */
-.carousel-control{
-	heigth:80%;
-	top:200px;
-	bottom:auto;
-	color: black;
-}
-
-/* Sets the modal image to be centered in the body section. */
-.modal img{
-	margin:auto;
-}
-
-/* Adds a right margin to make tiles appear to stay within border when resizing page. */
-#gal{
-	margin-right:10px;
-	margin-left: 10px;
-}
-
-/* Sets the Modal width. */
-@media screen and (min-width: 768px) {
-        .modal-dialog {
-          width: 80%; /* New width for default modal */
-        }
-</style>
-
-<div id="photo_page">
+<div id="album_page">
 
 	<?php
 		// Sets up sorting variable to allow images to appear by oldest or newest first.
@@ -235,7 +107,7 @@ session_start();
 			}
 	?>
 
-	<div class="row" id="gal" >
+	<div class="row" id="gallery" >
 
 		<!-- Holds the button to sort the photos by either oldest or newest first. -->
 		<div class="col-xs-12">

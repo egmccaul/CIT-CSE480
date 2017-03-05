@@ -280,15 +280,12 @@ ACCOUNT PAGE
     /*changed id to make this seperate from head as pagewrapper is in head. touching all 
     classes/ids that hold pagewrapper and it's own div in now we have this account_page.*/
 }
-/********************************************
-PHOTO PAGE
-***********************************************/
-
 
 
 /********************************************
-ALBUM PAGE
+ALBUM PAGE / PHOTO PAGE 
  ***********************************************/
+
 
 #album_page{
     margin-top: 30px;
@@ -365,6 +362,10 @@ and pagination. */
 /* Settings for the edit button on the modal. */
 #edit_button{
   margin-right:15px;
+}
+
+#back_button{
+  float:left;
 }
 
 /* Settings for the save and reset button on the modal. */
