@@ -62,15 +62,25 @@ $(document).ready(function(){
 		});
 	};
 	
-	//goes to 
+	//goes to with speed
 	$('#GoToSplash,' + 
-		'#GoToLearnMore,'+ 
-		'#GoToContact')
-		.scrollTo({ speed: 1400 });
+		'#GoToLearnMore')
+		.scrollTo({ speed: 2000 });
+
+	// seperate scroll to 
+	// and with this we want to go 
+	// straight to the scource
+	// so the speed is 
+	// one millisecond
+	// straight to About US
+	$('#GoToAboutUs')
+	.scrollTo({ speed: 1 });
 
      /*end scroll to*/
 	/******************************
+	
 	new function
+	
 	*******************************/	
 
     //function to hide the footer

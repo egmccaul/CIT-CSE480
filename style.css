@@ -87,9 +87,11 @@ WELCOME PAGE
     /* Change the color of the text for links in navbar. */
     #myNavbar li a {
         color: #fff;
+        font-family: sans-serif;
     }
 
     .splash-screen {
+
     color: #ddd;
     min-height: 100%;
     width: 100%;
@@ -501,10 +503,62 @@ PASSWORD METER BAR
   JS STYLES
 
   /********************************************/
-
+  /*adding class for jquery
+  to change styles by
+  defining them here*/
   .hide{
     display:none;
   }
+
+/*adding hovering to 
+log color for looks
+
+/*hovering over Home
+turn yellow*/
+#GoToSplash:hover{
+  color: #e1be24;
+}
+
+/*hovering over learnmore
+turn yellow*/
+#GoToLearnMore:hover{
+  color: #e1be24;
+}
+
+/*hovering over about
+turn yellow*/
+#GoToAboutUs:hover{
+  color: #e1be24;
+}
+
+/*hovering over about
+turn yellow*/
+.dropdown:hover{
+  color: #e1be24;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
