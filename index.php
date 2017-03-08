@@ -67,7 +67,10 @@ include('header.php');
 				<p>View your map when you arrive to select the area of your trail that has the most activity</p>
 			</div> <!-- end of about class -->
 			
-			<div class="col-md-6 feature-img">
+
+			<!-- this div will call to scroll from trailmixjs -->
+			<!-- scrollDiv id is used to call scroll function -->
+			<div id="scrollDiv" class="col-md-6 feature-img">
 				<img src="img/heatmap.jpg" alt="Heat map of deer activity" />
 			</div>
 		</div>

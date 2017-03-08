@@ -1,6 +1,5 @@
-  
-
-    <!-- Holds the footer/copyright information of the page. -->
+   <!-- Holds the footer/copyright information of the page. -->
+        <!-- calling footer by id in css -->
         <div id="foot" class="col-sm-12">
             <footer>
                 <p>CIT/CSE 480: Senior Capstone. &copy; 2017</p>
@@ -9,6 +8,8 @@
             </footer>
         </div>
 
+
+    <!-- attaching jQuery -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->

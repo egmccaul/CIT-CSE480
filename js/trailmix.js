@@ -2,6 +2,7 @@ $(document).ready(function(){
     $(window).scroll(function(){
         $(".splash-logo").css("opacity", 1 - $(window).scrollTop() / 250);
       });
+    //makes splash logo fade as scroll goes down
 
     // Change navbar BG color on scroll to #learn-more
     var scroll_start = 0;
@@ -53,10 +54,44 @@ $(document).ready(function(){
 							window.location.hash = idToLookAt;
 						});
 					}
+				
 				}
+			
 			});
+		
 		});
 	};
-	$('#GoToSplash, #GoToLearnMore, #GoToContact' ).scrollTo({ speed: 1400 });
+	
+	//goes to 
+	$('#GoToSplash,' + 
+		'#GoToLearnMore,'+ 
+		'#GoToContact')
+		.scrollTo({ speed: 1400 });
 
+     /*end scroll to*/
+	/******************************
+	new function
+	*******************************/	
+
+    //function to hide the footer
+    //per student suggestion
+
+    //hide your div initially
+	$("footer").hide(); 
+	//set a variable to get the div you want to scroll past
+    var topOfOthDiv = $("#scrollDiv")
+    .offset().top;
+    //make a function to show the footer at some point
+    $(window).scroll(function() {
+    	//scrolled past the other div?
+        if($(window).scrollTop() > topOfOthDiv) { 
+        	//reached the desired point -- show div
+            $("footer").show(800); 
+        }
+        else{
+        	/*if anything else then hide*/
+        	$("footer").hide(500); 
+        	/*up and down sho and hide*/
+        }
+    });
 });
