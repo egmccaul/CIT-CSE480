@@ -114,7 +114,6 @@
                 <a class="navbar-brand" href="index.php"><img src="img/trailmixacorn.png" alt="TrailMix" style="width:auto;height:20px;"></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <div class="collapse navbar-collapse" id="myNavbar">
 				<?php if(((basename($_SERVER['PHP_SELF'])) == "index.php") && isset($_SESSION["email"])){ ?>
 				<ul class="nav navbar-nav">
                     <li><a id="GoToSplash" href="#splash-screen">Home</a></li>
@@ -140,55 +139,54 @@
 				</ul>
 			<?php } ?>
 
-                <!--Places the signup button on the right-hand side of the navbar,
-                as well as the login dropdown-->
-                <ul class="nav navbar-nav navbar-right">
-                    <?php
-                        /* Checks if a user is already signed in. If signed in, it
-                        will display user's name and log out button.*/
-                        if(isset($_SESSION["email"])){
-                    ?>
-						<li><h4 style="color:white; font-size: 15px">Welcome, <?php echo $_SESSION["name"];?> </h4></li>
-						<li>
-							<form class="navbar-form">
-								<a href="account.php" class="btn btn-trailmix active" <?php session_write_close();?>>Account</a>
-							</form>
-						</li>
-						<li>
-							<form class="navbar-form">
-								<a href="logout.php" class="btn btn-trailmix active">Logout</a>
-							</form>
-						</li>
-                    <?php
-                        } else {
-                            /* If user is not signed in, it will display login and signup
-                            buttons.*/
-                    ?>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
-							<div class="dropdown-menu">
+            <!--Places the signup button on the right-hand side of the navbar,
+              as well as the login dropdown-->
+			<ul class="nav navbar-nav navbar-right">
+				<?php
+					/* Checks if a user is already signed in. If signed in, it
+					will display user's name and log out button.*/
+					if(isset($_SESSION["email"])){
+				?>
+					<li><h4 style="color:white; font-size: 15px">Welcome, <?php echo $_SESSION["name"];?> </h4></li>
+					<li>
+						<form class="navbar-form">
+							<a href="account.php" class="btn btn-trailmix active" <?php session_write_close();?>>Account</a>
+						</form>
+					</li>
+					<li>
+						<form class="navbar-form">
+							<a href="logout.php" class="btn btn-trailmix active">Logout</a>
+						</form>
+					</li>
+				<?php
+					} else {
+						/* If user is not signed in, it will display login and signup
+						buttons.*/
+				?>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
+						<div class="dropdown-menu">
 
-								<form id="login" method="POST">
-									<div class="form-group">
-										<input type="text" name="logEmail" class="form-control" placeholder="Email">
-									</div>
-									<div class="form-group">
-										<input type="password" name="logPassword" class="form-control" placeholder="Password">
-									</div>
-									<div class="form-group">
-										<button class="btn btn-trailmix">Login</button>
-									</div>
-								</form>
-							</div>
-						</li>
-						<li>
-							<form class="navbar-form">
-								<a href="register.php" class="btn btn-trailmix active"<?php session_write_close();?>>Sign Up</a>
+							<form id="login" method="POST">
+								<div class="form-group">
+									<input type="text" name="logEmail" class="form-control" placeholder="Email">
+								</div>
+								<div class="form-group">
+									<input type="password" name="logPassword" class="form-control" placeholder="Password">
+								</div>
+								<div class="form-group">
+									<button class="btn btn-trailmix">Login</button>
+								</div>
 							</form>
-						</li>
-                    <?php } ?>
-                </ul>
-            </div>
+						</div>
+					</li>
+					<li>
+						<form class="navbar-form">
+							<a href="register.php" class="btn btn-trailmix active"<?php session_write_close();?>>Sign Up</a>
+						</form>
+					</li>
+				<?php } ?>
+			</ul>
         </div>
     </nav>
 <div class="pagewrapper">
