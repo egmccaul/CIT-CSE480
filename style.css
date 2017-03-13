@@ -72,10 +72,15 @@ WELCOME PAGE
 /* Note: end of page wrapper is contained in the footer, right before the body end tag*/
 /*  .pagewrapper{}*/
 
-
+	.btn{
+		background-color: #e1be24;
+   		color: #222;
+   		text-align: center;
+   		
+	}
     .btn-trailmix {
     background-color: #e1be24;
-    color: #fff;
+    color: #222;
 }
 
     /* Adds formatting for the brand icon.*/
@@ -528,6 +533,10 @@ turn yellow*/
 /*hovering over about
 turn yellow*/
 #GoToAboutUs:hover{
+  color: #e1be24;
+}
+
+#contactUs:hover{
   color: #e1be24;
 }
 

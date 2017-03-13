@@ -119,23 +119,32 @@
                     <li><a id="GoToSplash" href="#splash-screen">Home</a></li>
                     <li><a id="GoToLearnMore" href="#learn-more">Learn More</a></li>
                     <li><a id="GoToAboutUs" href="#about-us">About</a></li>
+                    <li><a id="contactUs" href="contact.php">Contact Us</a></li>
+                    <!-- adding a contact page -->
 					<li><a href="album.php">Album</a></li>
+
                 </ul>
 				<?php } else if((basename($_SERVER['PHP_SELF'])) == "index.php"){ ?>
 				<ul class="nav navbar-nav">
                     <li><a id="GoToSplash" href="#splash-screen">Home</a></li>
                     <li><a id="GoToLearnMore" href="#learn-more">Learn More</a></li>
+                    <li><a id="contactUs" href="contact.php">Contact Us</a></li>
+                    <!-- adding a contact page -->
                     <li><a id="GoToAboutUs" href="#about-us">About</a></li>
                 </ul>
 				<?php } else if(isset($_SESSION["email"])){ ?>
                 
 				<ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a></li>
+                    <li><a id="contactUs" href="contact.php">Contact Us</a></li>
+                    <!-- adding a contact page -->
 					<li><a href="album.php">Album</a></li>
 				</ul>
 			<?php } else {?>
 				<ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a></li>
+                    <li><a id="contactUs" href="contact.php">Contact Us</a></li>
+                    <!-- adding a contact page -->
 				</ul>
 			<?php } ?>
 
@@ -182,7 +191,7 @@
 					</li>
 					<li>
 						<form class="navbar-form">
-							<a href="register.php" class="btn btn-trailmix active"<?php session_write_close();?>>Sign Up</a>
+							<a href="register.php" class="btn btn-trailmix active "<?php session_write_close();?>>Sign Up</a>
 						</form>
 					</li>
 				<?php } ?>

@@ -56,7 +56,7 @@ include('header.php');
 							<textarea name="message" id="message"></textarea>
 						</div>
 					</div>
-					<input name="Submit" type="submit" id="submit" class="btn btn-success" value="Send Message"/>
+					<input name="Submit" type="submit" id="submit" class="btn btn" value="Send Message"/>
 				</form>
 			</div>
 		</div>
