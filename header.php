@@ -135,14 +135,14 @@
 				<?php } else if(isset($_SESSION["email"])){ ?>
                 
 				<ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
+                    <li><a id="goHome" href="index.php">Home</a></li>
                     <li><a id="contactUs" href="contact.php">Contact Us</a></li>
                     <!-- adding a contact page -->
 					<li><a href="album.php">Album</a></li>
 				</ul>
 			<?php } else {?>
 				<ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
+                    <li><a id="goHome" href="index.php">Home</a></li>
                     <li><a id="contactUs" href="contact.php">Contact Us</a></li>
                     <!-- adding a contact page -->
 				</ul>

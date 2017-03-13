@@ -8,10 +8,10 @@ include('header.php');
 			<br>
 			<br>
 			<!--Add the header to the top of the page.-->
-			<h1 id="page_title">Contact Us</h1>
+			<h1 id="page_title" class="contactTitle">Contact Us</h1>
 		</div>
 		<div class="row">
-			<div class="col-sm-8 col-sm-push-2" id="form_layout">
+			<div class="col-sm-8 col-sm-push-2 contact-form" id="form_layout">
 			
 				<form class="form-horizontal" action="mailer.php" method="post" name="form1" id="form1" onsubmit="MM_validateForm('from','','RisEmail','subject','','R','verif_box','','R','message','','R');return document.MM_returnValue">
 					<br>
@@ -56,7 +56,7 @@ include('header.php');
 							<textarea name="message" id="message"></textarea>
 						</div>
 					</div>
-					<input name="Submit" type="submit" id="submit" class="btn btn" value="Send Message"/>
+					<input name="Submit" type="submit" id="submit" class="btn btn contactSubmitBtn" value="Send Message"/>
 				</form>
 			</div>
 		</div>

@@ -48,9 +48,9 @@ which is used by every page*/
 
     /*ease transition sets slight animation on for sizing*/
 
-    div {
+    /*div {
       transition: all 2s ease; 
-    }
+    }*/
 
     p {
        transition: all 2s ease;
@@ -247,12 +247,29 @@ CONTENT SECTION for middle section - PARALLAX
   margin-bottom: 10px;
 }
 
+/*******************************************
+Contact Page
+*******************************************/
+.contactSubmitBtn{
+  margin:0 35%;
+}
+
+.contactTitle{
+  margin: 5% 30% -10%;
+  overflow: hidden;
+  text-align: center;
+  color: #e1be24;
+
+}
+
+
 /********************************************
 REGISTRATION PAGE 
  ***********************************************/
   #form_layout{
-    margin: 200px auto 0;
+    margin: 15% auto 0;
     display: block;
+    overflow: hidden;
     background-color:rgba(22,25,26, 0.7);
     color: #eccf14;
     border-radius: 10px;
@@ -266,6 +283,12 @@ REGISTRATION PAGE
   }
   #form_layout p{
     padding-left: 20px;
+  }
+  @media(max-width: 450px){
+    #form_layout{
+      margin-top: 18%;
+      overflow: hidden;
+    }
   }
 
 /********************************************
@@ -502,12 +525,16 @@ PASSWORD METER BAR
 
 
 
+/**************************************************
+Media queries
+****************************************************/
+@media(max-width:400px){}
 
-  /**************************************************
+
+/**************************************************
 
   JS STYLES
-
-  /********************************************/
+/********************************************/
   /*adding class for jquery
   to change styles by
   defining them here*/
@@ -523,6 +550,12 @@ turn yellow*/
 #GoToSplash:hover{
   color: #e1be24;
 }
+
+#gohome:hover{
+  color: #e1be24;
+ /* adding this for all pages*/
+}
+
 
 /*hovering over learnmore
 turn yellow*/
