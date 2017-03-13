@@ -65,7 +65,7 @@ $(document).ready(function(){
 	//goes to with speed
 	$('#GoToSplash,' + 
 		'#GoToLearnMore')
-		.scrollTo({ speed: 2000 });
+		.scrollTo({ speed: 2500 });
 
 	// seperate scroll to 
 	// and with this we want to go 
@@ -74,7 +74,7 @@ $(document).ready(function(){
 	// one millisecond
 	// straight to About US
 	$('#GoToAboutUs')
-	.scrollTo({ speed: 1 });
+	.scrollTo({ speed: 2500 });//changed speed to 2.5 sec..more pleaseing
 
      /*end scroll to*/
 	/******************************
