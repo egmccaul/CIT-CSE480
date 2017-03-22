@@ -536,19 +536,20 @@
 					$number_rows = $newCam_Check->fetchColumn();
 
 					// If a user is found to match the criteria
-					if ($number_rows = != false) {
+					if ($number_rows != false) {
 						?> <script>window.alert('Camera name or ID is already in use.');</script><?php
 					} else {
-						/* if it is not associated with the user, then insert new association into camera table. */
+						/* if it is not associated with the user, then update new association into camera table. */
 						$newCam_Insert = $dbh->prepare("UPDATE camera SET USER_ID =:id, CAMERA_NAME=:cam_name, CAMERA_DESC=:cam_desc WHERE CAMERA_ID =:cam_id");
 				
 						/* Bind new submitted email string to prevent SQL injection. */
 						$newCam_Insert->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
-						$newCam_Insert->bindParam(':cam_id', $_SESSION['add_camera_id'], PDO::PARAM_INT);
+						$newCam_Insert->bindParam(':cam_id', $_POST['add_camera_id'], PDO::PARAM_INT);
 						$newCam_Insert->bindParam(':cam_name', $_POST['add_camera_name'], PDO::PARAM_STR);
 						$newCam_Insert->bindParam(':cam_desc', $_POST['add_camera_desc'], PDO::PARAM_STR);
 						
 						// Executes query to find other account which might already use this new email.
+						$insertExecuted = $newCam_Insert->execute();						  
 						if ($insertExecuted = true){
 							unset($_POST['add_camera_name']);
 							unset($_POST['add_camera_desc']);
@@ -629,7 +630,6 @@
 					$currentCam_name = $currentCam_data['CAMERA_NAME'];
 					$currentCam_desc = $currentCam_data['CAMERA_DESC'];
 				
-							}
 			?>
 			<!-- Outputs fields to edit the camera information. -->
 			<br>
