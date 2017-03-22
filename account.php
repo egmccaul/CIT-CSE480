@@ -3,6 +3,58 @@
 	include('header.php');
 	
 	session_start();
+	/* This holds the information regarding the update information for the selected camera. */
+	/* outputs new camera name and description of the camera selected */
+	if ((isset($_POST['edit_camera_name'])) && ($_POST['edit_camera_name'] <> "") && (isset($_POST['edit_camera_desc'])) && ($_POST['edit_camera_desc'] <> "")){
+		$_SESSION['new_cam_id'] = $_SESSION['current_cam'];
+		$_SESSION['new_cam_name'] = $_POST['edit_camera_name'];
+		$_SESSION['new_cam_desc'] = $_POST['edit_camera_desc'];
+		
+		/*echo $_SESSION['new_cam_id'];
+		echo $_SESSION['new_cam_name'];
+		echo $_SESSION['new_cam_desc'];*/
+		
+		
+		/* SQL to check whether camera name already in use by the user. */
+		$updateCam_Check = $dbh->prepare("SELECT * FROM camera WHERE CAMERA_NAME=:cam_name AND USER_ID=:id");
+
+		/* Bind variable strings to prevent SQL injection. */
+		$updateCam_Check->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
+		$updateCam_Check->bindParam(':cam_name', $_SESSION['new_cam_name'], PDO::PARAM_STR);
+		
+		// Executes query to find camera with same name.
+		$executed = $updateCam_Check->execute();
+		
+		// Count number of rows to see if any are found.
+		$number_rows = $updateCam_Check->fetchColumn();
+
+		// If a user is found to match the criteria give error, otherwise update camera information.
+		if ($number_rows != false) {
+			?> <script>window.alert('Camera name already in use.');</script><?php
+		} else {
+			/* if it is not associated with the user, then insert new association into camera table. */
+			$updateCam_Insert = $dbh->prepare("UPDATE camera SET CAMERA_NAME=:cam_name, CAMERA_DESC=:cam_desc WHERE CAMERA_ID =:cam_id");
+	
+			/* Bind new submitted email string to prevent SQL injection. */
+			$updateCam_Insert->bindParam(':cam_id', $_SESSION['new_cam_id'], PDO::PARAM_INT);
+			$updateCam_Insert->bindParam(':cam_name', $_SESSION['new_cam_name'], PDO::PARAM_STR);
+			$updateCam_Insert->bindParam(':cam_desc', $_SESSION['new_cam_desc'], PDO::PARAM_STR);
+			
+			// Executes query to find other account which might already use this new email.
+			$updateExecuted = $updateCam_Insert->execute();
+			
+			// Check whether it executed successfully.
+			if ($updateExecuted == true){
+				echo "<script>window.alert('Camera information updated successfully.');</script>";
+			} else {
+				echo "<script>window.alert('Camera information failed to update.');</script>";
+			}
+		}
+	} else {
+		unset($_SESSION['new_cam_id']);
+		unset($_SESSION['new_cam_name']);
+		unset($_SESSION['new_cam_desc']);
+	}
 
 /* This holds the information regarding the selected camera to be edited. */
 	/* outpus current camera id of the camera selected to be edited for testing purposes. */
@@ -11,14 +63,20 @@
 	/* If a camera is selected to be edited, set a session variable. */
 	if ((isset($_POST['edit_cam_id'])) && ($_POST['edit_cam_id'] <> "")){
 		$_SESSION['current_cam'] = $_POST['edit_cam_id'];
+		$_SESSION['current_cam_name'] = $_POST['edit_cam_name'];
+		$_SESSION['current_cam_desc'] = $_POST['edit_cam_desc'];
 	/* If camera is not selected, verify that the session variable is no longer set. */
 	} else {
 		unset($_SESSION['current_cam']);
+		unset($_SESSION['current_cam_name']);
+		unset($_SESSION['current_cam_desc']);
 	}
 	
 	/* If the cancel button is selected when editing a camera, clear session variable. */
 	if ((isset($_POST['camera_cancel'])) && ($_POST['camera_cancel'] <> "")){
 		unset($_SESSION['current_cam']);
+		unset($_SESSION['current_cam_name']);
+		unset($_SESSION['current_cam_desc']);
 	}
 	
 /* This is the php code that will allow you to push the data to the database. */
@@ -442,9 +500,9 @@
 							</div>
 							<!-- Holds hidden inputs for each of these criteria. Used for generating prefilled edit fields. -->
 							<div class="col-md-2">
-								<input name="edit_cam_id"style="display:none;" value="<?php echo $cam_id;?>"></input>
-								<input name="edit_cam_name"style="display:none;" value="<?php echo $cam_name;?>"></input>
-								<input name="edit_cam_desc"style="display:none;" value="<?php echo $cam_desc;?>"></input>
+								<input name="edit_cam_id" style="display:none;" value="<?php echo $cam_id;?>"></input>
+								<input name="edit_cam_name" style="display:none;" value="<?php echo $cam_name;?>"></input>
+								<input name="edit_cam_desc" style="display:none;" value="<?php echo $cam_desc;?>"></input>
 								<button class="btn btn-trailmix" formmethod="post">Edit <span class="glyphicon glyphicon-edit"></span></button>
 							</div>
 							<br>
@@ -464,11 +522,12 @@
 				if ((isset($_POST['add_camera_name'])) && (isset($_POST['add_camera_desc'])) && (isset($_POST['add_camera_id']))){
 										
 					/* Verify the camera name is not already associated with the user. */
-					$newCam_Check = $dbh->prepare("");
+					$newCam_Check = $dbh->prepare("SELECT * FROM camera WHERE (CAMERA_ID =:cam_id AND USER_ID =:id) OR (CAMERA_NAME=:cam_name AND USER_ID=:id)");
 			
 					/* Bind new submitted email string to prevent SQL injection. */
 					$newCam_Check->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
 					$newCam_Check->bindParam(':cam_name', $_POST['add_camera_name'], PDO::PARAM_STR);
+					$newCam_Check->bindParam(':cam_id', $_POST['add_camera_id'], PDO::PARAM_STR);
 					
 					// Executes query to find other account which might already use this new email.
 					$executed = $newCam_Check->execute();
@@ -477,20 +536,28 @@
 					$number_rows = $newCam_Check->fetchColumn();
 
 					// If a user is found to match the criteria
-					if ($number_rows = 1) {
-						?> <script>window.alert('Camera name is already in use.');</script><?php
+					if ($number_rows = != false) {
+						?> <script>window.alert('Camera name or ID is already in use.');</script><?php
 					} else {
 						/* if it is not associated with the user, then insert new association into camera table. */
-						$newCam_Insert = $dbh->prepare("");
+						$newCam_Insert = $dbh->prepare("UPDATE camera SET USER_ID =:id, CAMERA_NAME=:cam_name, CAMERA_DESC=:cam_desc WHERE CAMERA_ID =:cam_id");
 				
 						/* Bind new submitted email string to prevent SQL injection. */
 						$newCam_Insert->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
-						$newCam_Insert->bindParam(':cam_id', $_SESSION['cam_id'], PDO::PARAM_INT);
+						$newCam_Insert->bindParam(':cam_id', $_SESSION['add_camera_id'], PDO::PARAM_INT);
 						$newCam_Insert->bindParam(':cam_name', $_POST['add_camera_name'], PDO::PARAM_STR);
 						$newCam_Insert->bindParam(':cam_desc', $_POST['add_camera_desc'], PDO::PARAM_STR);
 						
 						// Executes query to find other account which might already use this new email.
-						$executed = $newCam_Check->execute();
+						if ($insertExecuted = true){
+							unset($_POST['add_camera_name']);
+							unset($_POST['add_camera_desc']);
+							unset($_POST['add_camera_id']);
+							echo "<script>window.alert('Camera added successfully!');</script>";
+							echo "<script>location.reload();</script>";
+						}else{
+							echo "<script>window.alert('Camera addition failed!');</script>";
+						}
 					}
 				}
 			?>
@@ -502,14 +569,14 @@
 				</div>
 				<br>
 				<br>
-				<form>
+				<form method='post'>
 					<!-- Input for camera ID. -->
 					<div class="row">
 						<div class="col-md-3">
 							<label for="add_camera_id">Camera ID:</label>
 						</div>
 						<div class="col-md-8">
-							<input id="add_camera_id" type="text" name="camera_id" class="form-control">
+							<input id="add_camera_id" type="text" name="add_camera_id" class="form-control">
 						</div>
 					</div>
 					<br>
@@ -519,7 +586,7 @@
 							<label for="add_camera_name">Camera Name:</label>
 						</div>
 						<div class="col-md-8">
-							<input id="add_camera_name" type="text" name="camera_name" class="form-control">
+							<input id="add_camera_name" type="text" name="add_camera_name" class="form-control">
 						</div>
 					</div>
 					<br>
@@ -529,7 +596,7 @@
 							<label for="camera_desc">Camera Description:</label>
 						</div>
 						<div class="col-md-8">
-							<input id="camera_desc" type="text" name="camera_desc" class="form-control">
+							<input id="camera_desc" type="text" name="add_camera_desc" class="form-control">
 						</div>
 					</div>
 					<br>
@@ -562,46 +629,7 @@
 					$currentCam_name = $currentCam_data['CAMERA_NAME'];
 					$currentCam_desc = $currentCam_data['CAMERA_DESC'];
 				
-					// Checks whether the camera name and camera description have been updated.
-					if ((isset($_POST['camera_name'])) && (isset($_POST['camera_desc']))){
-						
-						/* SQL to check whether camera name already in use by the user. */
-						$newCam_Check = $dbh->prepare("");
-				
-						/* Bind variable strings to prevent SQL injection. */
-						$newCam_Check->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
-						$newCam_Check->bindParam(':cam_name', $_POST['camera_name'], PDO::PARAM_STR);
-						
-						// Executes query to find camera with same name.
-						$executed = $newCam_Check->execute();
-						
-						// Count number of rows to see if any are found.
-						$number_rows = $newCam_Check->fetchColumn();
-
-						// If a user is found to match the criteria give error, otherwise update camera information.
-						if ($number_rows = 1) {
-							?> <script>window.alert('Camera name already in use.');</script><?php
-						} else {
-							/* if it is not associated with the user, then insert new association into camera table. */
-							$newCam_Insert = $dbh->prepare("");
-					
-							/* Bind new submitted email string to prevent SQL injection. */
-							$newCam_Insert->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
-							$newCam_Insert->bindParam(':cam_id', $_SESSION['current_cam'], PDO::PARAM_INT);
-							$newCam_Insert->bindParam(':cam_name', $_POST['camera_name'], PDO::PARAM_STR);
-							$newCam_Insert->bindParam(':cam_desc', $_POST['camera_desc'], PDO::PARAM_STR);
-							
-							// Executes query to find other account which might already use this new email.
-							$executed = $newCam_Check->execute();
-							
-							// Check whether it executed successfully.
-							if ($executed == true){
-								echo "<script>window.alert('Camera information updated successfully.');</script>";
-							} else {
-								echo "<script>window.alert('Camera information failed to update.');</script>";
 							}
-						}
-					}
 			?>
 			<!-- Outputs fields to edit the camera information. -->
 			<br>
@@ -620,7 +648,7 @@
 							<label for="camera_name">Camera Name:</label>
 						</div>
 						<div class="col-md-8">
-							<input id="camera_name" type="text" name="camera_name" class="form-control" value="<?php echo $currentCam_name;?>">
+							<input id="camera_name" type="text" name="edit_camera_name" class="form-control" value="<?php echo $currentCam_name;?>">
 						</div>
 					</div>
 					<br>
@@ -630,7 +658,7 @@
 							<label for="camera_desc">Camera Description:</label>
 						</div>
 						<div class="col-md-8">
-							<input id="camera_desc" type="text" name="camera_desc" class="form-control" value="<?php echo $currentCam_desc;?>">
+							<input id="camera_desc" type="text" name="edit_camera_desc" class="form-control" value="<?php echo $currentCam_desc;?>">
 						</div>
 					</div>
 					<br>
