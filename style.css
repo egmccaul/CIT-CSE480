@@ -356,7 +356,7 @@ and pagination. */
 #album_page .img-thumbnail{
   height:300px;
   width:400px;
-  margin: 10px;
+  /*margin: 10px;*/
   background-color: transparent;
   border-color: transparent;
 }
@@ -412,7 +412,7 @@ and pagination. */
 .carousel-caption{
   width:100%;
   height: 250px;
-  background-color: rgba(22,25,26, 0.8);
+  /*background-color: rgba(22,25,26, 0.8);*/
   position: absolute;
   left:0;
   right:auto;
@@ -426,11 +426,15 @@ and pagination. */
   text-align:left;
 }
 
+/* adds styling to the photo modal image navigation(previous and next) */
 .carousel-control{
   heigth:80%;
   top:200px;
   bottom:auto;
-  color: black;
+  color: #e1be24; 
+}
+.carousel-control:hover{
+	color:rgb(22,25,26);
 }
 
 /* Sets the modal image to be centered in the body section. */
@@ -449,7 +453,7 @@ and pagination. */
         .modal-dialog {
           width: 80%; /* New width for default modal */
         }
-
+}
 .thumbnail {
     opacity: .8;
     background-color: black;
@@ -485,6 +489,18 @@ button{
     margin: 0 auto;
 }
 
+/* Changes the background of the pop-up modal . */
+.modal-content{
+	background: rgba(22,25,26, 0.8);
+}
+
+/* Changes the color of the modal close buttons. */
+.close{
+	color: white;
+}
+.close:hover{
+	color: #e1be24;
+}
 
 
 /********************************************
@@ -528,7 +544,9 @@ PASSWORD METER BAR
 /**************************************************
 Media queries
 ****************************************************/
-@media(max-width:400px){}
+@media(max-width:400px){
+	
+}
 
 
 /**************************************************

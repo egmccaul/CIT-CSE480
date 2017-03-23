@@ -107,15 +107,15 @@ session_start();
 			}
 	?>
 
-	<div class="row" id="gallery" >
+	<div class="row text-center" id="gallery" >
 
 		<!-- Holds the button to sort the photos by either oldest or newest first. -->
 		<div class="col-xs-12">
 			<h1 class="page-header album_title">Photos</h1>
 			<button id="back_button" class="btn btn-primary" onclick='window.location.href="album.php"'><span class= "glyphicon glyphicon-circle-arrow-left"> </span> Back</button>
 			<form name="Sort" method="post">
-				<button class="btn btn-trailmix" id="asc_sort" type="submit" name="sort_type2" value="asc">Ascending <span class="glyphicon glyphicon-triangle-top"></span></button>
-				<button class="btn btn-trailmix" id="desc_sort" type="submit" name="sort_type2" value="desc">Descending <span class="glyphicon glyphicon-triangle-bottom"></span></button>
+				<button class="btn btn-trailmix" id="asc_sort" type="submit" name="sort_type2" value="asc">Oldest <span class="glyphicon glyphicon-triangle-top"></span></button>
+				<button class="btn btn-trailmix" id="desc_sort" type="submit" name="sort_type2" value="desc">Newest <span class="glyphicon glyphicon-triangle-bottom"></span></button>
 			</form>
 		</div>
 
