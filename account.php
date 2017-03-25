@@ -551,6 +551,13 @@
 						// Executes query to find other account which might already use this new email.
 						$insertExecuted = $newCam_Insert->execute();						  
 						if ($insertExecuted = true){
+							$file_Structure = './Pictures/User'.$_SESSION['user_id'].'/Camera'.$_POST['add_camera_id'];
+							echo $file_Structure;
+							//mkdir('./Pictures/'.$_SESSION['user_id'].'/Camera'.$_POST['add_camera_id'], 0777);
+							if (!mkdir($file_Structure, 0777, true)) {
+    								die('Failed to create folders...');
+							}
+
 							unset($_POST['add_camera_name']);
 							unset($_POST['add_camera_desc']);
 							unset($_POST['add_camera_id']);
