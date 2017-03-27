@@ -25,7 +25,7 @@ which is used by every page*/
         background-color:rgba(22,25,26, 0.4);
     }
 
-    #foot{
+    #foot, #footindex{
     position:fixed;
         bottom:0px;
         width:100%;
@@ -593,7 +593,7 @@ turn yellow*/
 
 /*hovering over about
 turn yellow*/
-.dropdown:hover{
+#logbtn:hover{
   color: #e1be24;
 }
 
