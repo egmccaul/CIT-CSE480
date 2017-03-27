@@ -26,7 +26,7 @@ include('header.php');
 			</div> 
 			<!-- end of learn-more div class -->
 			<div class ="col-md-6 feature-img">
-				<img src="http://www.besttrailcamerareviews.org/wp-content/uploads/2015/01/Moultrie-M-880-outside.jpg"
+				<img src="img/maxresdefault.jpg"
 				alt ="motion activated camera mounted to tree" />
 			</div>
 		</div>
@@ -93,14 +93,38 @@ include('header.php');
 
 		</div> -->
 	</div>
+	<!-- needed to make an extra copy
+	of our footer and not include
+	footer.php in this file in order for
+	.hide() .show() animations
+	to work
+	this also involves includeing the 
+	body and html tags to be included on this
+	index.php. Hence every other page includes
+	the footer except for this one.
+	also styling #footindex has been added
+	next to css #foot had to include our 
+	scripts on this page as well. -->
+	<div id="footindex" class="col-sm-12">
+            <footer>
+                <p>CIT/CSE 480: Senior Capstone. &copy; 2017</p>
+				<p>Abdul Naeem, Emily McCauley, Patrick Cordero, Peter Kalinowski, Tyler Downie,
+				Tyler Miller</p>
+            </footer>
+        </div>
 
-	<!-- <div class="row content-section">
-		<div class="container"> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-			<!-- </div> --><!-------- END PAGE_WRAPPER --------> 
 
+<script src="js/waypoints.min.js" type="text/javascript"></script>
+<script src="js/trailmix.js" type="text/javascript"></script>
+</body>
+</html>
 
+<!-- 
 <?php
 /* Adds in the footer at the bottom of the page.*/
-include('footer.php');
-?>
+//include('footer.php');
+?> -->

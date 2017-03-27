@@ -173,7 +173,7 @@
 						buttons.*/
 				?>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
+						<a href="#" id="logbtn" class="dropdown-toggle" data-toggle="dropdown">Login</a>
 						<div class="dropdown-menu">
 
 							<form id="login" method="POST">
