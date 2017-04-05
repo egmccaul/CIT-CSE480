@@ -504,7 +504,12 @@
 								<input name="edit_cam_name" style="display:none;" value="<?php echo $cam_name;?>"></input>
 								<input name="edit_cam_desc" style="display:none;" value="<?php echo $cam_desc;?>"></input>
 								<button class="btn btn-trailmix" formmethod="post">Edit <span class="glyphicon glyphicon-edit"></span></button>
+								<button class="btn btn-danger delBut">Delete <span><i class="fa fa-trash-o" aria-hidden="true"></i></span></button>
 							</div>
+							<!-- <div class="col-md-2 dangerBtn">
+						<br>
+						<button class="btn btn-danger delBut">Delete</button>
+					</div> -->
 							<br>
 							<br>
 						</div>
