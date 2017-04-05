@@ -71,6 +71,20 @@ WELCOME PAGE
 
 /* Note: end of page wrapper is contained in the footer, right before the body end tag*/
 /*  .pagewrapper{}*/
+  
+  /*delete button for accout.php and photos.php*/
+  .delBut{
+    font-size: 14px;
+        width: 69px;
+  }
+
+  .fa-trash-o{
+    font-size: 17px;
+    padding: 0px;
+    width: 2px;
+
+  }
+
 
 	.btn{
 		/*background-color: #e1be24;*/
