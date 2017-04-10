@@ -276,6 +276,19 @@ Contact Page
 
 }
 
+.contactp {
+    position: absolute;
+    top: 22%;
+    left: 25%;
+    color: #e1be24;
+}
+
+#message{
+    width: 100%;
+    height: 10%;
+    border-radius: 5px;
+}
+
 
 /********************************************
 REGISTRATION PAGE 
@@ -558,8 +571,76 @@ PASSWORD METER BAR
 /**************************************************
 Media queries
 ****************************************************/
-@media(max-width:400px){
+@media(max-width:1370px){
+  .contactp {
+    position: absolute;
+    top: 22%;
+    left: 20%;
+    color: #e1be24;
+
+  }
 	
+}
+
+@media(max-width:990px){
+  .contactp {
+    position: absolute;
+    top: 18%;
+    left: 15%;
+    color: #e1be24;
+
+  }
+  
+}
+
+@media(max-width:827px){
+  .contactp {
+    position: absolute;
+    top: 18%;
+    left: 15%;
+    color: #e1be24;
+
+  }
+  #form_layout {
+    margin: 20% auto 0;
+    display: block;
+  }
+  footer{
+    display: none;
+  }
+}
+
+@media(max-width:580px){
+  .contactTitle{
+    margin-top: -10%;
+  }
+  .contactp {
+    position: absolute;
+    top: 18%;
+    left: 15%;
+    color: #e1be24;
+
+  }
+  #form_layout {
+    margin: 25% auto 0;
+    display: block;
+}
+  footer{
+    display: none;
+  }
+}
+
+@media(max-width: 425px){
+  .contactp {
+    position: absolute;
+    top: 14%;
+    left: 10%;
+    color: #e1be24;
+}
+  #form_layout {
+    margin: 31% auto 0;
+    display: block;
+}
 }
 
 
