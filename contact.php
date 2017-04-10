@@ -9,6 +9,7 @@ include('header.php');
 			<br>
 			<!--Add the header to the top of the page.-->
 			<h1 id="page_title" class="contactTitle">Contact Us</h1>
+			<p class="contactp">If you have any questions, concerns or comments, please fill out the form below and we'll get back to you ASAP.</p>
 		</div>
 		<div class="row">
 			<div class="col-sm-8 col-sm-push-2 contact-form" id="form_layout">
