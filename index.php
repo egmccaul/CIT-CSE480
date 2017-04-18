@@ -80,31 +80,18 @@ include('header.php');
 	<div id="feature3-photo" class="row content-section photo-section">
     <div id="about-us">
 				<h2>About Us</h2>
-				<p class="p"> We at Inspired are a team of developers who love technology and are commited to providing our customers quality products.
+				<p class="p"> We at Inspired are a team of developers who love technology and are commited to providing quality products to our customers.
 				</p>
 				<p class="p"> We are looking to innovate different aspects of technology and hopefully allow these innovations to benefit the people that use them.
 				</p>
 				<p class="p"> TrailMix is a little project we decided to create to help bring to light the hobby of hunting and wildlife capture.
 				</p>
-				<p class="p last"> With TrailMix hunters and wildlife enthusiassts can now remotely manage their trail cameras without tediously visiting them daily.
+				<p class="p last"> With TrailMix hunters and wildlife enthusiasts can now remotely manage their trail cameras without tediously visiting them daily.
 				</p>
-			</div> <!-- end of about class -->
-		<!-- <div class="container">
+			</div> 
 
-		</div> -->
 	</div>
-	<!-- needed to make an extra copy
-	of our footer and not include
-	footer.php in this file in order for
-	.hide() .show() animations
-	to work
-	this also involves includeing the 
-	body and html tags to be included on this
-	index.php. Hence every other page includes
-	the footer except for this one.
-	also styling #footindex has been added
-	next to css #foot had to include our 
-	scripts on this page as well. -->
+	
 	<div id="footindex" class="col-sm-12">
             <footer>
                 <p>CIT/CSE 480: Senior Capstone. &copy; 2017</p>

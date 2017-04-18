@@ -62,36 +62,12 @@ $(document).ready(function(){
 		});
 	};
 	
-	//goes to with speed
-	$('#GoToSplash,' + 
-		'#GoToLearnMore')
-		.scrollTo({ speed: 2500 });
-
-	// seperate scroll to 
-	// and with this we want to go 
-	// straight to the scource
-	// so the speed is 
-	// one millisecond
-	// straight to About US
-	$('#GoToAboutUs')
-	.scrollTo({ speed: 2500 });//changed speed to 2.5 sec..more pleaseing
-
-     /*end scroll to*/
-	/******************************
 	
-	new function
+	$('#GoToSplash,' + '#GoToLearnMore').scrollTo({ speed: 2500 });
+	$('#GoToAboutUs').scrollTo({ speed: 2500 });
+
+
 	
-	*******************************/	
-
-    //function to hide the footer
-    //per student suggestion
-
-    //hide your div initially
-
-    /**********************************************
-    // changed code to involve only index footerID
-
-    ***********************************************/
 	$("#footindex").hide(); 
 	//set a variable to get the div you want to scroll past
     var topOfOthDiv = $("#scrollDiv")
