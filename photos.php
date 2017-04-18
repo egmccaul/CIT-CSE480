@@ -166,7 +166,7 @@ session_start();
 			<!-- Tells user what photos are being displayed, and total images in album. -->
 			<p>Showing <?php 
 				if ($totalPhotos > $photosPerPage){
-					echo ($startPhoto+1) . "-" . ($startPhoto+12) . " of " . $totalPhotos . "photos"; 
+					echo ($startPhoto+1) . "-" . ($startPhoto+12) . " of " . $totalPhotos . " photos"; 
 				} else {
 					echo $totalPhotos . " of " . $totalPhotos . " photos";
 				}?></p>
