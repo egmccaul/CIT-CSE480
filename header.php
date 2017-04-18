@@ -122,7 +122,7 @@
                     <li><a id="GoToAboutUs" href="#about-us">About</a></li>
                     <li><a id="contactUs" href="contact.php">Contact Us</a></li>
                     <!-- adding a contact page -->
-					<li><a href="album.php">Album</a></li>
+					<li><a id="albumsPageid" href="album.php">Album</a></li>
 
                 </ul>
 				<?php } else if((basename($_SERVER['PHP_SELF'])) == "index.php"){ ?>

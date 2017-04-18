@@ -672,9 +672,7 @@ turn yellow*/
 
 /*hovering over learnmore
 turn yellow*/
-#GoToLearnMore:hover{
-  color: #e1be24;
-}
+
 
 /*hovering over about
 turn yellow*/
@@ -690,6 +688,11 @@ turn yellow*/
 turn yellow*/
 #logbtn:hover{
   color: #e1be24;
+}
+
+#albumsPageid:hover{
+  color: #e1be24;
+
 }
 
 
