@@ -42,9 +42,9 @@ session_start();
 
 		// Verifies it was excuted
 		if ($executed = true){
-			echo '<script>alert("Update Worked?");</script>';
+			echo '<script>alert("Update Successful!");</script>';
 		} else {
-			echo '<script>alert("Update Failed?");</script>';
+			echo '<script>alert("Update Failed");</script>';
 		}
 	}
 	?>
