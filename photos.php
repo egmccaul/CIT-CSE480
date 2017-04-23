@@ -127,7 +127,7 @@ session_start();
 		$photoSlideLink = 0;
 		
 		// Check database for current available classes based on student criteria
-		$classStatement = $dbh->prepare("SELECT * FROM photo WHERE CAMERA_ID=:cam_id ORDER BY PHOTO_DATE " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
+		$classStatement = $dbh->prepare("SELECT * FROM photo WHERE CAMERA_ID=:cam_id ORDER BY photo_id " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
 
 		$classStatement->bindParam(':cam_id', $_SESSION['camera_id'], PDO::PARAM_STR);
 
@@ -220,7 +220,7 @@ session_start();
 							$loop_count = 0;
 							
 							// Check database for first 12 photos. Need to update SQL to pull images based on user, and camera ID. Good for current testing.
-							$classStatement = $dbh->prepare("SELECT * FROM photo WHERE CAMERA_ID=:cam_id ORDER BY PHOTO_DATE " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
+							$classStatement = $dbh->prepare("SELECT * FROM photo WHERE CAMERA_ID=:cam_id ORDER BY photo_id " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
 
 							$classStatement->bindParam(':cam_id', $_SESSION["camera_id"], PDO::PARAM_STR);
 
@@ -246,22 +246,25 @@ session_start();
 								<div class="item active"> <img src="<?php echo $photo_path?>" alt="">
 									<div class="carousel-caption">
 										<div id="photo_info">
-											<div class="col-xs-8">
+											<div class="col-xs-5">
 												<!-- Outputs the title of the photo. Currentlying using photo ID, might want to change to user defined name. -->
-												<h3>Photo Date: <?php echo $photo_date;?></h3>
 												<h3 id="photo_title">Image <?php echo $photo_id;?>: <?php echo $photo_name;?></h3>
 											</div>
 											<div class="col-xs-4">
+												<!-- Outputs the title of the photo. Currentlying using photo ID, might want to change to user defined name. -->
+												<h3 style="text-align:right;">Photo Date: <?php echo $photo_date;?></h3>
+											</div>
+											<div class="col-xs-3">
 												<!-- Holds a button to allow users to download image to device. -->
-												<a id="save" href="<?php echo $photo_path?>" class="btn btn-trailmix" role="button" download>Save Image ...</a>
+												<a id="save" href="<?php echo $photo_path?>" class="btn btn-trailmix" role="button" download style="text-align:center;width:125px;">Save Image ...</a>
 											</div>
-											<div class="col-xs-8">
+											<div class="col-xs-9">
 												<!-- Holds a description of the image. Currently hold place holder. Might want to change to user defined description. -->
-												<h4><?php echo $photo_desc;?></h4>
+												<h4 style="text-align:left;"><?php echo $photo_desc;?></h4>
 											</div>
-											<div class="col-xs-4">
+											<div class="col-xs-3">
 												<!-- Holds a button that will allow users to change image title and description. -->
-												<button class="btn btn-trailmix" id="edit_button" onclick='showContent("photo_update"); hideContent("photo_info");'>Edit <span class="glyphicon glyphicon-edit"></span></button>
+												<button class="btn btn-trailmix" id="edit_button" onclick='showContent("photo_update"); hideContent("photo_info");' style="text-align:center;width:125px;">Edit <span class="glyphicon glyphicon-edit"></span></button>
 											</div>
 										</div>
 										
@@ -320,22 +323,25 @@ session_start();
 									
 										<!-- Holds the general image information. -->
 										<div id="photo_info<?php echo $photo_id;?>">
-											<div class="col-xs-8">
-												<!-- Holds the image title. Currently using photo ID as placeholder. -->
-												<h3>Photo Date: <?php echo $photo_date;?></h3>
+											<div class="col-xs-5">
+												<!-- Outputs the title of the photo. Currentlying using photo ID, might want to change to user defined name. -->
 												<h3 id="photo_title">Image <?php echo $photo_id;?>: <?php echo $photo_name;?></h3>
 											</div>
 											<div class="col-xs-4">
+												<!-- Outputs the title of the photo. Currentlying using photo ID, might want to change to user defined name. -->
+												<h3 style="text-align:right;">Photo Date: <?php echo $photo_date;?></h3>
+											</div>
+											<div class="col-xs-3">
 												<!-- Holds button to download the image onto user's device. -->
-												<a id="save" href="<?php echo $photo_path?>" class="btn btn-trailmix" role="button" download>Save Image ...</a>
+												<a id="save" href="<?php echo $photo_path?>" class="btn btn-trailmix" role="button" download style="text-align:center;width:125px;">Save Image ...</a>
 											</div>
-											<div class="col-xs-8">
+											<div class="col-xs-9">
 												<!-- Holds the image description. Currently using photo ID as placeholder. -->
-												<h4><?php echo $photo_desc;?></h4>
+												<h4 style="text-align:left;"><?php echo $photo_desc;?></h4>
 											</div>
-											<div class="col-xs-4">
+											<div class="col-xs-3">
 												<!-- Holds button to allow users to enter user defined title and description. -->
-												<button class="btn btn-trailmix" id="edit_button" onclick='showContent("photo_update<?php echo $photo_id;?>"); hideContent("photo_info<?php echo $photo_id;?>");'>Edit <span class="glyphicon glyphicon-edit"></span></button>
+												<button class="btn btn-trailmix" id="edit_button" onclick='showContent("photo_update<?php echo $photo_id;?>"); hideContent("photo_info<?php echo $photo_id;?>");' style="text-align:center;width:125px;">Edit <span class="glyphicon glyphicon-edit"></span></button>
 											</div>
 										</div>
 										
