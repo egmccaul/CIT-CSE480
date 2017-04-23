@@ -118,20 +118,20 @@
 				<?php if(((basename($_SERVER['PHP_SELF'])) == "index.php") && isset($_SESSION["email"])){ ?>
 				<ul class="nav navbar-nav">
                     <li><a id="GoToSplash" href="#splash-screen">Home</a></li>
-                    
                     <li><a id="GoToAboutUs" href="#about-us">About</a></li>
-                    <li><a id="contactUs" href="contact.php">Contact Us</a></li>
                     <!-- adding a contact page -->
+                    <li><a id="contactUs" href="contact.php">Contact Us</a></li>
 					<li><a id="albumsPageid" href="album.php">Album</a></li>
 
                 </ul>
 				<?php } else if((basename($_SERVER['PHP_SELF'])) == "index.php"){ ?>
 				<ul class="nav navbar-nav">
                     <li><a id="GoToSplash" href="#splash-screen">Home</a></li>
-                    
-                    <li><a id="contactUs" href="contact.php">Contact Us</a></li>
-                    <!-- adding a contact page -->
                     <li><a id="GoToAboutUs" href="#about-us">About</a></li>
+                    
+					<!-- adding a contact page -->
+					<li><a id="contactUs" href="contact.php">Contact Us</a></li>
+                    
                 </ul>
 				<?php } else if(isset($_SESSION["email"])){ ?>
                 
