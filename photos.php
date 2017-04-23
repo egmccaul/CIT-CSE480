@@ -127,7 +127,7 @@ session_start();
 		$photoSlideLink = 0;
 		
 		// Check database for current available classes based on student criteria
-		$classStatement = $dbh->prepare("SELECT * FROM photo WHERE CAMERA_ID=:cam_id ORDER BY photo_id " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
+		$classStatement = $dbh->prepare("SELECT * FROM photo WHERE CAMERA_ID=:cam_id ORDER BY PHOTO_DATE " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
 
 		$classStatement->bindParam(':cam_id', $_SESSION['camera_id'], PDO::PARAM_STR);
 
@@ -220,7 +220,7 @@ session_start();
 							$loop_count = 0;
 							
 							// Check database for first 12 photos. Need to update SQL to pull images based on user, and camera ID. Good for current testing.
-							$classStatement = $dbh->prepare("SELECT * FROM photo WHERE CAMERA_ID=:cam_id ORDER BY photo_id " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
+							$classStatement = $dbh->prepare("SELECT * FROM photo WHERE CAMERA_ID=:cam_id ORDER BY PHOTO_DATE " . $sort_type . " LIMIT " . $startPhoto . "," . $photosPerPage);
 
 							$classStatement->bindParam(':cam_id', $_SESSION["camera_id"], PDO::PARAM_STR);
 
@@ -235,6 +235,7 @@ session_start();
 								$photo_name = $classRow['PHOTO_TITLE'];
 								$photo_desc = $classRow['PHOTO_DESC'];
 								$photo_path = $classRow['PHOTO_PATH'];
+								$photo_date = $classRow['PHOTO_DATE'];
 															
 								// Increments the loop count for the below if statement, to associate carousel slides.
 								$loop_count++;
@@ -247,6 +248,7 @@ session_start();
 										<div id="photo_info">
 											<div class="col-xs-8">
 												<!-- Outputs the title of the photo. Currentlying using photo ID, might want to change to user defined name. -->
+												<h3>Photo Date: <?php echo $photo_date;?></h3>
 												<h3 id="photo_title">Image <?php echo $photo_id;?>: <?php echo $photo_name;?></h3>
 											</div>
 											<div class="col-xs-4">
@@ -320,6 +322,7 @@ session_start();
 										<div id="photo_info<?php echo $photo_id;?>">
 											<div class="col-xs-8">
 												<!-- Holds the image title. Currently using photo ID as placeholder. -->
+												<h3>Photo Date: <?php echo $photo_date;?></h3>
 												<h3 id="photo_title">Image <?php echo $photo_id;?>: <?php echo $photo_name;?></h3>
 											</div>
 											<div class="col-xs-4">
