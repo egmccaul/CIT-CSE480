@@ -255,7 +255,7 @@ session_start();
 											</div>
 											<div class="col-xs-8">
 												<!-- Holds a description of the image. Currently hold place holder. Might want to change to user defined description. -->
-												<p><?php echo $photo_desc;?></p>
+												<h4><?php echo $photo_desc;?></h4>
 											</div>
 											<div class="col-xs-4">
 												<!-- Holds a button that will allow users to change image title and description. -->
@@ -328,7 +328,7 @@ session_start();
 											</div>
 											<div class="col-xs-8">
 												<!-- Holds the image description. Currently using photo ID as placeholder. -->
-												<p><?php echo $photo_desc;?></p>
+												<h4><?php echo $photo_desc;?></h4>
 											</div>
 											<div class="col-xs-4">
 												<!-- Holds button to allow users to enter user defined title and description. -->

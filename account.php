@@ -245,7 +245,7 @@
 		
 		session_write_close();
 		
-		header("Refresh: 5; url=account.php");
+		header("Refresh: 0; url=account.php");
 		
 	} else {
 ?>	
