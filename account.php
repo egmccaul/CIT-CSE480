@@ -290,10 +290,10 @@
 					<!-- Outputs users name above image. -->
 					<h4><?php echo "Welcome, ".$_SESSION['name']." ".$_SESSION['lname'];?></h4>
 				</div>
-				<div class="row">
+				<!--<div class="row">
 					<!-- enter user image here. Just using placeholder image at the moment. -->
-					<img src="http://mdepinet.org/wp-content/uploads/person-placeholder.jpg" class="img-responsive">
-				</div>
+					<!--<img src="http://mdepinet.org/wp-content/uploads/person-placeholder.jpg" class="img-responsive">
+				</div>-->
 				<div class="row">
 					<div class="col-md-10">
 						<h3>Profile</h3>
