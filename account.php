@@ -347,10 +347,10 @@
 					<!-- Outputs users name above image. -->
 					<h4><?php echo "Welcome, ".$_SESSION['name']." ".$_SESSION['lname'];?></h4>
 				</div>
-				<div class="row">
+				<!--<div class="row">
 					<!-- enter user image here. Just using placeholder image at the moment. -->
-					<img src="http://mdepinet.org/wp-content/uploads/person-placeholder.jpg" class="img-responsive">
-				</div>
+					<!--<img src="http://mdepinet.org/wp-content/uploads/person-placeholder.jpg" class="img-responsive">
+				</div>-->
 				<div class="row">
 					<div class="col-md-10">
 						<h3>Profile</h3>
@@ -433,9 +433,10 @@
 							</div>
 						</div>
 					</div>
+					<br>
 					<div class="form-group">
 						<button type="submit" class="btn btn-success">Submit</button>
-						<button type="reset" class="btn btn-danger">Reset Form</button>
+						<button type="reset" class="btn btn-primary">Reset Form</button>
 					</div>
 				</form>
 				<br>

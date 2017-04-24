@@ -104,7 +104,7 @@ session_start();
 		<?php
 		
 		// Check database for current available classes based on student criteria
-		$albumStatement = $dbh->prepare("SELECT * FROM camera WHERE USER_ID=:user_id");
+		$albumStatement = $dbh->prepare("SELECT * FROM camera WHERE USER_ID=:user_id ORDER BY CAMERA_ID " . $sort_type);
 
 		$albumStatement->bindParam(':user_id', $_SESSION["user_id"], PDO::PARAM_STR);
 
