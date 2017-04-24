@@ -252,7 +252,7 @@ session_start();
 											</div>
 											<div class="col-xs-4">
 												<!-- Outputs the title of the photo. Currentlying using photo ID, might want to change to user defined name. -->
-												<h3 style="text-align:right;">Photo Date: <?php echo $photo_date;?></h3>
+												<h3 style="text-align:right;">Upload Date: <?php echo $photo_date;?></h3>
 											</div>
 											<div class="col-xs-3">
 												<!-- Holds a button to allow users to download image to device. -->
@@ -329,7 +329,7 @@ session_start();
 											</div>
 											<div class="col-xs-4">
 												<!-- Outputs the title of the photo. Currentlying using photo ID, might want to change to user defined name. -->
-												<h3 style="text-align:right;">Photo Date: <?php echo $photo_date;?></h3>
+												<h3 style="text-align:right;">Upload Date: <?php echo $photo_date;?></h3>
 											</div>
 											<div class="col-xs-3">
 												<!-- Holds button to download the image onto user's device. -->
