@@ -93,7 +93,7 @@ session_start();
 
 		<!-- Holds the button to sort the photos by either oldest or newest first. -->
 		<div class="col-xs-12">
-			<h1 class="page-header album_title">Albums</h1>
+			<h1 class="page-header album_title">Camera Albums</h1>
 			<form name="Sort" method="post">
 				<button class="btn btn-trailmix" id="asc_sort" type="submit" name="sort_type" value="asc">Ascending <span class="glyphicon glyphicon-triangle-top"></span></button>
 				<button class="btn btn-trailmix" id="desc_sort" type="submit" name="sort_type" value="desc">Descending <span class="glyphicon glyphicon-triangle-bottom"></span></button>
@@ -133,7 +133,7 @@ session_start();
 				<!-- Outputs a tile for every photo result found in database, until given limit is reached. -->
 				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
 					<div id="photo_tile" class="col-xs-12 text-center">
-						<p>Album: <?php echo $camera_name;?></p>
+						<p><?php echo "Camera ".$camera_id.": ".$camera_name;?></p>
 						<p>Description: <?php echo $camera_desc;?></p>
 						
 						<img class="img-thumbnail" src='http://placehold.it/400x300' onclick='alert("Album currently empty!");'>
@@ -167,7 +167,7 @@ session_start();
 				?>	<!-- Goes in main div below: data-toggle="modal" data-target="#myModal" -->
 					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
 						<div id="photo_tile" class="col-xs-12 text-center">
-							<p>Album: <?php echo $camera_name;?></p>
+							<p><?php echo "Camera ".$camera_id.": ".$camera_name;?></p>
 							<p>Description: <?php echo $camera_desc;?></p>
 							
 							<input class="img-thumbnail" type="image" name="album_select" src='<?php echo $fileName?>' value='<?php echo $camera_id;?>' />
