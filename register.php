@@ -42,10 +42,10 @@ include('header.php');
 					$insertExecuted = $insertState->execute();
 
 					if ($insertExecuted = true){
-						echo "<script>window.alert('Welcome! You have successfully created an account..');</script>";
+						echo "<script>window.alert('Welcome! You have successfully created an account.');</script>";
 						
 						// Redirects after successful to home page
-						header("Location: index.php");
+						header("Refresh: 0; url=index.php");
 					} 
 				}				
 			} else {
