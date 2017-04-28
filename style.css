@@ -338,6 +338,59 @@ ACCOUNT PAGE
     classes/ids that hold pagewrapper and it's own div in now we have this account_page.*/
 }
 
+/********************************************
+USER PROFILE PICTURE  
+ ***********************************************/
+.wrapper {
+	position: relative;
+	padding:0;	
+	margin: 0 auto;
+	display:table ;
+	overflow: hidden;	
+}
+
+.text {
+	position: absolute;
+	bottom: 0;
+	text-align: center;	
+	font-size: x-large;
+	display:block;	
+	width:100%;
+	height:100%;
+	color: white;	
+	cursor: pointer;
+	background: rgba(0,0,0,0.5);	
+	z-index: 10;
+	opacity: 0;
+	-webkit-transition: opacity 0.8s ease;
+    -moz-transition: opacity 0.8s ease;
+    -o-transition: opacity 0.8s ease;
+    transition: opacity 0.8s ease;	
+}
+
+.text:hover{
+	opacity:1;
+}
+.img-profile{
+	z-index: 1;		
+	height: 225px;
+	width: 250px;
+	display: table;
+	margin: 0 auto;
+	overflow: hidden;
+	
+	
+}
+#imgSubmit {
+	background-color: #e1be24;
+	color: black;	
+		
+	
+}
+
+#imgSubmit:hover{
+	color: white;
+}	
 
 /********************************************
 ALBUM PAGE / PHOTO PAGE 

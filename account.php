@@ -79,6 +79,61 @@
 		unset($_SESSION['current_cam_desc']);
 	}
 	
+	/*This is php code that will update and validiate uploaded user profile pictures*/	
+	 if(isset($_FILES['imgupload']) === true) 
+	{
+		//If user did not choose a file first give warning and reload page
+		if(empty($_FILES['imgupload']['name']) === true)
+		{
+			echo "<script>window.alert('Please choose a file.');</script>";
+					
+		}
+		else 
+		{
+			//Variables that hold information on file 
+			$fileName = $_FILES['imgupload']['name'];
+			$fileTemp = $_FILES['imgupload']['tmp_name'];
+			$fileSize = $_FILES['imgupload']['size'];
+			
+			
+			//Obtain the file ext to be tested
+			$exploded = explode('.', $fileName);
+			$fileExt = strtolower(end($exploded));
+			$allowed = array("jpeg", "jpg", "png", "gif");	
+		
+			//Checks if the file meets the requirements:
+			//less than 1MB and file ext is jpeg, png, or gif
+			if($fileSize > 1000000){
+				
+				echo "<script>window.alert('File size must be less than 1MB'); location=location;</script>";
+			}
+			//This test the file ext to make sure it is jpeg, png, or gif
+			if (in_array($fileExt, $allowed) === true)
+			{
+				//Hash out file name and create file path variable to be inseted to database 
+				$filePath= 'img/profile/' . substr(md5(time()), 0,10) . '.' . $fileExt;
+				move_uploaded_file($fileTemp, $filePath);
+		
+				//Enter query to update user profile file path 
+				$profile_update = $dbh->prepare("UPDATE USER SET USER_PROFILE=:profile WHERE USER_EMAIL=:email");
+		
+				/* Bind new submitted file path string to prevent SQL injection. */
+				$profile_update->bindParam(':profile', $filePath, PDO::PARAM_STR);
+				$profile_update->bindParam(':email',$_SESSION['email'], PDO::PARAM_STR);
+		
+				//Execute query
+				$profileUpdate_executed = $profile_update->execute();
+			}
+			else{
+				echo "<script>window.alert('File extention must be either jpeg, png, or gif');location = location</script>";
+			}		
+			
+			
+			
+		}	
+		
+	}  
+	
 /* This is the php code that will allow you to push the data to the database. */
 
 	// Check database for current values and sets sessions based on values
@@ -290,10 +345,22 @@
 					<!-- Outputs users name above image. -->
 					<h4><?php echo "Welcome, ".$_SESSION['name']." ".$_SESSION['lname'];?></h4>
 				</div>
-				<!--<div class="row">
+				<div class="row">
 					<!-- enter user image here. Just using placeholder image at the moment. -->
-					<!--<img src="http://mdepinet.org/wp-content/uploads/person-placeholder.jpg" class="img-responsive">
-				</div>-->
+					<?php
+					$filePath = $_SESSION['profile'];
+					$defaultImg= 'http://mdepinet.org/wp-content/uploads/person-placeholder.jpg';
+					if(file_exists($filePath))
+					{
+						$path = $_SESSION['profile'];
+					}
+					else{
+						$path = $defaultImg;
+					}	
+				    ?>
+					
+					<img src="<?php echo $path; ?>" alt="" class="img-profile"/>		
+				</div>
 				<div class="row">
 					<div class="col-md-10">
 						<h3>Profile</h3>
@@ -347,10 +414,34 @@
 					<!-- Outputs users name above image. -->
 					<h4><?php echo "Welcome, ".$_SESSION['name']." ".$_SESSION['lname'];?></h4>
 				</div>
-				<!--<div class="row">
+				<div class="row">
 					<!-- enter user image here. Just using placeholder image at the moment. -->
-					<!--<img src="http://mdepinet.org/wp-content/uploads/person-placeholder.jpg" class="img-responsive">
-				</div>-->
+					<!--When user edit their account the option to update picture appears here-->	
+					<?php
+					$filePath = $_SESSION['profile'];
+					$defaultImg= 'http://mdepinet.org/wp-content/uploads/person-placeholder.jpg';
+					if(file_exists($filePath))
+					{
+						$path = $_SESSION['profile'];
+					}
+					else{
+						$path = $defaultImg;
+					}
+					?> 					
+					
+					<form name="submitform" action="" method="POST" enctype="multipart/form-data" >
+					
+						<input type="file" name="imgupload" id="imgupload" style="display: none;">
+						
+						<a href="#" class="wrapper" onclick="$('#imgupload').trigger('click'); return false;">
+							<span class="text"> Update profile picuture</span>
+							
+							<img src='<?php echo $path; ?>' alt="" class="img-profile">								
+						</a>					
+						<input type="submit" class="btn btn-trailmix active" id="imgSubmit" name="imgSubmit" value="Upload"/>
+													
+					</form>
+				</div>
 				<div class="row">
 					<div class="col-md-10">
 						<h3>Profile</h3>

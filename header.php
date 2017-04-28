@@ -48,10 +48,10 @@
                 $password=$_POST['logPassword'];
 
                 // PDO query to check registered users
-                 $statement = $dbh->prepare("SELECT * FROM USER WHERE USER_PASS = :pass AND USER_EMAIL = :email");
+                 $statement = $dbh->prepare("SELECT * FROM USER WHERE USER_EMAIL = :email");
 
                 // PDO binds entry to protect against SQL Injection
-                 $statement->bindParam(':pass', $password, PDO::PARAM_STR);
+                 //$statement->bindParam(':pass', $password, PDO::PARAM_STR);
                  $statement->bindParam(':email', $email, PDO::PARAM_STR);
 
                 // Executes query
@@ -59,9 +59,16 @@
 
                 // Count number of rows
                  $number_rows = $statement->fetchColumn();
+				 
+				//Get user hash in database save it as $hashPassword
+				//$executed = $statement->execute();
+				 $statement->execute();
+				 
+				 $hash= $statement->fetch(PDO::FETCH_OBJ);
 
                 // If a user is found to match the criteria
-                 if ($number_rows > 0) {
+				// When all passwords are hashed out then change || to && to compare both if user exist and if password match.
+                 if ($number_rows > 0 || password_verify($password, $hash->USER_PASS)) {
                     // Display a user found message.
                     ?> <script>window.alert('Username Found!');</script> <?php
 

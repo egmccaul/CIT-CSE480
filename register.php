@@ -8,6 +8,9 @@ include('header.php');
 		$lname = $_POST['lname'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
+		
+			//Hash password before inserting to the database
+			$hash = password_hash($password, PASSWORD_DEFAULT);
 			
 			if (($email <> "") && ($fname <> "") && ($lname <> "") && ($password <> "")){
 	
@@ -36,7 +39,7 @@ include('header.php');
 					$insertState->bindParam(':fname', $fname, PDO::PARAM_STR);
 					$insertState->bindParam(':lname', $lname, PDO::PARAM_STR);
 					$insertState->bindParam(':email', $email, PDO::PARAM_STR);
-					$insertState->bindParam(':password', $password, PDO::PARAM_STR);
+					$insertState->bindParam(':password', $hash, PDO::PARAM_STR);
 
 					// Executes query
 					$insertExecuted = $insertState->execute();
