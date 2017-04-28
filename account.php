@@ -80,21 +80,19 @@
 	}
 	
 	/*This is php code that will update and validiate uploaded user profile pictures*/	
-	 if(isset($_FILES['imgupload']) === true) 
+	if(isset($_FILES['imgupload']) === true) 
 	{
 		//If user did not choose a file first give warning and reload page
 		if(empty($_FILES['imgupload']['name']) === true)
 		{
-			echo "<script>window.alert('Please choose a file.');</script>";
-					
+			echo "<script>window.alert('Please choose a file.');</script>";			
 		}
 		else 
 		{
 			//Variables that hold information on file 
 			$fileName = $_FILES['imgupload']['name'];
 			$fileTemp = $_FILES['imgupload']['tmp_name'];
-			$fileSize = $_FILES['imgupload']['size'];
-			
+			$fileSize = $_FILES['imgupload']['size'];			
 			
 			//Obtain the file ext to be tested
 			$exploded = explode('.', $fileName);
@@ -126,10 +124,7 @@
 			}
 			else{
 				echo "<script>window.alert('File extention must be either jpeg, png, or gif');location = location</script>";
-			}		
-			
-			
-			
+			}				
 		}	
 		
 	}  
@@ -213,6 +208,9 @@
 					
 					$pass = $_POST['pass1'];
 					
+					//Hash password before inserting to the database
+					$hash = password_hash($pass, PASSWORD_DEFAULT);
+					
 					/* Enter Query to update all criteria: first name, last name, email address, and password. */
 					$pass_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname , USER_LNAME=:lname , USER_EMAIL=:email , USER_PASS=:pass WHERE USER_EMAIL=:email_old;");
 					
@@ -220,7 +218,7 @@
 					$pass_update->bindParam(':fname', $fname, PDO::PARAM_STR);
 					$pass_update->bindParam(':lname', $lname, PDO::PARAM_STR);
 					$pass_update->bindParam(':email', $email_new, PDO::PARAM_STR);
-					$pass_update->bindParam(':pass', $pass, PDO::PARAM_STR);
+					$pass_update->bindParam(':pass', $hash, PDO::PARAM_STR);
 					$pass_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
 
 					
@@ -274,6 +272,9 @@
 				
 				$pass = $_POST['pass1'];
 				
+				//Hash password before inserting to the database
+				$hash = password_hash($pass, PASSWORD_DEFAULT);
+				
 				/* Enter Query to update all criteria: first name, last name, email address, and password. */
 				$pass_update = $dbh->prepare("UPDATE USER SET USER_FNAME=:fname , USER_LNAME=:lname , USER_EMAIL=:email , USER_PASS=:pass WHERE USER_EMAIL=:email_old;");
 				
@@ -281,7 +282,7 @@
 				$pass_update->bindParam(':fname', $fname, PDO::PARAM_STR);
 				$pass_update->bindParam(':lname', $lname, PDO::PARAM_STR);
 				$pass_update->bindParam(':email', $email, PDO::PARAM_STR);
-				$pass_update->bindParam(':pass', $pass, PDO::PARAM_STR);
+				$pass_update->bindParam(':pass', $hash, PDO::PARAM_STR);
 				$pass_update->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
 
 				
@@ -357,7 +358,7 @@
 					else{
 						$path = $defaultImg;
 					}	
-				    ?>
+						?>
 					
 					<img src="<?php echo $path; ?>" alt="" class="img-profile"/>		
 				</div>
