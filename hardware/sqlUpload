@@ -1,0 +1,31 @@
+#! /bin/bash
+#DB_USER='CIT480'
+#DB_PASSWORD='trailmix'
+#DB_NAME='cit480'
+#TABLE='photo'
+
+HOST='pi@egmccaul.ddns.net'
+CAMERA_ID=1
+#TEST_PATH="/usr/share/nginx/html/CIT-CSE480/Pictures/User4/Camera1/boop"
+
+#ssh $HOST -p 2222 'mysql -u cit480 -ptrailmix $DB_NAME -e "INSERT INTO $TABLE (CAMERA_ID, PHOTO_PATH) VALUES ("$CAMERA_ID", "$TEST_PATH");"'
+#sshpass -p 'raspberry' ssh pi@egmccaul.ddns.net -p 2222 'mysql -u cit480 -ptrailmix CIT480 -e "SELECT * FROM photo;"'
+
+#PHOTO_EXIST=$(sshpass -p 'raspberry' ssh $HOST -p 2222 'mysql -u cit480 -ptrailmix CIT480 -N -e "SELECT COUNT(*) FROM photo WHERE PHOTO_PATH='Pictures/User4/Camera1/boop';"')
+#echo $PHOTO_EXIST
+
+TEST_PATH="img/bear1412.jpg"
+
+PHOTO_EXIST=$(sshpass -p 'raspberry' ssh $HOST -p 2222 'mysql -u cit480 -ptrailmix CIT480 -N -e "SELECT COUNT(*) FROM 'photo' WHERE PHOTO_PATH = \"'$TEST_PATH'\";"')
+echo $PHOTO_EXIST
+echo $TEST_PATH
+
+if [ "$PHOTO_EXIST" -lt 1 ]
+	then 
+		sshpass -p 'raspberry' ssh $HOST -p 2222 -n 'mysql -u cit480 -ptrailmix CIT480 -e "INSERT INTO photo (CAMERA_ID, PHOTO_PATH) VALUES ('$CAMERA_ID', \"'$TEST_PATH'\");"'
+		echo "File Added to Database"
+	else
+		echo "File Already Exists in Database"
+fi
+
+

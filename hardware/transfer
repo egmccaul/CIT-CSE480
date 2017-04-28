@@ -1,0 +1,65 @@
+#! /bin/bash
+HOST='pi@egmccaul.ddns.net'
+#HOST='pi@192.168.254.39'
+FILE_PATH='egmccaul.ddns.net/cit480-test/Pictures/'
+BASE_PATH='/usr/share/nginx/html/CIT-CSE480/Pictures'
+CAMERA_ID=1
+
+DB_USER='CIT480'
+DB_PASSWORD='trailmix'
+DB_NAME='cit480'
+TABLE='photo'
+
+#d=$(date +%Y-%m-%d)
+
+USER_ID=$(sshpass -p 'raspberry' ssh $HOST -p 2222 'mysql -u cit480 -ptrailmix CIT480 -N -e "SELECT USER_ID FROM camera WHERE CAMERA_ID = '$CAMERA_ID';"')
+
+echo $USER_ID
+
+FINAL_PATH="$BASE_PATH/User$USER_ID/Camera$CAMERA_ID"
+REFER_PATH="Pictures/User$USER_ID/Camera$CAMERA_ID"
+
+echo $FINAL_PATH
+
+sshpass -p 'raspberry' rsync -rtvu -e "ssh -p 2222" /home/pi/Pictures/ $HOST:$FINAL_PATH
+
+while read line
+do
+    basename "$line" >> files.txt
+done < <(find ./Pictures -type f)
+
+
+while read x; do
+echo $x
+if sshpass -p 'raspberry' ssh $HOST -p 2222 -n test -e "$FINAL_PATH/$x"
+            then
+                    echo "File exists"
+                    
+                    #sql stuff
+                    #sshpass -p 'raspberry' ssh $HOST -p 2222 -n 'mysql -u cit480 -ptrailmix CIT480 -e "SELECT * FROM photo;"'
+                    PHOTO_ENTRIES=$(sshpass -p 'raspberry' ssh -n $HOST -p 2222 'mysql -u cit480 -ptrailmix CIT480 -N -e "SELECT COUNT(*) FROM 'photo' WHERE PHOTO_PATH = \"'$REFER_PATH/$x'\";"')
+                    echo $PHOTO_ENTRIES
+                    if [ "$PHOTO_ENTRIES" -lt 1 ]
+                            then 
+                                    sshpass -p 'raspberry' ssh $HOST -p 2222 -n 'mysql -u cit480 -ptrailmix CIT480 -e "INSERT INTO photo (CAMERA_ID, PHOTO_TITLE, PHOTO_PATH) VALUES ('$CAMERA_ID', \"'$x'\", \"'$REFER_PATH/$x'\");"'
+                                    echo "File Added to Database"
+                            else
+                                    echo "File Already Exists in Database"
+                    fi
+
+            else
+                    echo "File does not exist"
+
+fi
+done <files.txt
+
+
+DB_USER='CIT480'
+DB_PASSWORD='trailmix'
+DB_NAME='cit480'
+TABLE='photo'
+
+#ssh $HOST -p 2222 'mysql -u cit480 -ptrailmix $DB_NAME -e "INSERT INTO $TABLE (CAMERA_ID, PHOTO_PATH) VALUES ("$CAMERA_ID", "$TEST_PATH");"'
+#sshpass -p 'raspberry' ssh $HOST -p 2222 'mysql -u cit480 -ptrailmix CIT480 -e "SELECT * FROM photo;"'
+rm files.txt
+
